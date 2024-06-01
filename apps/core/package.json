@@ -34,7 +34,7 @@
     "@typegoose/auto-increment": "^4.4.0",
     "@typegoose/typegoose": "^12.5.0",
     "chalk": "^4.1.1",
-    "fastify-swagger": "^5.2.0",
+    "@fastify/swagger": "^6.0.0",
     "mongoose": "^8.4.1",
     "mongoose-lean-virtuals": "^0.9.1",
     "passport": "^0.7.0",
