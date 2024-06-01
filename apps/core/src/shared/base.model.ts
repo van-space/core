@@ -45,6 +45,18 @@ export abstract class WriteBaseModel extends BaseCommentIndexModel {
   @prop({ type: Image })
   images?: Image[];
 
-  @prop({ default: () => new Date() })
-  modified: Date;
+  @prop({ default: null })
+  modified: Date | null;
+}
+
+@modelOptions({
+  schemaOptions: { id: false, _id: false },
+  options: { customName: 'count' },
+})
+export class CountMixed {
+  @prop({ default: 0 })
+  read?: number;
+
+  @prop({ default: 0 })
+  like?: number;
 }

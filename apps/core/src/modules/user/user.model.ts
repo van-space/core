@@ -1,7 +1,13 @@
-import { DocumentType, modelOptions, prop } from '@typegoose/typegoose';
+import {
+  DocumentType,
+  modelOptions,
+  prop,
+  Severity,
+} from '@typegoose/typegoose';
 import { Schema } from 'mongoose';
-import { BaseModel } from 'src/shared/base.module';
+
 import { hashSync } from 'bcrypt';
+import { BaseModel } from 'src/shared/base.model';
 export type UserDocument = DocumentType<UserModel>;
 
 export class OAuthModel {
@@ -25,13 +31,13 @@ export class TokenModel {
   name: string;
 }
 
-@modelOptions({ options: { customName: 'User' } })
+@modelOptions({ options: { customName: 'User', allowMixed: Severity.ALLOW } })
 export class UserModel extends BaseModel {
   @prop({ required: true, unique: true, trim: true })
-  username: string;
+  username!: string;
 
   @prop({ trim: true })
-  name: string;
+  name!: string;
 
   @prop()
   introduce?: string;
@@ -49,7 +55,7 @@ export class UserModel extends BaseModel {
     },
     required: true,
   })
-  password: string;
+  password!: string;
 
   @prop()
   mail?: string;
@@ -67,10 +73,10 @@ export class UserModel extends BaseModel {
   socialIds?: any;
 
   @prop({ select: true, required: true })
-  authCode: string;
+  authCode!: string;
 
   @prop({ type: TokenModel, select: false })
-  apiToken: TokenModel[];
+  apiToken?: TokenModel[];
 
   @prop({ type: OAuthModel, select: false })
   oauth2?: OAuthModel[];
