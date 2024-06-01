@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  prod:
+    container_name: van-space-server
+    build:
+      context: .
+      dockerfile: ./apps/core/Dockerfile
+    ports:
+      - 2333:2333
+    networks:
+      - nestjs_network
+    restart: unless-stopped
+
+networks:
+  nestjs_network:
+    external: true
