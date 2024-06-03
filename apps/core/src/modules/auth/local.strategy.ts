@@ -1,13 +1,13 @@
-import { UserModel as User } from '../user/user.model'
-import { ForbiddenException } from '@nestjs/common'
-import { PassportStrategy } from '@nestjs/passport'
-import { ReturnModelType } from '@typegoose/typegoose'
-import { compareSync } from 'bcrypt'
-import { InjectModel } from 'nestjs-typegoose'
-import { IStrategyOptions, Strategy } from 'passport-local'
+import { UserModel as User } from '../user/user.model';
+import { ForbiddenException } from '@nestjs/common';
+import { PassportStrategy } from '@nestjs/passport';
+import { ReturnModelType } from '@typegoose/typegoose';
+import { compareSync } from 'bcrypt';
+import { InjectModel } from 'nestjs-typegoose';
+import { IStrategyOptions, Strategy } from 'passport-local';
 
 function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 export class LocalStrategy extends PassportStrategy(Strategy, 'local') {
@@ -17,20 +17,20 @@ export class LocalStrategy extends PassportStrategy(Strategy, 'local') {
     super({
       usernameField: 'username',
       passwordField: 'password',
-    } as IStrategyOptions)
+    } as IStrategyOptions);
   }
 
   async validate(username: string, password: string) {
-    const user = await this.userModel.findOne({ username }).select('+password')
+    const user = await this.userModel.findOne({ username }).select('+password');
     if (!user) {
-      await sleep(3000)
-      throw new ForbiddenException('用户名不正确')
+      await sleep(3000);
+      throw new ForbiddenException('用户名不正确');
     }
     if (!compareSync(password, user.password)) {
-      await sleep(3000)
-      throw new ForbiddenException('密码不正确')
+      await sleep(3000);
+      throw new ForbiddenException('密码不正确');
     }
     // console.log(user)
-    return user
+    return user;
   }
 }

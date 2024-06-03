@@ -5,7 +5,7 @@
  * @author Surmon <https://github.com/surmon-china>
  */
 
-import {CacheModule as NestCacheModule, Global, Module } from '@nestjs/common';
+import { CacheModule as NestCacheModule, Global, Module } from '@nestjs/common';
 import { CacheConfigService } from './cache.config.service';
 import { CacheService } from './cache.service';
 
