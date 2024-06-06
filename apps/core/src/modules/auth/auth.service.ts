@@ -38,11 +38,11 @@ export class AuthService {
     return (await this.userModel.findOne().select('apiToken').lean())
       .apiToken as any;
   }
-  async getAllAccessToken(): Promise<any[]> {
+  async getAllAccessToken() {
     return (await this.getAccessTokens()).map((token) => ({
       id: token._id,
       ...omit(token, ['_id', '__v', 'token']),
-    }));
+    })) as any as TokenModel[];
   }
 
   async getTokenSecret(id: string) {
