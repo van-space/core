@@ -1,6 +1,5 @@
 import { WebSocketServer } from '@nestjs/websockets';
 import { EventTypes } from './events.types';
-// @ts-expect-error
 import { Server, Socket } from 'socket.io';
 export function gatewayMessageFormat(type: EventTypes, message: any) {
   return {

@@ -12,7 +12,6 @@ import { validate } from 'class-validator';
 import { BaseGateway } from '../base.gateway';
 import { EventTypes } from '../events.types';
 import { DanmakuDto } from './dtos/danmaku.dto';
-// @ts-expect-error
 import SocketIO from 'socket.io';
 import dayjs from 'dayjs';
 import { CacheService } from '~/processors/cache/cache.service';

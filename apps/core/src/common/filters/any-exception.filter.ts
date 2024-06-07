@@ -6,13 +6,13 @@ import {
   HttpStatus,
   Logger,
 } from '@nestjs/common';
-//@ts-expect-error
 import { FastifyReply, FastifyRequest } from 'fastify';
-import { isDev } from '~/utils/index.util';
-import { getIp } from '../../utils/ip.util';
 import { writeFileSync } from 'fs';
 import { LOGGER_DIR } from '~/constants/path.constant';
 import { resolve } from 'path';
+import { isDev } from '~/utils/index.util';
+import { getIp } from '../../utils/ip.util';
+
 type myError = {
   readonly status: number;
   readonly statusCode?: number;

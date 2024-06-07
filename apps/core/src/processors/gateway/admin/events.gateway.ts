@@ -9,7 +9,6 @@ import {
 import { AuthService } from '../../../modules/auth/auth.service';
 import { BaseGateway } from '../base.gateway';
 import { EventTypes, NotificationTypes } from '../events.types';
-// @ts-expect-error
 import SocketIO from 'socket.io';
 @WebSocketGateway<GatewayMetadata>({ namespace: 'admin' })
 export class AdminEventsGateway

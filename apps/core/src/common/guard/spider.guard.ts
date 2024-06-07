@@ -4,7 +4,6 @@ import {
   ForbiddenException,
   Injectable,
 } from '@nestjs/common';
-// @ts-expect-error
 import { FastifyRequest } from 'fastify';
 import { Observable } from 'rxjs';
 import { isDev } from '~/utils/index.util';

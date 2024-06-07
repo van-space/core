@@ -1,5 +1,4 @@
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
-// @ts-expect-error
 import { FastifyRequest } from 'fastify';
 import { getIp } from '~/utils/ip.util';
 
