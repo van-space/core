@@ -1,3 +1,6 @@
+/**
+ * 实现了 WebSocket 连接的认证、连接管理和通知发送功能
+ */
 import { JwtService } from '@nestjs/jwt';
 import {
   GatewayMetadata,
