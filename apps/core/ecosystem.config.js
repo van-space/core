@@ -3,7 +3,7 @@ module.exports = {
   apps: [
     {
       name: 'van-space-server',
-      script: 'dist/main.js',
+      script: 'dist/src/main.js',
       autorestart: true,
       instances: 'max',
       exec_mode: 'cluster',
