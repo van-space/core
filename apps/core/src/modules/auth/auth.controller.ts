@@ -8,7 +8,7 @@ import {
   Scope,
   UseGuards,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
 import {
   IsDate,
@@ -18,11 +18,10 @@ import {
   IsString,
 } from 'class-validator';
 import { Auth } from '~/common/decorator/auth.decorator';
-import { IsGuest, IsMaster as Master } from '~/common/decorator/role.decorator';
+import { ApiName } from '~/common/decorator/openapi.decorator';
+import { IsMaster as Master } from '~/common/decorator/role.decorator';
 import { MongoIdDto } from '~/shared/dto/id.dto';
-
 import { AdminEventsGateway } from '../../processors/gateway/admin/events.gateway';
-
 import { AuthService } from './auth.service';
 import { RolesGuard } from './roles.guard';
 
@@ -41,7 +40,7 @@ export class TokenDto {
   path: 'auth',
   scope: Scope.REQUEST,
 })
-@ApiTags('Auth Routes')
+@ApiName
 export class AuthController {
   constructor(
     private readonly authService: AuthService,
@@ -61,7 +60,7 @@ export class AuthController {
   async getOrVerifyToken(
     @Query('token') token?: string,
     @Query('id') id?: string,
-  ): Promise<any> {
+  ) {
     if (typeof token === 'string') {
       return await this.authService.verifyCustomToken(token);
     }
