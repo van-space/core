@@ -1,3 +1,7 @@
+/**
+ * 对响应体进行转换结构
+ * @author Innei
+ */
 import {
   CallHandler,
   ExecutionContext,
@@ -33,16 +37,19 @@ export class ResponseInterceptor<T> implements NestInterceptor<T, Response<T>> {
         ? { ...data }
         : { data };
     };
+    const handler = context.getHandler();
+
     return next.handle().pipe(
       map((data) => {
         if (typeof data === 'undefined') {
           return '';
         }
-        if (
-          this.reflector.get(HTTP_RES_TRANSFORM_PAGINATE, context.getHandler())
-        ) {
+        // 分页转换
+        if (this.reflector.get(HTTP_RES_TRANSFORM_PAGINATE, handler)) {
           return this.transformDataToPaginate(data);
         }
+
+        // 对象转换成标准结构
         if (typeof data === 'object' && data !== null) {
           return reorganize(data);
         }
