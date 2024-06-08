@@ -49,7 +49,7 @@ importers:
         version: 8.0.1(@nestjs/common@8.4.7)
       '@nestjs/passport':
         specifier: ^8.0.1
-        version: 8.2.2(@nestjs/common@8.4.7)(passport@0.4.1)
+        version: 8.2.2(@nestjs/common@8.4.7)(passport@0.6.0)
       '@nestjs/platform-fastify':
         specifier: ^8.0.6
         version: 8.4.7(@nestjs/common@8.4.7)(@nestjs/core@8.4.7)
@@ -114,8 +114,8 @@ importers:
         specifier: ^7.1.38
         version: 7.1.38(@nestjs/common@8.4.7)(@nestjs/core@8.4.7)(@typegoose/typegoose@8.2.0)(mongoose@5.13.22)
       passport:
-        specifier: ^0.4.1
-        version: 0.4.1
+        specifier: ^0.6.0
+        version: 0.6.0
       passport-jwt:
         specifier: ^4.0.0
         version: 4.0.1
@@ -1403,14 +1403,14 @@ packages:
       reflect-metadata: 0.1.14
     dev: false
 
-  /@nestjs/passport@8.2.2(@nestjs/common@8.4.7)(passport@0.4.1):
+  /@nestjs/passport@8.2.2(@nestjs/common@8.4.7)(passport@0.6.0):
     resolution: {integrity: sha512-Ytbn8j7WZ4INmEntOpdJY1isTgdQqZkx5ADz8zsZ5wAp0t8tc5GF/A+GlXlmn9/yRPwZHSbmHpv7Qt2EIiNnrw==}
     peerDependencies:
       '@nestjs/common': ^6.0.0 || ^7.0.0 || ^8.0.0
       passport: ^0.4.0 || ^0.5.0 || ^0.6.0
     dependencies:
       '@nestjs/common': 8.4.7(cache-manager@3.4.4)(class-transformer@0.4.1)(class-validator@0.13.2)(reflect-metadata@0.1.14)(rxjs@7.8.1)
-      passport: 0.4.1
+      passport: 0.6.0
     dev: false
 
   /@nestjs/platform-fastify@8.4.7(@nestjs/common@8.4.7)(@nestjs/core@8.4.7):
@@ -7617,12 +7617,13 @@ packages:
     engines: {node: '>= 0.4.0'}
     dev: false
 
-  /passport@0.4.1:
-    resolution: {integrity: sha512-IxXgZZs8d7uFSt3eqNjM9NQ3g3uQCW5avD8mRNoXV99Yig50vjuaez6dQK2qC0kVWPRTujxY0dWgGfT09adjYg==}
+  /passport@0.6.0:
+    resolution: {integrity: sha512-0fe+p3ZnrWRW74fe8+SvCyf4a3Pb2/h7gFkQ8yTJpAO50gDzlfjZUZTO1k5Eg9kUct22OxHLqDZoKUWRHOh9ug==}
     engines: {node: '>= 0.4.0'}
     dependencies:
       passport-strategy: 1.0.0
       pause: 0.0.1
+      utils-merge: 1.0.1
     dev: false
 
   /path-case@2.1.1:
@@ -9390,6 +9391,11 @@ packages:
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+
+  /utils-merge@1.0.1:
+    resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
+    engines: {node: '>= 0.4.0'}
+    dev: false
 
   /uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
