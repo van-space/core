@@ -113,6 +113,9 @@ importers:
       nestjs-typegoose:
         specifier: ^7.1.38
         version: 7.1.38(@nestjs/common@8.4.7)(@nestjs/core@8.4.7)(@typegoose/typegoose@8.2.0)(mongoose@5.13.22)
+      nodemailer:
+        specifier: ^6.6.3
+        version: 6.9.13
       passport:
         specifier: ^0.4.1
         version: 0.4.1
@@ -162,6 +165,9 @@ importers:
       '@types/node':
         specifier: ^16.7.1
         version: 16.18.97
+      '@types/nodemailer':
+        specifier: ^6.4.4
+        version: 6.4.15
       '@types/passport-jwt':
         specifier: ^3.0.6
         version: 3.0.13
@@ -1936,6 +1942,12 @@ packages:
     requiresBuild: true
     dependencies:
       undici-types: 5.26.5
+
+  /@types/nodemailer@6.4.15:
+    resolution: {integrity: sha512-0EBJxawVNjPkng1zm2vopRctuWVCxk34JcIlRuXSf54habUWdz1FB7wHDqOqvDa8Mtpt0Q3LTXQkAs2LNyK5jQ==}
+    dependencies:
+      '@types/node': 20.13.0
+    dev: true
 
   /@types/normalize-package-data@2.4.4:
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -7272,6 +7284,11 @@ packages:
   /node-releases@2.0.14:
     resolution: {integrity: sha512-y10wOWt8yZpqXmOgRo77WaHEmhYQYGNA6y421PKsKYWEK8aW+cqAphborZDhqfyKrbZEN92CN1X2KbafY2s7Yw==}
     dev: true
+
+  /nodemailer@6.9.13:
+    resolution: {integrity: sha512-7o38Yogx6krdoBf3jCAqnIN4oSQFx+fMa0I7dK1D+me9kBxx12D+/33wSb+fhOCtIxvYJ+4x4IMEhmhCKfAiOA==}
+    engines: {node: '>=6.0.0'}
+    dev: false
 
   /nopt@5.0.0:
     resolution: {integrity: sha512-Tbj67rffqceeLpcRXrT7vKAN8CwfPeIBgM7E6iBkmKLV7bEMwpGgYLGv0jACUsECaa/vuxP0IjEont6umdMgtQ==}
