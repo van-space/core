@@ -15,7 +15,7 @@ import {
   SubscribeMessage,
   WebSocketGateway,
 } from '@nestjs/websockets';
-import { plainToClassFromExist } from 'class-transformer';
+import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
 import dayjs from 'dayjs';
 import SocketIO from 'socket.io';
@@ -48,7 +48,7 @@ export class WebEventsGateway
     @MessageBody() data: DanmakuDto,
     @ConnectedSocket() client: SocketIO.Socket,
   ) {
-    const validator = plainToClassFromExist(DanmakuDto, data);
+    const validator = plainToClass(DanmakuDto, data);
     validate(validator).then((errors) => {
       if (errors.length > 0) {
         return client.send(errors);

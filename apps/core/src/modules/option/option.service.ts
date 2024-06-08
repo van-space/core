@@ -3,7 +3,7 @@ import {
   UnprocessableEntityException,
   ValidationPipe,
 } from '@nestjs/common';
-import { ClassConstructor, plainToClassFromExist } from 'class-transformer';
+import { ClassConstructor, plainToClass } from 'class-transformer';
 import { validateSync, ValidatorOptions } from 'class-validator';
 import { EmailService } from '~/processors/helper/helper.email.service';
 import {
@@ -69,7 +69,7 @@ export class OptionService {
   }
 
   private validWithDto<T extends object>(dto: ClassConstructor<T>, value: any) {
-    const validModel = plainToClassFromExist(dto, value);
+    const validModel = plainToClass(dto, value);
     const errors = validateSync(validModel, this.validOptions);
     if (errors.length > 0) {
       const error = this.validate.createExceptionFactory()(errors as any[]);
