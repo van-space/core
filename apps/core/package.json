@@ -79,7 +79,7 @@
     "rimraf": "^3.0.2",
     "socket.io": "*",
     "run-script-webpack-plugin": "^0.0.11",
-    "supertest": "^6.1.6",
+    "supertest": "^7.0.0",
     "ts-jest": "^27.0.5",
     "ts-loader": "^9.2.5",
     "ts-node": "^10.2.1",
