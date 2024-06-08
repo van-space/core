@@ -1,3 +1,11 @@
+/*
+ * @Author: Innei
+ * @Date: 2020-05-21 18:59:01
+ * @LastEditTime: 2021-02-24 21:22:29
+ * @LastEditors: Innei
+ * @FilePath: /server/apps/server/src/gateway/web/events.gateway.ts
+ * @Copyright
+ */
 import {
   ConnectedSocket,
   GatewayMetadata,
@@ -9,12 +17,14 @@ import {
 } from '@nestjs/websockets';
 import { plainToClassFromExist } from 'class-transformer';
 import { validate } from 'class-validator';
+import dayjs from 'dayjs';
+import SocketIO from 'socket.io';
+import { RedisKeys } from '~/constants/cache.constant';
+import { CacheService } from '~/processors/cache/cache.service';
+import { getRedisKey } from '~/utils/redis.util';
 import { BaseGateway } from '../base.gateway';
 import { EventTypes } from '../events.types';
 import { DanmakuDto } from './dtos/danmaku.dto';
-import SocketIO from 'socket.io';
-import dayjs from 'dayjs';
-import { CacheService } from '~/processors/cache/cache.service';
 
 @WebSocketGateway<GatewayMetadata>({
   namespace: 'web',
@@ -53,9 +63,20 @@ export class WebEventsGateway
     this.broadcast(EventTypes.VISITOR_ONLINE, await this.sendOnlineNumber());
 
     process.nextTick(async () => {
-      // TODO: 这里需要实现一个统计总数, 每天在线人数
+      // TODO test
       const redisClient = this.cacheService.getClient();
       const dateFormat = dayjs().format('YYYY-MM-DD');
+      const count =
+        +(await redisClient.get(
+          getRedisKey(RedisKeys.MaxOnlineCount, dateFormat),
+        )) || 0;
+      await redisClient.set(
+        getRedisKey(RedisKeys.MaxOnlineCount, dateFormat),
+        Math.max(count, this.wsClients.length),
+      );
+      const key = getRedisKey(RedisKeys.MaxOnlineCount, dateFormat) + '_total';
+      const totalCount = +(await redisClient.get(key)) || 0;
+      await redisClient.set(key, totalCount + 1);
     });
 
     super.handleConnect(client);
