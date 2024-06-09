@@ -68,7 +68,8 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.3.0",
     "pluralize": "*",
-    "snakecase-keys": "^4.0.2"
+    "snakecase-keys": "^4.0.2",
+    "ua-parser-js": "^0.7.28"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.1.1",
