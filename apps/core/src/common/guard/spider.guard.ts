@@ -1,3 +1,8 @@
+/**
+ * @module common/guard/spider.guard
+ * @description 禁止爬虫的守卫
+ * @author Innei <https://innei.ren>
+ */
 import {
   CanActivate,
   ExecutionContext,
