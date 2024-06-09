@@ -9,6 +9,7 @@
   "issues": "https://github.com/van-space/core",
   "scripts": {
     "build": "nest build",
+    "bundle": "pnpm build && cd dist/src && npx ncc build main.js -o ../../out",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "dev": "npm run start",
     "start": "cross-env NODE_ENV=development nest start -w  --path tsconfig.json -- ",
@@ -93,6 +94,7 @@
     "@types/passport-jwt": "^3.0.6",
     "@types/redis": "2.8.31",
     "@types/supertest": "^2.0.11",
+    "@vercel/ncc": "^0.30.0",
     "fastify": "*",
     "ioredis": "*",
     "jest": "27.1.0",

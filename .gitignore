@@ -38,3 +38,5 @@ yarn-error.log*
 *.pem
 patch/dist
 tmp
+out
+release.zip
