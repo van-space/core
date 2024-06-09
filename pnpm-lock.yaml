@@ -116,6 +116,9 @@ importers:
       mongoose:
         specifier: '*'
         version: 5.13.22
+      mongoose-lean-id:
+        specifier: ^0.2.0
+        version: 0.2.0(mongoose@5.13.22)
       mongoose-lean-virtuals:
         specifier: ^0.8.0
         version: 0.8.1(mongoose@5.13.22)
@@ -7434,6 +7437,14 @@ packages:
       safe-buffer: 5.2.1
     optionalDependencies:
       saslprep: 1.0.3
+    dev: false
+
+  /mongoose-lean-id@0.2.0(mongoose@5.13.22):
+    resolution: {integrity: sha512-ioC++wVTfprE2wh7Baw4jdZ1mCIpK3uw74sWf53enNCKZHVhKsL7fMyB1ryb4SmGwOj4StebTGy7YwimjZ0Qlg==}
+    peerDependencies:
+      mongoose: 4.x || 5.x
+    dependencies:
+      mongoose: 5.13.22
     dev: false
 
   /mongoose-lean-virtuals@0.8.1(mongoose@5.13.22):
