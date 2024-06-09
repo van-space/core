@@ -1,4 +1,3 @@
-// @ts-expect-error
 import { PartialType } from '@nestjs/mapped-types';
 import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import { index, modelOptions, prop, Ref, Severity } from '@typegoose/typegoose';

@@ -1,4 +1,3 @@
-// @ts-expect-error
 import { PartialType } from '@nestjs/mapped-types';
 import { AutoIncrementID } from '@typegoose/auto-increment';
 import { index, modelOptions, plugin, prop } from '@typegoose/typegoose';
