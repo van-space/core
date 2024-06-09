@@ -4,10 +4,12 @@ import { isDev } from '~/utils/index.util';
 
 export const HOME = homedir();
 
-export const TEMP_DIR = isDev ? join(__dirname, '../tmp') : '/tmp/mx-space';
+export const TEMP_DIR = isDev ? join(process.cwd(), './tmp') : '/tmp/mx-space';
 
 export const DATA_DIR = isDev
-  ? join(__dirname, '../tmp')
+  ? join(process.cwd(), './tmp')
   : join(HOME, '.mx-space');
 
 export const LOGGER_DIR = join(DATA_DIR, 'log');
+
+export const localBotListDataFilePath = join(DATA_DIR, 'bot_list.json');
