@@ -34,8 +34,8 @@ jobs:
           run_install: true
       - name: Build project # This would actually build your project, using zip for an example artifact
         run: |
-          pnpm run bundle
-          zip -r release.zip out/*
+          pnpm run release
+          zip -r ./release.zip app/core/out/*
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1

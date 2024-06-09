@@ -10,6 +10,10 @@
       "dependsOn": ["^lint"],
       "env": ["NODE_ENV=development"]
     },
+    "release": {
+      "cache": false,
+      "persistent": false
+    },
     "dev": {
       "cache": false,
       "persistent": true
