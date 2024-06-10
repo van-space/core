@@ -3,7 +3,7 @@ import FastifyMultipart from 'fastify-multipart';
 export const fastifyApp: FastifyAdapter = new FastifyAdapter({
   trustProxy: true,
 });
-
+// @ts-expect-error
 fastifyApp.register(FastifyMultipart, {
   limits: {
     fields: 10, // Max number of non-file fields
