@@ -2,6 +2,7 @@
   "name": "core",
   "private": true,
   "author": "Van <1604549268@qq.com>",
+  "version": "3.0.0-alpha.1",
   "license": "MIT",
   "husky": {
     "hooks": {
@@ -21,7 +22,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "cleanup": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
     "prepare": "husky",
-    "release": "turbo release"
+    "release": "pnpm -r bundle"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
