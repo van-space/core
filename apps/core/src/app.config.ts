@@ -1,5 +1,6 @@
-import argv from 'argv';
 import type { AxiosRequestConfig } from 'axios';
+// @ts-ignore
+import { argv } from 'yargs';
 import { isDev } from './utils/index.util';
 export const CROSS_DOMAIN = {
   allowedOrigins: [
