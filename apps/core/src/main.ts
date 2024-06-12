@@ -5,15 +5,16 @@ import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { NestFastifyApplication } from '@nestjs/platform-fastify';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { argv } from 'yargs';
 import { CROSS_DOMAIN } from './app.config';
 import { AppModule } from './app.module';
 import { fastifyApp } from './common/adapt/fastify';
 import { SpiderGuard } from './common/guard/spider.guard';
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
-// @ts-ignore
-import { argv } from 'yargs';
+import { MyLogger } from './processors/logger/logger.service';
 
 const PORT: number = +argv.port || 2333;
+
 const APIVersion = 1;
 const Origin = CROSS_DOMAIN.allowedOrigins;
 
@@ -23,6 +24,7 @@ async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     fastifyApp,
+    { logger: new MyLogger() },
   );
 
   const hosts = Origin.map((host) => new RegExp(host, 'i'));
