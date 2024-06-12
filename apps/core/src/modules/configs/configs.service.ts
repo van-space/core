@@ -7,7 +7,7 @@ import { BackupOptions, MailOptionsDto } from './configs.dto';
 import { IConfig } from './configs.interface';
 import { OptionModel } from './configs.model';
 
-const defaultConfig = {
+const defaultConfig: IConfig = {
   seo: {
     title: 'mx-space',
     description: 'Hello World~',
@@ -22,7 +22,9 @@ const defaultConfig = {
   commentOptions: { antiSpam: false },
   backupOptions: { enable: false } as BackupOptions,
   baiduSearchOptions: { enable: false },
+  algoliaSearchOptions: { enable: false, apiKey: '', appId: '', indexName: '' },
 };
+
 @Injectable()
 export class ConfigsService {
   private config: IConfig = defaultConfig;
@@ -37,6 +39,7 @@ export class ConfigsService {
   }
   private configInitd = false;
   public waitForConfigReady() {
+    // eslint-disable-next-line no-async-promise-executor
     return new Promise<IConfig>(async (r, j) => {
       // 开始等待, 后续调用直接返回
       if (this.configInitd) {
