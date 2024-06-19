@@ -1,3 +1,4 @@
+import { Field, ObjectType } from '@nestjs/graphql';
 import { PartialType } from '@nestjs/mapped-types';
 import { AutoIncrementID } from '@typegoose/auto-increment';
 import { index, modelOptions, plugin, prop } from '@typegoose/typegoose';
@@ -11,10 +12,14 @@ import {
   IsString,
   ValidateNested,
 } from 'class-validator';
-import { CountMixed, WriteBaseModel } from '~/shared/model/base.model';
-import { NoteMusicDto } from './note.dto';
+import {
+  CountMixed,
+  Paginator,
+  WriteBaseModel,
+} from '~/shared/model/base.model';
 
 @modelOptions({ schemaOptions: { id: false, _id: false } })
+@ObjectType()
 export class Coordinate {
   @IsNumber()
   @prop()
@@ -30,9 +35,15 @@ export class Coordinate {
     _id: false,
   },
 })
+@ObjectType()
 export class NoteMusic {
+  @IsString()
+  @IsNotEmpty()
   @prop({ required: true })
   type: string;
+
+  @IsString()
+  @IsNotEmpty()
   @prop({ required: true })
   id: string;
 }
@@ -49,6 +60,7 @@ export class NoteMusic {
 @index({ text: 'text' })
 @index({ modified: -1 })
 @index({ nid: -1 })
+@ObjectType()
 export class NoteModel extends WriteBaseModel {
   @prop()
   @IsString()
@@ -97,6 +109,7 @@ export class NoteModel extends WriteBaseModel {
   @ValidateNested()
   @Type(() => Coordinate)
   @IsOptional()
+  @Field(() => Coordinate, { nullable: true })
   coordinates?: Coordinate;
 
   @prop({ select: false })
@@ -105,16 +118,35 @@ export class NoteModel extends WriteBaseModel {
   location?: string;
 
   @prop({ type: CountMixed, default: { read: 0, like: 0 }, _id: false })
+  @Field(() => CountMixed, { nullable: true })
   count?: CountMixed;
 
   @prop({ type: [NoteMusic] })
   @ValidateNested({ each: true })
   @IsOptional()
-  @Type(() => NoteMusicDto)
+  @Type(() => NoteMusic)
+  @Field(() => [NoteMusic], { nullable: true })
   music?: NoteMusic[];
+
   static get protectedKeys() {
     return ['nid', 'count'].concat(super.protectedKeys);
   }
 }
 
 export class PartialNoteModel extends PartialType(NoteModel) {}
+
+@ObjectType()
+export class NoteItemAggregateModel {
+  @Field(() => NoteModel)
+  data: NoteModel;
+  @Field(() => NoteModel, { nullable: true })
+  prev?: NoteModel;
+  @Field(() => NoteModel, { nullable: true })
+  next?: NoteModel;
+}
+
+@ObjectType()
+export class NotePaginatorModel {
+  data: NoteModel[];
+  pagination: Paginator;
+}
