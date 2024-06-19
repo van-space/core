@@ -2,7 +2,7 @@
   "name": "core",
   "private": true,
   "author": "Van <1604549268@qq.com>",
-  "version": "v3.0.0-canary.2",
+  "version": "v3.0.0-canary.2.1",
   "license": "MIT",
   "husky": {
     "hooks": {
