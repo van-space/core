@@ -47,24 +47,20 @@ export class EmailService {
   }
 
   init() {
-    this.getConfigFromConfigService()
-      .then((config) => {
-        this.instance = createTransport({
-          ...config,
-          secure: true,
-          tls: {
-            rejectUnauthorized: false,
-          },
-        });
-        this.checkIsReady().then((ready) => {
-          if (ready) {
-            this.logger.log('送信服务已经加载完毕！');
-          }
-        });
-      })
-      .catch((e) => {
-        this.logger.warn(e);
+    this.getConfigFromConfigService().then((config) => {
+      this.instance = createTransport({
+        ...config,
+        secure: true,
+        tls: {
+          rejectUnauthorized: false,
+        },
       });
+      this.checkIsReady().then((ready) => {
+        if (ready) {
+          this.logger.log('送信服务已经加载完毕！');
+        }
+      });
+    });
   }
 
   private getConfigFromConfigService() {
@@ -72,16 +68,14 @@ export class EmailService {
       host: string;
       port: number;
       auth: { user: string; pass: string };
-    }>((r, j) => {
+    }>((r) => {
       this.configsService.waitForConfigReady().then(({ mailOptions }) => {
-        const { options, user, pass, enable } = mailOptions;
-        enable
-          ? r({
-              host: options.host,
-              port: +options.port || 465,
-              auth: { user, pass },
-            } as const)
-          : j('邮件服务未启用');
+        const { options, user, pass } = mailOptions;
+        r({
+          host: options.host,
+          port: +options.port || 465,
+          auth: { user, pass },
+        } as const);
       });
     });
   }
@@ -119,10 +113,9 @@ export class EmailService {
     model: LinkModel;
     template: LinkApplyEmailType;
   }) {
-    const { seo } = await this.configsService.waitForConfigReady();
-    const from = `"${seo.title || 'Mx Space'}" <${
-      (await this.configsService.getMaster()).name
-    }>`;
+    const { seo, mailOptions } = await this.configsService.waitForConfigReady();
+    const { user } = mailOptions;
+    const from = `"${seo.title || 'Mx Space'}" <${user}>`;
     await this.instance.sendMail({
       from,
       to,
@@ -150,10 +143,9 @@ export class EmailService {
     source: RenderProps;
     type: ReplyMailType;
   }) {
-    const { seo } = await this.configsService.waitForConfigReady();
-    const from = `"${seo.title || 'Mx Space'}" <${
-      (await this.configsService.getMaster()).name
-    }>`;
+    const { seo, mailOptions } = await this.configsService.waitForConfigReady();
+    const { user } = mailOptions;
+    const from = `"${seo.title || 'Mx Space'}" <${user}>`;
     if (type === ReplyMailType.Guest) {
       await this.instance.sendMail({
         from,
