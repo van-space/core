@@ -22,5 +22,5 @@
     "snakecase-keys",
     "zx"
   ],
-  "enabled": false
+  "enabled": true
 }
