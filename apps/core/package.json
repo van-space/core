@@ -26,7 +26,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "patch": "node bin/patch.js"
+    "patch": "node bin/patch.js",
+    "docs": "npx @compodoc/compodoc -p tsconfig.json -s -d docs"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.6",
@@ -63,6 +64,7 @@
     "js-yaml": "*",
     "jszip": "^3.7.1",
     "lodash": "*",
+    "mdurl": "1.0.1",
     "mkdirp": "*",
     "mongoose": "*",
     "mongoose-lean-id": "^0.2.0",
@@ -77,10 +79,17 @@
     "pluralize": "*",
     "redis": "3.1.2",
     "reflect-metadata": "^0.1.13",
+    "rehype-stringify": "9.0.2",
+    "remark-gfm": "2.0.0",
+    "remark-html": "13.0.1",
+    "remark-parse": "5.0.0",
+    "remark-rehype": "9.0.0",
     "rxjs": "^7.3.0",
     "snakecase-keys": "^4.0.2",
     "ts-morph": "*",
     "ua-parser-js": "^0.7.28",
+    "unified": "^9",
+    "unist-builder": "^2",
     "yargs": "^17.7.2",
     "zx": "^4.1.1"
   },
