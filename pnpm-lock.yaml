@@ -192,8 +192,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0
       remark-html:
-        specifier: 13.0.1
-        version: 13.0.1
+        specifier: 13.0.2
+        version: 13.0.2
       remark-parse:
         specifier: 5.0.0
         version: 5.0.0
@@ -10343,8 +10343,8 @@ packages:
       - supports-color
     dev: false
 
-  /remark-html@13.0.1:
-    resolution: {integrity: sha512-K5KQCXWVz+harnyC+UVM/J9eJWCgjYRqFeZoZf2NgP0iFbuuw/RgMZv3MA34b/OEpGnstl3oiOUtZzD3tJ+CBw==}
+  /remark-html@13.0.2:
+    resolution: {integrity: sha512-LhSRQ+3RKdBqB/RGesFWkNNfkGqprDUCwjq54SylfFeNyZby5kqOG8Dn/vYsRoM8htab6EWxFXCY6XIZvMoRiQ==}
     dependencies:
       hast-util-sanitize: 3.0.2
       hast-util-to-html: 7.1.3
