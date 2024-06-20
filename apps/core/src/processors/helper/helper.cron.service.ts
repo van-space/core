@@ -69,6 +69,7 @@ export class CronService {
       return json;
     } catch {
       this.logger.warn('更新 Bot 列表错误');
+      return [];
     }
   }
 
