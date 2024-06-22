@@ -1,3 +1,12 @@
+/*
+ * @Author: Innei
+ * @Date: 2020-05-08 20:01:58
+ * @LastEditTime: 2021-01-15 14:12:43
+ * @LastEditors: Innei
+ * @FilePath: /server/apps/server/src/shared/options/options.service.ts
+ * @Coding with Love
+ */
+
 import {
   Injectable,
   UnprocessableEntityException,
@@ -5,6 +14,7 @@ import {
 } from '@nestjs/common';
 import { ClassConstructor, plainToClass } from 'class-transformer';
 import { validateSync, ValidatorOptions } from 'class-validator';
+import { CronService } from '~/processors/helper/helper.cron.service';
 import { EmailService } from '~/processors/helper/helper.email.service';
 import {
   AlgoliaSearchOptions,
@@ -23,6 +33,7 @@ export class OptionService {
   constructor(
     private readonly configs: ConfigsService,
     private readonly emailService: EmailService,
+    private readonly cronService: CronService,
   ) {}
 
   validOptions: ValidatorOptions = {
@@ -65,7 +76,11 @@ export class OptionService {
       }
       case 'algoliaSearchOptions': {
         this.validWithDto(AlgoliaSearchOptions, value);
-        return this.configs.patch('algoliaSearchOptions', value);
+
+        return this.configs.patch('algoliaSearchOptions', value).then((r) => {
+          this.cronService.pushToAlgoliaSearch();
+          return r;
+        });
       }
       default: {
         throw new UnprocessableEntityException('设置不存在');
