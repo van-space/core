@@ -9,7 +9,7 @@
   "issues": "https://github.com/van-space/core",
   "scripts": {
     "build": "nest build",
-    "bundle": "rimraf out && pnpm build && cd dist/src && npx ncc build main.js -o ../../out -m",
+    "bundle": "rimraf out && pnpm build && cd dist/src && npx ncc build main.js -o ../../out -m -s",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "dev": "npm run start",
     "start": "cross-env NODE_ENV=development nest start -w  --path tsconfig.json -- ",
