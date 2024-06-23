@@ -70,7 +70,7 @@ importers:
         version: 1.1.0(@nestjs/common@8.4.7)(@nestjs/core@8.4.7)(reflect-metadata@0.1.14)
       '@nestjs/swagger':
         specifier: ^5.0.9
-        version: 5.2.1(@nestjs/common@8.4.7)(@nestjs/core@8.4.7)(class-transformer@0.4.0)(class-validator@0.13.2)(fastify-swagger@4.9.0)(reflect-metadata@0.1.14)
+        version: 5.2.1(@nestjs/common@8.4.7)(@nestjs/core@8.4.7)(class-transformer@0.4.0)(class-validator@0.13.2)(fastify-swagger@4.12.0)(reflect-metadata@0.1.14)
       '@nestjs/websockets':
         specifier: ^8.0.6
         version: 8.4.7(@nestjs/common@8.4.7)(@nestjs/core@8.4.7)(@nestjs/platform-socket.io@8.0.6)(reflect-metadata@0.1.14)(rxjs@7.8.1)
@@ -120,11 +120,11 @@ importers:
         specifier: ^3.1.6
         version: 3.1.10
       fastify-multipart:
-        specifier: ^4.0.7
-        version: 4.0.7
+        specifier: 5.0.0
+        version: 5.0.0
       fastify-swagger:
-        specifier: ^4.9.0
-        version: 4.9.0
+        specifier: 4.12.0
+        version: 4.12.0
       graphql:
         specifier: ^15.5.3
         version: 15.8.0
@@ -198,8 +198,8 @@ importers:
         specifier: ^7.3.0
         version: 7.8.1
       snakecase-keys:
-        specifier: ^4.0.2
-        version: 4.0.2
+        specifier: 5.0.0
+        version: 5.0.0
       ts-morph:
         specifier: '*'
         version: 11.0.3
@@ -253,8 +253,8 @@ importers:
         specifier: ^1.3.11
         version: 1.6.5
       '@types/node':
-        specifier: ^16.7.1
-        version: 16.18.97
+        specifier: 16.9.2
+        version: 16.9.2
       '@types/nodemailer':
         specifier: ^6.4.4
         version: 6.4.15
@@ -268,8 +268,8 @@ importers:
         specifier: ^2.0.11
         version: 2.0.16
       '@vercel/ncc':
-        specifier: ^0.30.0
-        version: 0.30.0
+        specifier: 0.31.1
+        version: 0.31.1
       fastify:
         specifier: '*'
         version: 3.29.0
@@ -299,7 +299,7 @@ importers:
         version: 9.5.1(typescript@4.7.4)(webpack@5.91.0)
       ts-node:
         specifier: ^10.2.1
-        version: 10.9.2(@types/node@16.18.97)(typescript@4.7.4)
+        version: 10.9.2(@types/node@16.9.2)(typescript@4.7.4)
       tsconfig-paths:
         specifier: ^3.10.1
         version: 3.14.2
@@ -2141,7 +2141,7 @@ packages:
       - chokidar
     dev: true
 
-  /@nestjs/swagger@5.2.1(@nestjs/common@8.4.7)(@nestjs/core@8.4.7)(class-transformer@0.4.0)(class-validator@0.13.2)(fastify-swagger@4.9.0)(reflect-metadata@0.1.14):
+  /@nestjs/swagger@5.2.1(@nestjs/common@8.4.7)(@nestjs/core@8.4.7)(class-transformer@0.4.0)(class-validator@0.13.2)(fastify-swagger@4.12.0)(reflect-metadata@0.1.14):
     resolution: {integrity: sha512-7dNa08WCnTsW/oAk3Ujde+z64JMfNm19DhpXasFR8oJp/9pggYAbYU927HpA+GJsSFJX6adjIRZsCKUqaGWznw==}
     peerDependencies:
       '@nestjs/common': ^8.0.0
@@ -2158,7 +2158,7 @@ packages:
       '@nestjs/common': 8.4.7(cache-manager@3.4.4)(class-transformer@0.4.0)(class-validator@0.13.2)(reflect-metadata@0.1.14)(rxjs@7.8.1)
       '@nestjs/core': 8.4.7(@nestjs/common@8.4.7)(@nestjs/websockets@8.4.7)(reflect-metadata@0.1.14)(rxjs@7.8.1)
       '@nestjs/mapped-types': 1.0.1(@nestjs/common@8.4.7)(class-transformer@0.4.0)(class-validator@0.13.2)(reflect-metadata@0.1.14)
-      fastify-swagger: 4.9.0
+      fastify-swagger: 4.12.0
       lodash: 4.17.21
       path-to-regexp: 3.2.0
       reflect-metadata: 0.1.14
@@ -2628,7 +2628,7 @@ packages:
   /@types/jsonwebtoken@9.0.5:
     resolution: {integrity: sha512-VRLSGzik+Unrup6BsouBeHsf4d1hOEgYWTm/7Nmw1sXoN1+tRly/Gy/po3yeahnP4jfnQWWAhQAqcNfH7ngOkA==}
     dependencies:
-      '@types/node': 16.18.97
+      '@types/node': 20.13.0
     dev: true
 
   /@types/lodash@4.17.4:
@@ -2688,12 +2688,12 @@ packages:
     resolution: {integrity: sha512-fAtCfv4jJg+ExtXhvCkCqUKZ+4ok/JQk01qDKhL5BDDoS3AxKXhV5/MAVUZyQnSEd2GT92fkgZl0pz0Q0AzcIQ==}
     dev: false
 
-  /@types/node@16.18.97:
-    resolution: {integrity: sha512-4muilE1Lbfn57unR+/nT9AFjWk0MtWi5muwCEJqnOvfRQDbSfLCUdN7vCIg8TYuaANfhLOV85ve+FNpiUsbSRg==}
-
   /@types/node@16.9.1:
     resolution: {integrity: sha512-QpLcX9ZSsq3YYUUnD3nFDY8H7wctAhQj/TFKL8Ya8v5fMm3CFXxo8zStsLAl780ltoYoo1WvKUVGBQK+1ifr7g==}
     dev: false
+
+  /@types/node@16.9.2:
+    resolution: {integrity: sha512-ZHty/hKoOLZvSz6BtP1g7tc7nUeJhoCf3flLjh8ZEv1vFKBWHXcnMbJMyN/pftSljNyy0kNW/UqI3DccnBnZ8w==}
 
   /@types/node@20.11.24:
     resolution: {integrity: sha512-Kza43ewS3xoLgCEpQrsT+xRo/EJej1y0kVYGiLFE1NEODXGzTfwiC6tXTLMQskn1X4/Rjlh0MQUvx9W+L9long==}
@@ -2774,7 +2774,7 @@ packages:
   /@types/redis@2.8.31:
     resolution: {integrity: sha512-daWrrTDYaa5iSDFbgzZ9gOOzyp2AJmYK59OlG/2KGBgYWF3lfs8GDKm1c//tik5Uc93hDD36O+qLPvzDolChbA==}
     dependencies:
-      '@types/node': 16.18.97
+      '@types/node': 20.13.0
     dev: true
 
   /@types/relateurl@0.2.33:
@@ -2813,7 +2813,7 @@ packages:
     dependencies:
       '@types/cookiejar': 2.1.5
       '@types/methods': 1.1.4
-      '@types/node': 16.18.97
+      '@types/node': 20.13.0
     dev: true
 
   /@types/supertest@2.0.16:
@@ -3173,8 +3173,8 @@ packages:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
 
-  /@vercel/ncc@0.30.0:
-    resolution: {integrity: sha512-16ePj2GkwjomvE0HLL5ny+d+sudOwvZNYW8vjpMh3cyWdFxoMI8KSQiolVxeHBULbU1C5mVxLK5nL9NtnnpIew==}
+  /@vercel/ncc@0.31.1:
+    resolution: {integrity: sha512-g0FAxwdViI6UzsiVz5HssIHqjcPa1EHL6h+2dcJD893SoCJaGdqqgUF09xnMW6goWnnhbLvgiKlgJWrJa+7qYA==}
     hasBin: true
     dev: true
 
@@ -6090,8 +6090,8 @@ packages:
       fastify-plugin: 3.0.1
     dev: false
 
-  /fastify-multipart@4.0.7:
-    resolution: {integrity: sha512-bV6QB3mmDYdrYwIrUrkGplutQLUUSzXFXtkCL2HRw5eLXyv9+DD5Gb5GJNDtKYCiCtyaGLbJmt2rLsF6A3WCUw==}
+  /fastify-multipart@5.0.0:
+    resolution: {integrity: sha512-T0+lmisyJEKGGLWY0nOAu0hyIK2wZa5Eki+U2K6f2HE6les31CS4IxaZSG4zcBqTG6BnUXgPnhUcQ4xKsthrdA==}
     dependencies:
       busboy: 0.3.1
       deepmerge: 4.3.1
@@ -6130,8 +6130,8 @@ packages:
       - supports-color
     dev: false
 
-  /fastify-swagger@4.9.0:
-    resolution: {integrity: sha512-QFHDKF2dQHLaeRVA9cS6qxgmZmqXBaDBAE6ocklzLXtJW4EAZkJtEwXWZ/7X090Lemi/sc67znZU2uYG4juoRg==}
+  /fastify-swagger@4.12.0:
+    resolution: {integrity: sha512-lf6/rgUcojfnNDAbbU5Q7K91F/cWOLZX5GKgxvRz1TYK/NqoiTsbiX/j/d+StuZ0Obaur4p0vJgIzug/dDKrTQ==}
     dependencies:
       fastify-plugin: 3.0.1
       fastify-static: 4.7.0
@@ -7542,7 +7542,7 @@ packages:
       pretty-format: 27.5.1
       slash: 3.0.0
       strip-json-comments: 3.1.1
-      ts-node: 10.9.2(@types/node@16.18.97)(typescript@4.7.4)
+      ts-node: 10.9.2(@types/node@16.9.2)(typescript@4.7.4)
     transitivePeerDependencies:
       - bufferutil
       - canvas
@@ -7848,7 +7848,7 @@ packages:
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dependencies:
       '@jest/types': 27.5.1
-      '@types/node': 16.18.97
+      '@types/node': 20.13.0
       chalk: 4.1.2
       ci-info: 3.9.0
       graceful-fs: 4.2.11
@@ -10161,10 +10161,9 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /snakecase-keys@4.0.2:
-    resolution: {integrity: sha512-ZFCo3zZtNN43cy2j4fQDHPxS557Uuzn887FBmDdaSB41D8l/MayuvaSrIlCXGFhZ8sXwrHiNaZiIPpKzi88gog==}
+  /snakecase-keys@5.0.0:
+    resolution: {integrity: sha512-G13idFUoQ9lueFszdktpzj+p0yE4+w/Kk5g/AD3cY8Wqww3Kuz4xlrUMTFvdwCd91JDAAYOgmg6Z8MnJ4XoD4Q==}
     engines: {node: '>=12'}
-    deprecated: This version contains a breaking change for users depending on unspecified behaviors with repeated capital letters. See https://github.com/bendrucker/snakecase-keys/issues/47. Please upgrade to the identical 5.0.0 release instead.
     dependencies:
       map-obj: 4.3.0
       snake-case: 3.0.4
@@ -10917,7 +10916,7 @@ packages:
       code-block-writer: 10.1.1
     dev: false
 
-  /ts-node@10.9.2(@types/node@16.18.97)(typescript@4.7.4):
+  /ts-node@10.9.2(@types/node@16.9.2)(typescript@4.7.4):
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
     hasBin: true
     peerDependencies:
@@ -10936,7 +10935,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 16.18.97
+      '@types/node': 16.9.2
       acorn: 8.11.3
       acorn-walk: 8.3.2
       arg: 4.1.3
@@ -11786,7 +11785,7 @@ packages:
     dependencies:
       '@types/fs-extra': 9.0.13
       '@types/minimist': 1.2.5
-      '@types/node': 16.18.97
+      '@types/node': 16.9.2
       '@types/node-fetch': 2.6.11
       chalk: 4.1.2
       fs-extra: 10.1.0
