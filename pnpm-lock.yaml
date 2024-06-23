@@ -38,6 +38,9 @@ importers:
 
   apps/core:
     dependencies:
+      '@algolia/client-search':
+        specifier: ^4.14.2
+        version: 4.23.3
       '@nestjs/common':
         specifier: ^8.0.6
         version: 8.4.7(cache-manager@3.4.4)(class-transformer@0.4.0)(class-validator@0.13.2)(reflect-metadata@0.1.14)(rxjs@7.8.1)

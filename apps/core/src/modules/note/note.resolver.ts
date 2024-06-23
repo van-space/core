@@ -11,7 +11,7 @@ import {
   addConditionToSeeHideContent,
   addYearCondition,
 } from '~/utils/query.util';
-import { transformDataToPaginate } from '~/utils/transform.util';
+import { transformDataToPaginate } from '~/utils/transfrom.util';
 import { NoteQueryDto } from './note.dto';
 import { NidOrIdArgsDto, PasswordArgsDto } from './note.input';
 import {

@@ -8,7 +8,7 @@ import {
   addConditionToSeeHideContent,
   addYearCondition,
 } from '~/utils/query.util';
-import { transformDataToPaginate } from '~/utils/transform.util';
+import { transformDataToPaginate } from '~/utils/transfrom.util';
 import { CategoryAndSlugDto, PostQueryDto } from './post.dto';
 import { PostModel, PostPaginatorModel } from './post.model';
 import { PostService } from './post.service';

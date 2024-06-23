@@ -17,7 +17,7 @@ import { CountingInterceptor } from './common/interceptors/counting.interceptor'
 import {
   JSONSerializeInterceptor,
   ResponseInterceptor,
-} from './common/interceptors/response.interceptor';
+} from './common/interceptors/response.interceptors';
 import { AnalyzeMiddleware } from './common/middlewares/analyze.middleware';
 import { SkipBrowserDefaultRequestMiddleware } from './common/middlewares/favicon.middleware';
 import { SecurityMiddleware } from './common/middlewares/security.middleware';
@@ -40,6 +40,7 @@ import { PostModule } from './modules/post/post.module';
 import { ProjectModule } from './modules/project/project.module';
 import { RecentlyModule } from './modules/recently/recently.module';
 import { SayModule } from './modules/say/say.module';
+import { SearchModule } from './modules/search/search.module';
 import { SitemapModule } from './modules/sitemap/sitemap.module';
 import { ToolModule } from './modules/tool/tool.module';
 import { UserModule } from './modules/user/user.module';
@@ -88,6 +89,7 @@ import { HelperModule } from './processors/helper/helper.module';
     ProjectModule,
     RecentlyModule,
     SayModule,
+    SearchModule,
     SitemapModule,
     ToolModule,
     UserModule,

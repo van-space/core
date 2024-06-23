@@ -15,7 +15,7 @@ import { map } from 'rxjs/operators';
 import snakecaseKeys from 'snakecase-keys';
 import { HTTP_RES_TRANSFORM_PAGINATE } from '~/constants/meta.constant';
 import * as SYSTEM from '~/constants/system.constant';
-import { transformDataToPaginate } from '~/utils/transform.util';
+import { transformDataToPaginate } from '~/utils/transfrom.util';
 
 export interface Response<T> {
   data: T;
