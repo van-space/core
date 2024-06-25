@@ -77,6 +77,7 @@ async function bootstrap() {
     if (isDev) {
       Logger.debug(`OpenApi: http://localhost:${PORT}/api-docs`);
       Logger.debug(`GraphQL playground: http://localhost:${PORT}/graphql`);
+      Logger.debug(`Admin Dashboard: http://localhost:${PORT}/qaqdmin`);
     }
 
     Logger.log('Server is up.');
