@@ -2,6 +2,7 @@ import type { AxiosRequestConfig } from 'axios';
 import { argv } from 'yargs';
 
 console.log(argv);
+export const API_VERSION = 2;
 
 export const CROSS_DOMAIN = {
   allowedOrigins: [
