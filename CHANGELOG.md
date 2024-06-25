@@ -1,3 +1,12 @@
+## [3.6.6](https://github.com/van-space/core/compare/v3.6.5...v3.6.6) (2024-06-25)
+
+
+### Performance Improvements
+
+* Promise.race -> Promise.any ([accfabd](https://github.com/van-space/core/commit/accfabd5e255c67b348e2a833fdeb57a49d811a7))
+
+
+
 ## [3.6.5](https://github.com/van-space/core/compare/v3.6.3...v3.6.5) (2024-06-25)
 
 
