@@ -91,17 +91,15 @@ export class EmailService {
       auth: { user: string; pass: string };
     }>((r) => {
       this.configsService.waitForConfigReady().then(({ mailOptions }) => {
-        const { options, user, pass, enable } = mailOptions;
-        if (!enable) return;
+        const { options, user, pass } = mailOptions;
         r({
-          host: options.host,
-          port: +options.port || 465,
+          host: options?.host,
+          port: +options?.port || 465,
           auth: { user, pass },
         } as const);
       });
     });
   }
-
   async checkIsReady() {
     return !!this.instance && (await this.verifyClient());
   }
