@@ -1,3 +1,18 @@
+## [3.6.5](https://github.com/van-space/core/compare/v3.6.3...v3.6.5) (2024-06-25)
+
+
+### Bug Fixes
+
+* empty data compatibility ([0c528d6](https://github.com/van-space/core/commit/0c528d6be4de53b6197fbd59221732427a5bad12))
+
+
+### Features
+
+* init module ([d2e3e94](https://github.com/van-space/core/commit/d2e3e94bcd4f2b49a33a9c04346ec4cbdffc53c4))
+* pageproxy enable in dev mode ([42f084a](https://github.com/van-space/core/commit/42f084a193242a2693dab197f724c62ad47be292))
+
+
+
 ## [3.6.3](https://github.com/van-space/core/compare/v3.0.0-alpha.6...v3.6.3) (2024-06-25)
 
 
