@@ -1,11 +1,13 @@
 import { Module } from '@nestjs/common';
-import { InitService } from './init.service';
-import { InitController } from './init.controller';
+import { OptionModule } from '../option/option.module';
 import { UserModule } from '../user/user.module';
+import { InitController } from './init.controller';
+import { InitService } from './init.service';
+
 @Module({
-  imports: [UserModule],
-  controllers: [InitController],
   providers: [InitService],
   exports: [InitService],
+  controllers: [InitController],
+  imports: [UserModule, OptionModule],
 })
 export class InitModule {}
