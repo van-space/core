@@ -1,3 +1,12 @@
+## [3.6.8](https://github.com/van-space/core/compare/v3.6.7...v3.6.8) (2024-06-26)
+
+
+### Features
+
+* pageproxy debug mode ([c1aa716](https://github.com/van-space/core/commit/c1aa716c1df6c3e090819a6a575ac2768a17c26d))
+
+
+
 ## [3.6.7](https://github.com/van-space/core/compare/v3.6.6...v3.6.7) (2024-06-26)
 
 

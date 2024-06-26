@@ -2,7 +2,7 @@
   "name": "core",
   "private": true,
   "author": "Van <1604549268@qq.com>",
-  "version": "3.6.7",
+  "version": "3.6.8",
   "license": "MIT",
   "husky": {
     "hooks": {
