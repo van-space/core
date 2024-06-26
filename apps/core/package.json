@@ -1,6 +1,6 @@
 {
   "name": "@van-space/core",
-  "version": "3.0.0-alpha.1",
+  "version": "3.6.10",
   "description": "",
   "author": "Van <1604549268@qq.com>",
   "private": true,
@@ -27,7 +27,23 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "patch": "node bin/patch.js",
-    "docs": "npx @compodoc/compodoc -p tsconfig.json -s -d docs"
+    "docs": "npx @compodoc/compodoc -p tsconfig.json -s -d docs",
+    "bump": "node scripts/bump-version.js"
+  },
+  "bump": {
+    "before": [
+      "git pull --rebase",
+      "pnpm i"
+    ],
+    "after": [
+      "tag=v$(json -f package.json version)",
+      "yarn changelog",
+      "git add .",
+      "git commit -a -m \"release: $tag\" &>/dev/null",
+      "git push",
+      "git tag -a \"$tag\" -m \"Release $tag\" &>/dev/null",
+      "git push --tags"
+    ]
   },
   "dependencies": {
     "@algolia/client-search": "^4.14.2",
@@ -93,6 +109,7 @@
     "zx": "^4.1.1"
   },
   "devDependencies": {
+    "semver": "^7.3.5",
     "@nestjs/cli": "^8.1.1",
     "@nestjs/schematics": "^8.0.2",
     "@nestjs/testing": "^8.0.6",
