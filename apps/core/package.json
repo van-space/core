@@ -1,6 +1,6 @@
 {
   "name": "@van-space/core",
-  "version": "3.6.10",
+  "version": "3.6.11",
   "description": "",
   "author": "Van <1604549268@qq.com>",
   "private": true,
@@ -36,13 +36,7 @@
       "pnpm i"
     ],
     "after": [
-      "tag=v$(json -f package.json version)",
-      "yarn changelog",
-      "git add .",
-      "git commit -a -m \"release: $tag\" &>/dev/null",
-      "git push",
-      "git tag -a \"$tag\" -m \"Release $tag\" &>/dev/null",
-      "git push --tags"
+      "sh ./create-tags.sh"
     ]
   },
   "dependencies": {
