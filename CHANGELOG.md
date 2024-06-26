@@ -1,3 +1,12 @@
+## [3.6.7](https://github.com/van-space/core/compare/v3.6.6...v3.6.7) (2024-06-26)
+
+
+### Performance Improvements
+
+* pageproxy cache entty ([ed02f29](https://github.com/van-space/core/commit/ed02f296a1010e72be74139d59935747dcb122fe))
+
+
+
 ## [3.6.6](https://github.com/van-space/core/compare/v3.6.5...v3.6.6) (2024-06-25)
 
 
