@@ -1,3 +1,12 @@
+## [3.6.10](https://github.com/van-space/core/compare/v3.6.9...v3.6.10) (2024-06-26)
+
+
+### Bug Fixes
+
+* mkdir first ([c197454](https://github.com/van-space/core/commit/c19745402086cb7eef97521e971ddb6edcf61a0e))
+
+
+
 ## [3.6.9](https://github.com/van-space/core/compare/v3.6.8...v3.6.9) (2024-06-26)
 
 
