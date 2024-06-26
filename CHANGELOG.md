@@ -1,3 +1,7 @@
+## [3.6.9](https://github.com/van-space/core/compare/v3.6.8...v3.6.9) (2024-06-26)
+
+
+
 ## [3.6.8](https://github.com/van-space/core/compare/v3.6.7...v3.6.8) (2024-06-26)
 
 
