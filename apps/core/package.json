@@ -69,7 +69,7 @@
     "cos-nodejs-sdk-v5": "2.10.0",
     "dayjs": "^1.10.6",
     "ejs": "^3.1.6",
-    "fastify-multipart": "5.0.0",
+    "fastify-multipart": "5.3.1",
     "fastify-secure-session": "^2.3.1",
     "fastify-swagger": "4.12.0",
     "graphql": "^15.5.3",
