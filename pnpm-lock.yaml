@@ -88,7 +88,7 @@ importers:
         version: 4.23.3
       apollo-server-fastify:
         specifier: ~3.3.0
-        version: 3.3.0(fastify@3.29.0)(graphql@15.8.0)
+        version: 3.3.0(fastify@3.29.5)(graphql@15.8.0)
       axios:
         specifier: '*'
         version: 0.27.2
@@ -275,7 +275,7 @@ importers:
         version: 0.31.1
       fastify:
         specifier: '*'
-        version: 3.29.0
+        version: 3.29.5
       ioredis:
         specifier: '*'
         version: 5.4.1
@@ -1986,7 +1986,7 @@ packages:
       '@nestjs/common': 8.4.7(cache-manager@3.4.4)(class-transformer@0.4.0)(class-validator@0.13.2)(reflect-metadata@0.1.14)(rxjs@7.8.1)
       '@nestjs/core': 8.4.7(@nestjs/common@8.4.7)(@nestjs/websockets@8.4.7)(reflect-metadata@0.1.14)(rxjs@7.8.1)
       '@nestjs/mapped-types': 1.0.0(@nestjs/common@8.4.7)(class-transformer@0.4.0)(class-validator@0.13.2)(reflect-metadata@0.1.14)
-      apollo-server-fastify: 3.3.0(fastify@3.29.0)(graphql@15.8.0)
+      apollo-server-fastify: 3.3.0(fastify@3.29.5)(graphql@15.8.0)
       chokidar: 3.5.2
       fast-glob: 3.2.7
       graphql: 15.8.0
@@ -3639,8 +3639,8 @@ packages:
       uri-js: 4.4.1
     dev: false
 
-  /ajv@8.12.0:
-    resolution: {integrity: sha512-sRu1kpcO9yLtYxBKvqfTeh9KzZEwO3STyX1HT+4CaDzC6HpTGYhIhPIzj9XuKU7KYDwnaeh5hcOwjy1QuJzBPA==}
+  /ajv@8.16.0:
+    resolution: {integrity: sha512-F0twR8U1ZU67JIEtekUcLkXkoO5mMMmgGD8sK/xUFzJ805jxHQl92hImFAqqXMyMYjSPOyUPAwHYhB72g5sTXw==}
     dependencies:
       fast-deep-equal: 3.1.3
       json-schema-traverse: 1.0.0
@@ -3807,7 +3807,7 @@ packages:
       graphql: 15.8.0
     dev: false
 
-  /apollo-server-fastify@3.3.0(fastify@3.29.0)(graphql@15.8.0):
+  /apollo-server-fastify@3.3.0(fastify@3.29.5)(graphql@15.8.0):
     resolution: {integrity: sha512-+FrsG6l2SCQjOXzbdAnh8a3KwiTMwjyDUTZbmhkkyb3MycOd7I3smTi/BTXFST4a6EL2FfvqC9wSUe1TABZu/A==}
     engines: {node: '>=12.0'}
     deprecated: The `apollo-server-fastify` package is part of Apollo Server v2 and v3, which are now deprecated (end-of-life October 22nd 2023 and October 22nd 2024, respectively). This package's functionality is now found in the `@apollo/server` package. See https://www.apollographql.com/docs/apollo-server/previous-versions/ for more details.
@@ -3818,7 +3818,7 @@ packages:
       apollo-server-core: 3.13.0(graphql@15.8.0)
       apollo-server-types: 3.8.0(graphql@15.8.0)
       fast-json-stringify: 2.7.13
-      fastify: 3.29.0
+      fastify: 3.29.5
       fastify-accepts: 2.3.0
       fastify-cors: 6.1.0
       graphql: 15.8.0
@@ -5963,6 +5963,9 @@ packages:
     engines: {'0': node >=0.6.0}
     dev: false
 
+  /fast-content-type-parse@1.1.0:
+    resolution: {integrity: sha512-fBHHqSTFLVnR61C+gltJuE5GkVQMV0S2nqUO8TJ+5Z3qAKG8vAx4FKai1s5jq/inV1+sREynIWSuQ6HgoSXpDQ==}
+
   /fast-decode-uri-component@1.0.1:
     resolution: {integrity: sha512-WKgKWg5eUxvRZGwW8FvfbaH7AXSh2cL+3j5fMGzUMCxWBJ3dV3a7Wz8y2f/uQ0e3B6WmodD3oS54jTQ9HVTIIg==}
 
@@ -6165,13 +6168,14 @@ packages:
       - supports-color
     dev: false
 
-  /fastify@3.29.0:
-    resolution: {integrity: sha512-zXSiDTdHJCHcmDrSje1f1RfzTmUTjMtHnPhh6cdokgfHhloQ+gy0Du+KlEjwTbcNC3Djj4GAsBzl6KvfI9Ah2g==}
+  /fastify@3.29.5:
+    resolution: {integrity: sha512-FBDgb1gkenZxxh4sTD6AdI6mFnZnsgckpjIXzIvfLSYCa4isfQeD8QWGPib63dxq6btnY0l1j8I0xYhMvUb+sw==}
     dependencies:
       '@fastify/ajv-compiler': 1.1.0
       '@fastify/error': 2.0.0
       abstract-logging: 2.0.1
       avvio: 7.2.5
+      fast-content-type-parse: 1.1.0
       fast-json-stringify: 2.7.13
       find-my-way: 4.5.1
       flatstr: 1.0.12
@@ -6179,7 +6183,7 @@ packages:
       pino: 6.14.0
       process-warning: 1.0.0
       proxy-addr: 2.0.7
-      rfdc: 1.3.1
+      rfdc: 1.4.1
       secure-json-parse: 2.7.0
       semver: 7.6.2
       tiny-lru: 8.0.2
@@ -6688,7 +6692,7 @@ packages:
       source-map: 0.6.1
       wordwrap: 1.0.0
     optionalDependencies:
-      uglify-js: 3.17.4
+      uglify-js: 3.18.0
     dev: true
 
   /har-schema@2.0.0:
@@ -8169,7 +8173,7 @@ packages:
   /light-my-request@4.12.0:
     resolution: {integrity: sha512-0y+9VIfJEsPVzK5ArSIJ8Dkxp8QMP7/aCuxCUtG/tr9a2NoOf/snATE/OUc05XUplJCEnRh6gTkH7xh9POt1DQ==}
     dependencies:
-      ajv: 8.12.0
+      ajv: 8.16.0
       cookie: 0.5.0
       process-warning: 1.0.0
       set-cookie-parser: 2.6.0
@@ -9836,6 +9840,9 @@ packages:
   /rfdc@1.3.1:
     resolution: {integrity: sha512-r5a3l5HzYlIC68TpmYKlxWjmOP6wiPJ1vWv2HeLhNsRZMrCkxeqxiHlQ21oXmQ4F3SiryXBHhAD7JZqvOJjFmg==}
 
+  /rfdc@1.4.1:
+    resolution: {integrity: sha512-q1b3N5QkRUWUl7iyylaaj3kOpIT0N2i9MqIEQXP73GVsN9cw3fdx8X63cEmWhJGi2PPCF23Ijp7ktmd39rawIA==}
+
   /rimraf@3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
     deprecated: Rimraf versions prior to v4 are no longer supported
@@ -11160,6 +11167,15 @@ packages:
     engines: {node: '>=0.8.0'}
     hasBin: true
     requiresBuild: true
+    dev: false
+
+  /uglify-js@3.18.0:
+    resolution: {integrity: sha512-SyVVbcNBCk0dzr9XL/R/ySrmYf0s372K6/hFklzgcp2lBFyXtw4I7BOdDjlLhE1aVqaI/SHWXWmYdlZxuyF38A==}
+    engines: {node: '>=0.8.0'}
+    hasBin: true
+    requiresBuild: true
+    dev: true
+    optional: true
 
   /unbox-primitive@1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
