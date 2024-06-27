@@ -1,3 +1,12 @@
+## [3.6.15](https://github.com/van-space/core/compare/v3.6.14...v3.6.15) (2024-06-27)
+
+
+### Bug Fixes
+
+* rss & sitemap cache ([505290a](https://github.com/van-space/core/commit/505290a2635f5df73f0d092c35b3339869094ae9))
+
+
+
 ## [3.6.14](https://github.com/van-space/core/compare/v3.6.13...v3.6.14) (2024-06-27)
 
 
