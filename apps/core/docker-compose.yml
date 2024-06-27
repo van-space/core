@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: mx-server
+    image: innei/mx-server:0.2.1
+    restart: 'unless-stopped'
+    build:
+      context: .
+      args:
+        redis_host: 'redis'
+        db_host: 'mongo'
+    ports:
+      - '2333:2333'
+    depends_on:
+      - mongo
+      - redis
+    links:
+      - mongo
+      - redis
+    networks:
+      - app-network
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - '3344:27017'
+    networks:
+      - app-network
+
+  redis:
+    image: redis
+    container_name: redis
+
+    ports:
+      - '3333:6379'
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
