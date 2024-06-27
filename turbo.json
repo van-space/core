@@ -10,6 +10,14 @@
       "dependsOn": ["^lint"],
       "env": ["NODE_ENV=development"]
     },
+    "test": {
+      "dependsOn": ["^test"],
+      "env": ["NODE_ENV=test"]
+    },
+    "test:e2e": {
+      "dependsOn": ["^test:e2e"],
+      "env": ["NODE_ENV=test"]
+    },
     "dev": {
       "cache": false,
       "persistent": true
