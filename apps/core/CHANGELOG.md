@@ -1,3 +1,17 @@
+## [3.6.14](https://github.com/van-space/core/compare/v3.6.13...v3.6.14) (2024-06-27)
+
+
+### Bug Fixes
+
+* node type error ([ca714c3](https://github.com/van-space/core/commit/ca714c33778499817edbf65333231b34fd5bf50e))
+
+
+### Features
+
+* docker compose ([9cbd8e1](https://github.com/van-space/core/commit/9cbd8e1f4575d0d295233edb2c0bb2241637a961))
+
+
+
 ## [3.6.13](https://github.com/van-space/core/compare/v3.6.12...v3.6.13) (2024-06-27)
 
 
