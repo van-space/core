@@ -79,7 +79,7 @@
     "js-yaml": "*",
     "jszip": "^3.7.1",
     "lodash": "*",
-    "marked": "^3.0.3",
+    "marked": "^4.0.0",
     "mdurl": "1.0.1",
     "mkdirp": "*",
     "mongoose": "*",
