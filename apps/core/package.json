@@ -120,7 +120,7 @@
     "@types/node": "16.9.2",
     "@types/nodemailer": "^6.4.4",
     "@types/passport-jwt": "^3.0.6",
-    "@types/redis": "2.8.31",
+    "@types/redis": "2.8.32",
     "@vercel/ncc": "0.31.1",
     "fastify": "*",
     "ioredis": "*",
