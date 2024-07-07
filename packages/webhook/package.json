@@ -1,0 +1,38 @@
+{
+  "name": "@mx-space/webhook",
+  "version": "0.3.0",
+  "devDependencies": {
+    "express": "4.19.2"
+  },
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "node scripts/generate.js && tsup && node scripts/post-build.cjs"
+  },
+  "bump": {
+    "before": [
+      "git pull --rebase",
+      "pnpm i",
+      "npm run build"
+    ],
+    "after": [
+      "npm publish --access=public"
+    ],
+    "tag": false,
+    "commit_message": "chore(release): bump @mx-space/webhook to v${NEW_VERSION}"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./dist/*": {
+      "import": "./dist/*.js",
+      "require": "./dist/*.cjs"
+    },
+    "./package.json": "./package.json"
+  }
+}

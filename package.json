@@ -1,0 +1,63 @@
+{
+  "author": "Innei <https://innei.in>",
+  "private": true,
+  "license": "AGPLv3",
+  "packageManager": "pnpm@9.4.0",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --cache --fix",
+      "prettier --ignore-path ./.prettierignore --write "
+    ]
+  },
+  "repository": {
+    "directory": "mx-space/core",
+    "url": "https://github.com/mx-space/core"
+  },
+  "homepage": "https://github.com/mx-space/core#readme",
+  "issues": "https://github.com/mx-space/core/issues",
+  "scripts": {
+    "prepare": "husky install && node scripts/init-project.mjs && corepack enable",
+    "build:external": "pnpm -C \"packages/external\" run build",
+    "build": "pnpm run build:external && pnpm -C \"apps/core\" run build",
+    "dev": "pnpm run build:external && pnpm -C \"apps/core\" run start",
+    "bundle": "pnpm run build:external && pnpm -C \"apps/core\" run bundle",
+    "test": "pnpm run build:external && pnpm -C \"apps/core\" run test",
+    "lint": "pnpm -C \"apps/core\" run lint",
+    "publish:core": "cd apps/core && npm run publish"
+  },
+  "dependencies": {
+    "zx-cjs": "7.0.7-0"
+  },
+  "devDependencies": {
+    "@innei/prettier": "0.13.2",
+    "@sxzz/eslint-config": "3.13.0",
+    "@types/node": "20.14.10",
+    "cross-env": "7.0.3",
+    "eslint": "^9",
+    "eslint-plugin-unused-imports": "4.0.0",
+    "husky": "9.0.11",
+    "lint-staged": "15.2.7",
+    "prettier": "3.3.2",
+    "rimraf": "5.0.8",
+    "ts-node": "10.9.2",
+    "tsconfig-paths": "4.2.0",
+    "tsup": "8.1.0",
+    "typescript": "5.5.3",
+    "vite-tsconfig-paths": "4.3.2"
+  },
+  "optionalDependencies": {
+    "mongodb-memory-server": "9.3.0",
+    "redis-memory-server": "0.11.0"
+  },
+  "resolutions": {
+    "semver": "7.6.2",
+    "pino": "./external/pino",
+    "get-pixels@^3>request": "./external/request",
+    "typescript": "5.5.3"
+  }
+}
