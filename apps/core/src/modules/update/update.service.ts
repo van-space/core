@@ -100,7 +100,7 @@ export class UpdateService {
           const cmds: readonly [string, string[]][] = [
             `unzip -t admin-release.zip`,
             `unzip -o admin-release.zip -d ${folder}`,
-            `mv ${folder}/dist ${LOCAL_ADMIN_ASSET_PATH}`,
+            `mv ${folder}/dist/* ${LOCAL_ADMIN_ASSET_PATH}`,
             `rm -f admin-release.zip`,
             // @ts-ignore
           ].reduce((acc, fullCmd) => {

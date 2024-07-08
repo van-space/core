@@ -1,11 +1,16 @@
+import { dirname, parse, resolve } from 'node:path'
 import { readdirSync } from 'node:fs'
-import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'tsup'
 
-const __dirname = new URL(import.meta.url).pathname.replace(/\/[^/]*$/, '')
+// 获取当前文件的路径
+const __filename = fileURLToPath(import.meta.url)
 
-const adaptorNames = readdirSync(path.resolve(__dirname, './adaptors')).map(
-  (i) => path.parse(i).name,
+// 处理不同操作系统的路径分隔符
+const __dirname = dirname(__filename)
+
+const adaptorNames = readdirSync(resolve(__dirname, './adaptors')).map(
+  (i) => parse(i).name,
 )
 
 export default defineConfig({

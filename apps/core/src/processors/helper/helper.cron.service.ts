@@ -9,7 +9,11 @@ import { CronExpression } from '@nestjs/schedule'
 import { CronDescription } from '~/common/decorators/cron-description.decorator'
 import { CronOnce } from '~/common/decorators/cron-once.decorator'
 import { RedisKeys } from '~/constants/cache.constant'
-import { LOG_DIR, TEMP_DIR, STATIC_FILE_TRASH_DIR } from '~/constants/path.constant'
+import {
+  LOG_DIR,
+  STATIC_FILE_TRASH_DIR,
+  TEMP_DIR,
+} from '~/constants/path.constant'
 import { AggregateService } from '~/modules/aggregate/aggregate.service'
 import { AnalyzeModel } from '~/modules/analyze/analyze.model'
 import { ConfigsService } from '~/modules/configs/configs.service'
