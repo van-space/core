@@ -45,7 +45,7 @@
     "after": [
       "sh assets-push.sh"
     ],
-    "changelog": true
+    "changelog": false
   },
   "dependencies": {
     "@algolia/client-search": "^4.22.1",
