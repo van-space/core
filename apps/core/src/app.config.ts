@@ -99,8 +99,8 @@ export const CROSS_DOMAIN = {
   allowedOrigins: argv.allowed_origins
     ? argv.allowed_origins?.split?.(',')
     : [
-        'innei.ren',
-        '*.innei.ren',
+        'hgyn23.cn',
+        '*.hgyn23.cn',
 
         'localhost:*',
         '127.0.0.1',
