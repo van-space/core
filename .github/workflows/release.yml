@@ -140,7 +140,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            innei/mx-server
+            huangyan321/mx-server
           tags: |
             type=ref,event=branch
             type=semver,pattern={{version}}
