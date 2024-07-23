@@ -367,7 +367,7 @@ export class SearchService {
   }
 }
 
-const MAX_SIZE_IN_BYTES = 100_000
+const MAX_SIZE_IN_BYTES = 10_000
 function adjustObjectSizeEfficiently<T extends { text: string }>(
   originalObject: T,
   maxSizeInBytes: number = MAX_SIZE_IN_BYTES,
