@@ -1,21 +1,30 @@
-import imageSize from 'image-size'
+import { encode } from 'blurhash'
+import type { ImageModel } from '~/shared/model/image.model'
+import type { Sharp } from 'sharp'
 
-import { Injectable, Logger } from '@nestjs/common'
+import { Injectable, Logger, OnModuleInit } from '@nestjs/common'
 
 import { ConfigsService } from '~/modules/configs/configs.service'
-import { getAverageRGB, pickImagesFromMarkdown } from '~/utils/pic.util'
+import { pickImagesFromMarkdown } from '~/utils/pic.util'
+import { requireDepsWithInstall } from '~/utils/tool.util'
 
 import { HttpService } from './helper.http.service'
-import type { ImageModel } from '~/shared/model/image.model'
 
 @Injectable()
-export class ImageService {
+export class ImageService implements OnModuleInit {
   private logger: Logger
   constructor(
     private readonly httpService: HttpService,
     private readonly configsService: ConfigsService,
   ) {
     this.logger = new Logger(ImageService.name)
+  }
+
+  onModuleInit() {
+    requireDepsWithInstall('sharp').catch((error: any) => {
+      this.logger.error(`sharp install failed: ${error.message}`)
+      console.error(error)
+    })
   }
 
   async saveImageDimensionsFromMarkdownText(
@@ -29,8 +38,9 @@ export class ImageService {
     const result = [] as ImageModel[]
 
     const oldImagesMap = new Map(
-      (originImages ?? []).map((image) => [image.src, image]),
+      (originImages ?? []).map((image) => [image.src, { ...image }]),
     )
+
     const task = [] as Promise<ImageModel>[]
     for (const src of newImages) {
       const originImage = oldImagesMap.get(src)
@@ -40,7 +50,7 @@ export class ImageService {
       if (
         originImage &&
         originImage.src === src &&
-        ['height', 'width', 'type', 'accent'].every(
+        ['height', 'width', 'type', 'accent', 'blurHash'].every(
           (key) => keys.has(key) && originImage[key],
         )
       ) {
@@ -50,13 +60,13 @@ export class ImageService {
       const promise = new Promise<ImageModel>((resolve) => {
         this.logger.log(`Get --> ${src}`)
         this.getOnlineImageSizeAndMeta(src)
-          .then(({ size, accent }) => {
+          .then(({ size, accent, blurHash }) => {
             const filename = src.split('/').pop()
             this.logger.debug(
               `[${filename}]: height: ${size.height}, width: ${size.width}, accent: ${accent}`,
             )
 
-            resolve({ ...size, accent, src })
+            resolve({ ...size, accent, src, blurHash })
           })
           .catch((error) => {
             this.logger.error(`GET --> ${src} ${error.message}`)
@@ -71,6 +81,7 @@ export class ImageService {
                 type: undefined,
                 accent: undefined,
                 src: undefined,
+                blurHash: undefined,
               })
           })
       })
@@ -110,11 +121,35 @@ export class ImageService {
     const imageType = headers['content-type']!
 
     const buffer = Buffer.from(data)
-    const size = imageSize(buffer)
+    const sharp = await requireDepsWithInstall('sharp')
+    const sharped = sharp(buffer) as Sharp
+    const metadata = await sharped.metadata()
+    const size = {
+      height: metadata.height,
+      width: metadata.width,
+      type: imageType,
+    }
+    const { dominant } = await sharped.stats()
 
     // get accent color
-    const accent = await getAverageRGB(buffer, imageType)
+    // r g b number to hex
+    const accent = `#${dominant.r.toString(16).padStart(2, '0')}${dominant.g.toString(16).padStart(2, '0')}${dominant.b.toString(16).padStart(2, '0')}`
 
-    return { size, accent }
+    const blurHash = await encodeImageToBlurhash(sharped)
+
+    return { size, accent, blurHash }
   }
 }
+
+const encodeImageToBlurhash = (sharped: Sharp) =>
+  new Promise<string>((resolve, reject) => {
+    sharped
+      .raw()
+      .ensureAlpha()
+      .resize(32, 32, { fit: 'inside' })
+      .toBuffer((err, buffer, { width, height }) => {
+        if (err) return reject(err)
+
+        resolve(encode(new Uint8ClampedArray(buffer), width, height, 4, 4))
+      })
+  })

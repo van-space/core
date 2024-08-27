@@ -1,13 +1,15 @@
 import { isDefined } from 'class-validator'
 import { debounce, omit } from 'lodash'
 import slugify from 'slugify'
+import type { DocumentType } from '@typegoose/typegoose'
+import type { AggregatePaginateModel, Document, Types } from 'mongoose'
 
 import {
   BadRequestException,
+  forwardRef,
   Inject,
   Injectable,
   NotFoundException,
-  forwardRef,
 } from '@nestjs/common'
 
 import { BusinessException } from '~/common/exceptions/biz.exception'
@@ -20,15 +22,14 @@ import { EventManagerService } from '~/processors/helper/helper.event.service'
 import { ImageService } from '~/processors/helper/helper.image.service'
 import { TextMacroService } from '~/processors/helper/helper.macro.service'
 import { InjectModel } from '~/transformers/model.transformer'
-import { getLessThanNow, scheduleManager } from '~/utils'
+import { scheduleManager } from '~/utils/schedule.util'
+import { getLessThanNow } from '~/utils/time.util'
 
 import { getArticleIdFromRoomName } from '../activity/activity.util'
 import { CategoryService } from '../category/category.service'
 import { CommentModel } from '../comment/comment.model'
 import { SlugTrackerService } from '../slug-tracker/slug-tracker.service'
 import { PostModel } from './post.model'
-import type { AggregatePaginateModel, Document, Types } from 'mongoose'
-import type { DocumentType } from '@typegoose/typegoose'
 
 @Injectable()
 export class PostService {
@@ -81,11 +82,13 @@ export class PostService {
     })
 
     const doc = newPost.toJSON()
+    const cloned = { ...doc }
 
     // 双向关联
     await this.relatedEachOther(doc, relatedIds)
 
     scheduleManager.schedule(async () => {
+      const doc = cloned
       await Promise.all([
         this.imageService.saveImageDimensionsFromMarkdownText(
           doc.text,

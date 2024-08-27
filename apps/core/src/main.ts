@@ -6,7 +6,7 @@ import { DEBUG_MODE } from './app.config'
 import { registerForMemoryDump } from './dump'
 import { logger } from './global/consola.global'
 import { isMainCluster, isMainProcess } from './global/env.global'
-import { register } from './global/index.global'
+import { initializeApp } from './global/index.global'
 import { migrateDatabase } from './migration/migrate'
 
 process.title = `Mix Space (${cluster.isPrimary ? 'master' : 'worker'}) - ${
@@ -14,7 +14,7 @@ process.title = `Mix Space (${cluster.isPrimary ? 'master' : 'worker'}) - ${
 }`
 
 async function main() {
-  register()
+  initializeApp()
 
   if (isMainProcess) {
     await migrateDatabase()
@@ -40,7 +40,7 @@ async function main() {
     }
 
     logger.debug('encrypt key: ', ENCRYPT.key)
-    logger.warn(
+    logger.log(
       `Encrypt is enabled, please remember encrypt key. Your key is starts with ${ENCRYPT.key.slice(
         0,
         3,

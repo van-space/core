@@ -1,5 +1,5 @@
 import { existsSync, statSync } from 'node:fs'
-import { readFile, readdir, rm, writeFile } from 'node:fs/promises'
+import { readdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { flatten } from 'lodash'
 import { mkdirp } from 'mkdirp'
@@ -26,8 +26,9 @@ import { BACKUP_DIR, DATA_DIR } from '~/constants/path.constant'
 import { migrateDatabase } from '~/migration/migrate'
 import { EventManagerService } from '~/processors/helper/helper.event.service'
 import { CacheService } from '~/processors/redis/cache.service'
-import { getMediumDateTime, scheduleManager } from '~/utils'
+import { scheduleManager } from '~/utils/schedule.util'
 import { getFolderSize, installPKG } from '~/utils/system.util'
+import { getMediumDateTime } from '~/utils/time.util'
 
 import { ConfigsService } from '../configs/configs.service'
 
@@ -95,6 +96,7 @@ export class BackupService {
     this.logger.log('--> 备份数据库中')
     // 用时间格式命名文件夹
     const dateDir = getMediumDateTime(new Date())
+
     // TODO windows下使用2024-07-08_14:13:53路径会报错
     const backupDirPath = join(BACKUP_DIR, dateDir)
     mkdirp.sync(backupDirPath)

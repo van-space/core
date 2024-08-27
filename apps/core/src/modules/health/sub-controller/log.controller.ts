@@ -1,3 +1,5 @@
+import type { Readable } from 'form-data'
+
 import {
   BadRequestException,
   Delete,
@@ -13,11 +15,10 @@ import { Auth } from '~/common/decorators/auth.decorator'
 import { HTTPDecorators } from '~/common/decorators/http.decorator'
 import { LOG_DIR } from '~/constants/path.constant'
 import { AdapterResponse } from '~/types/request'
-import { formatByteSize } from '~/utils'
 import { getTodayLogFilePath } from '~/utils/path.util'
+import { formatByteSize } from '~/utils/system.util'
 
 import { LogQueryDto, LogTypeDto } from '../health.dto'
-import type { Readable } from 'form-data'
 
 @ApiController('health/log')
 @Auth()

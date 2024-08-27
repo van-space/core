@@ -1,5 +1,8 @@
 import { Readable } from 'node:stream'
 import { Types } from 'mongoose'
+import type { Collection, Document, OptionalId } from 'mongodb'
+import type { SyncableDataInteraction } from '../sync-update/sync-update.type'
+import type { SyncableCollectionName } from './sync.constant'
 
 import { Inject, Injectable } from '@nestjs/common'
 import { ReturnModelType } from '@typegoose/typegoose'
@@ -14,7 +17,7 @@ import {
 } from '~/constants/db.constant'
 import { DatabaseService } from '~/processors/database/database.service'
 import { InjectModel } from '~/transformers/model.transformer'
-import { md5 } from '~/utils'
+import { md5 } from '~/utils/tool.util'
 
 import { CategoryService } from '../category/category.service'
 import { NoteService } from '../note/note.service'
@@ -23,9 +26,6 @@ import { PostService } from '../post/post.service'
 import { SyncUpdateModel } from '../sync-update/sync-update.model'
 import { TopicService } from '../topic/topic.service'
 import { SyncableCollectionNames } from './sync.constant'
-import type { SyncableCollectionName } from './sync.constant'
-import type { SyncableDataInteraction } from '../sync-update/sync-update.type'
-import type { Collection, Document } from 'mongodb'
 
 @Injectable()
 export class SyncService {
@@ -50,7 +50,7 @@ export class SyncService {
 
   private getCollections(): Record<
     SyncableCollectionName,
-    Collection<Document>
+    Collection<OptionalId<Document>>
   > {
     const db = this.databaseService.db
     return {

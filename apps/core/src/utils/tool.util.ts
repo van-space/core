@@ -1,6 +1,13 @@
-import { join } from 'node:path'
 import { createHash } from 'node:crypto'
+import { createRequire } from 'node:module'
+import { join } from 'node:path'
 import { cloneDeep } from 'lodash'
+
+import { installPackage } from '@antfu/install-pkg'
+
+import { NODE_REQUIRE_PATH } from '~/constants/path.constant'
+import { logger } from '~/global/consola.global'
+
 export const md5 = (text: string) =>
   createHash('md5').update(text).digest('hex') as string
 
@@ -147,4 +154,16 @@ export function escapeXml(unsafe: string) {
     }
     return c
   })
+}
+
+export const requireDepsWithInstall = async (deps: string) => {
+  try {
+    const require = createRequire(NODE_REQUIRE_PATH)
+    return require(require.resolve(deps))
+  } catch {
+    logger.info(`Installing ${deps}...`)
+    await installPackage(deps, { silent: false, cwd: NODE_REQUIRE_PATH })
+    const require = createRequire(NODE_REQUIRE_PATH)
+    return require(deps)
+  }
 }

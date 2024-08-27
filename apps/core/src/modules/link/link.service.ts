@@ -1,4 +1,5 @@
 import { URL } from 'node:url'
+
 import {
   BadRequestException,
   Injectable,
@@ -13,8 +14,8 @@ import { EmailService } from '~/processors/helper/helper.email.service'
 import { EventManagerService } from '~/processors/helper/helper.event.service'
 import { HttpService } from '~/processors/helper/helper.http.service'
 import { InjectModel } from '~/transformers/model.transformer'
+import { scheduleManager } from '~/utils/schedule.util'
 
-import { scheduleManager } from '~/utils'
 import { ConfigsService } from '../configs/configs.service'
 import { UserService } from '../user/user.service'
 import { LinkApplyEmailType } from './link-mail.enum'
@@ -76,6 +77,7 @@ export class LinkService {
       if (pathname !== '/' && !allowSubPath) {
         throw new UnprocessableEntityException('管理员当前禁用了子路径友链申请')
       }
+
       nextModel = await this.model.create({
         ...model,
         url: allowSubPath ? `${url.origin}${url.pathname}` : url.origin,

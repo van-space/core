@@ -3,10 +3,10 @@ import pluralize from 'pluralize'
 
 import {
   BadRequestException,
+  forwardRef,
   Inject,
   Injectable,
   UnprocessableEntityException,
-  forwardRef,
 } from '@nestjs/common'
 
 import { CannotFindException } from '~/common/exceptions/cant-find.exception'
@@ -17,7 +17,8 @@ import { DatabaseService } from '~/processors/database/database.service'
 import { EventManagerService } from '~/processors/helper/helper.event.service'
 import { CacheService } from '~/processors/redis/cache.service'
 import { InjectModel } from '~/transformers/model.transformer'
-import { getRedisKey, scheduleManager } from '~/utils'
+import { getRedisKey } from '~/utils/redis.util'
+import { scheduleManager } from '~/utils/schedule.util'
 
 import { CommentState } from '../comment/comment.model'
 import { CommentService } from '../comment/comment.service'

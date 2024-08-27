@@ -1,6 +1,6 @@
-import { readFileSync, writeFileSync } from 'fs'
-import { fileURLToPath } from 'url'
-import { dirname, sep, resolve } from 'path'
+import { readFileSync, writeFileSync } from 'node:fs'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 // 获取当前文件的路径
 const __filename = fileURLToPath(import.meta.url)
@@ -17,7 +17,7 @@ const content = readFileSync(dts, 'utf-8')
 // with declare module '@mx-space/api-client'
 writeFileSync(
   dts,
-  content.replace(
+  content.replaceAll(
     /declare module '..\/core\/client'/g,
     'declare module ' + `'${PKG.name}'`,
   ),

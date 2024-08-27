@@ -1,3 +1,5 @@
+import type mongoose from 'mongoose'
+
 import {
   Body,
   ForbiddenException,
@@ -19,12 +21,11 @@ import {
   BaseCrudFactory,
   BaseCrudModuleType,
 } from '~/transformers/crud-factor.transformer'
-import { scheduleManager } from '~/utils'
+import { scheduleManager } from '~/utils/schedule.util'
 
 import { AuditReasonDto, LinkDto } from './link.dto'
 import { LinkModel, LinkState } from './link.model'
 import { LinkService } from './link.service'
-import type mongoose from 'mongoose'
 
 const paths = ['links', 'friends']
 
@@ -99,6 +100,7 @@ export class LinkController {
     if (!(await this.linkService.canApplyLink())) {
       throw new ForbiddenException('主人目前不允许申请友链了！')
     }
+
     await this.linkService.applyForLink(body)
     scheduleManager.schedule(async () => {
       await this.linkService.sendToMaster(body.author, body)

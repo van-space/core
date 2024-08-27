@@ -32,7 +32,6 @@ export default sxzz(
         eqeqeq: 'off',
 
         'no-void': 0,
-        '@typescript-eslint/consistent-type-imports': 'warn',
         '@typescript-eslint/consistent-type-assertions': 0,
         'no-restricted-syntax': 0,
         'unicorn/filename-case': 0,
@@ -53,6 +52,7 @@ export default sxzz(
 
         // for node server runtime
         'require-await': 0,
+        '@typescript-eslint/no-unsafe-function-type': 0,
         'unicorn/no-array-callback-reference': 0,
 
         'node/prefer-global/process': 0,
@@ -62,6 +62,8 @@ export default sxzz(
         'unicorn/prefer-top-level-await': 0,
         // readable push syntax
         'unicorn/no-array-push-push': 0,
+        '@typescript-eslint/no-require-imports': 0,
+        'perfectionist/sort-imports': 0,
       },
     },
     {

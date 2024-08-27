@@ -1,3 +1,5 @@
+import type { FilterQuery } from 'mongoose'
+
 import {
   Body,
   Delete,
@@ -30,7 +32,6 @@ import {
 } from './note.dto'
 import { NoteModel, PartialNoteModel } from './note.model'
 import { NoteService } from './note.service'
-import type { FilterQuery } from 'mongoose'
 
 @ApiController({ path: 'notes' })
 export class NoteController {
@@ -155,7 +156,8 @@ export class NoteController {
   @Put('/:id')
   @Auth()
   async modify(@Body() body: NoteModel, @Param() params: MongoIdDto) {
-    return await this.noteService.updateById(params.id, body)
+    await this.noteService.updateById(params.id, body)
+    return this.noteService.findOneByIdOrNid(params.id)
   }
 
   @Patch('/:id')

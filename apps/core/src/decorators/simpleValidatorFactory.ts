@@ -6,7 +6,7 @@
  * @FilePath: /mx-server/src/common/decorators/simpleValidatorFactory.ts
  * @Coding with Love
  */
-import { ValidatorConstraint, registerDecorator } from 'class-validator'
+import { registerDecorator, ValidatorConstraint } from 'class-validator'
 import type {
   ValidationArguments,
   ValidationOptions,
@@ -22,7 +22,7 @@ export function validatorFactory(validator: (value: any) => boolean) {
   }
 
   return function (validationOptions?: ValidationOptions) {
-    return function (object: Object, propertyName: string) {
+    return function (object: object, propertyName: string) {
       registerDecorator({
         target: object.constructor,
         propertyName,

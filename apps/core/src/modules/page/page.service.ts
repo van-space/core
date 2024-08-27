@@ -12,7 +12,7 @@ import { EventManagerService } from '~/processors/helper/helper.event.service'
 import { ImageService } from '~/processors/helper/helper.image.service'
 import { TextMacroService } from '~/processors/helper/helper.macro.service'
 import { InjectModel } from '~/transformers/model.transformer'
-import { scheduleManager } from '~/utils'
+import { scheduleManager } from '~/utils/schedule.util'
 
 import { PageModel } from './page.model'
 
@@ -48,12 +48,11 @@ export class PageService {
     this.imageService.saveImageDimensionsFromMarkdownText(
       doc.text,
       res.images,
-      (images) => {
+      async (images) => {
         res.images = images
-        return res.save().then(() => {
-          this.eventManager.broadcast(BusinessEvents.PAGE_UPDATE, res, {
-            scope: EventScope.TO_SYSTEM,
-          })
+        await res.save()
+        this.eventManager.broadcast(BusinessEvents.PAGE_UPDATE, res, {
+          scope: EventScope.TO_SYSTEM,
         })
       },
     )
