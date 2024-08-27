@@ -29,7 +29,7 @@ import {
 } from './configs.jsonschema.decorator'
 import type { ChatModel } from 'openai/resources'
 
-const SecretField = (target: Object, propertyKey: string | symbol) => {
+const SecretField = (target: object, propertyKey: string | symbol) => {
   Encrypt(target, propertyKey)
   Exclude({ toPlainOnly: true })(target, propertyKey)
 }
@@ -261,6 +261,11 @@ export class FriendLinkOptionsDto {
   @IsOptional()
   @JSONSchemaToggleField('允许申请友链')
   allowApply: boolean
+
+  @IsBoolean()
+  @IsOptional()
+  @JSONSchemaToggleField('允许子路径友链', { description: '例如 /blog 子路径' })
+  allowSubPath: boolean
 }
 
 @JSONSchema({ title: '文本设定' })

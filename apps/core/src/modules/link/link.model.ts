@@ -1,4 +1,3 @@
-import { URL } from 'node:url'
 import { Transform } from 'class-transformer'
 import {
   IsEmail,
@@ -51,9 +50,6 @@ export class LinkModel extends BaseModel {
     required: true,
     trim: true,
     unique: true,
-    set(val) {
-      return new URL(val).origin
-    },
   })
   @IsUrl(
     { require_protocol: true, protocols: ['https'] },
