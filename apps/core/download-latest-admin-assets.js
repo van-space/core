@@ -1,13 +1,13 @@
 #!env node
-const { appendFileSync } = require('fs')
-const { join } = require('path')
+const { appendFileSync } = require('node:fs')
+const { join } = require('node:path')
 const { fetch, $ } = require('zx-cjs')
 const {
   dashboard: { repo, version },
 } = require('./package.json')
 
 const endpoint = `https://api.github.com/repos/${repo}/releases/tags/v${version}`
-!(async () => {
+async function download() {
   const json = await fetch(endpoint).then((res) => res.json())
   const downloadUrl = json.assets.find(
     (asset) => asset.name === 'release.zip',
@@ -21,4 +21,5 @@ const endpoint = `https://api.github.com/repos/${repo}/releases/tags/v${version}
   await $`mv out/dist out/admin`
   await $`rm -f admin-release.zip`
   // release.zip > dist > index.html
-})()
+}
+download()

@@ -28,6 +28,7 @@ async function main() {
 
   const buffer = await fetch(downloadUrl).then((res) => res.arrayBuffer())
   appendFileSync(`release-downloaded.zip`, Buffer.from(buffer))
+  // eslint-disable-next-line no-undef
   await $`unzip release-downloaded.zip -d mx-server`
 }
 
