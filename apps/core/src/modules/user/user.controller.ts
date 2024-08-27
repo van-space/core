@@ -1,10 +1,7 @@
-import type { UserModel } from './user.model'
-
 import {
   BadRequestException,
   Body,
   Delete,
-  forwardRef,
   Get,
   HttpCode,
   Inject,
@@ -12,6 +9,7 @@ import {
   Patch,
   Post,
   Put,
+  forwardRef,
 } from '@nestjs/common'
 
 import { ApiController } from '~/common/decorators/api-controller.decorator'
@@ -32,6 +30,7 @@ import { ConfigsService } from '../configs/configs.service'
 import { LoginDto, UserDto, UserPatchDto } from './user.dto'
 import { UserDocument } from './user.model'
 import { UserService } from './user.service'
+import type { UserModel } from './user.model'
 
 @ApiController(['master', 'user'])
 export class UserController {

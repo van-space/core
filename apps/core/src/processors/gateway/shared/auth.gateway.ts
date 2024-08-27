@@ -14,7 +14,6 @@ import { CacheService } from '~/processors/redis/cache.service'
 
 import { BusinessEvents } from '../../../constants/business-event.constant'
 import { BroadcastBaseGateway } from '../base.gateway'
-
 export type AuthGatewayOptions = {
   namespace: string
   authway?: 'jwt' | 'custom-token' | 'all'

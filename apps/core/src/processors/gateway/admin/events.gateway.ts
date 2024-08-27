@@ -1,13 +1,7 @@
 import { resolve } from 'node:path'
 import { Socket } from 'socket.io'
-import type {
-  GatewayMetadata,
-  OnGatewayConnection,
-  OnGatewayDisconnect,
-} from '@nestjs/websockets'
-import type SocketIO from 'socket.io'
 
-import { forwardRef, Inject } from '@nestjs/common'
+import { Inject, forwardRef } from '@nestjs/common'
 import { SubscribeMessage, WebSocketGateway } from '@nestjs/websockets'
 
 import { LOG_DIR } from '~/constants/path.constant'
@@ -19,6 +13,12 @@ import { getTodayLogFilePath } from '~/utils/path.util'
 import { BusinessEvents } from '../../../constants/business-event.constant'
 import { AuthService } from '../../../modules/auth/auth.service'
 import { createAuthGateway } from '../shared/auth.gateway'
+import type SocketIO from 'socket.io'
+import type {
+  GatewayMetadata,
+  OnGatewayConnection,
+  OnGatewayDisconnect,
+} from '@nestjs/websockets'
 
 const AuthGateway = createAuthGateway({ namespace: 'admin', authway: 'jwt' })
 @WebSocketGateway<GatewayMetadata>({ namespace: 'admin' })

@@ -1,5 +1,4 @@
 import { compareSync } from 'bcryptjs'
-import type { UserDocument } from './user.model'
 
 import {
   BadRequestException,
@@ -20,6 +19,7 @@ import { getAvatar, sleep } from '~/utils'
 
 import { AuthService } from '../auth/auth.service'
 import { UserModel } from './user.model'
+import type { UserDocument } from './user.model'
 
 @Injectable()
 export class UserService {

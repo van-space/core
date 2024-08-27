@@ -1,6 +1,5 @@
-import fs from 'node:fs'
 import v8 from 'node:v8'
-
+import fs from 'node:fs'
 import { TEMP_DIR } from './constants/path.constant'
 
 export function registerForMemoryDump() {

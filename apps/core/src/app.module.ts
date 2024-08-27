@@ -1,11 +1,5 @@
-import type {
-  DynamicModule,
-  MiddlewareConsumer,
-  NestModule,
-  Type,
-} from '@nestjs/common'
-
 import { LoggerModule } from '@innei/pretty-logger-nestjs'
+
 import { Module } from '@nestjs/common'
 import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core'
 
@@ -66,6 +60,12 @@ import { DatabaseModule } from './processors/database/database.module'
 import { GatewayModule } from './processors/gateway/gateway.module'
 import { HelperModule } from './processors/helper/helper.module'
 import { RedisModule } from './processors/redis/redis.module'
+import type {
+  DynamicModule,
+  MiddlewareConsumer,
+  NestModule,
+  Type,
+} from '@nestjs/common'
 
 @Module({
   imports: [

@@ -1,14 +1,3 @@
-import type {
-  VerifiedAuthenticationResponse,
-  VerifiedRegistrationResponse,
-} from '@simplewebauthn/server'
-import type {
-  AuthenticationResponseJSON,
-  CredentialDeviceType,
-  RegistrationResponseJSON,
-} from '@simplewebauthn/server/script/deps'
-import type { UserDocument } from '../user/user.model'
-
 import { BadRequestException, Injectable } from '@nestjs/common'
 import {
   generateAuthenticationOptions,
@@ -16,17 +5,27 @@ import {
   verifyAuthenticationResponse,
   verifyRegistrationResponse,
 } from '@simplewebauthn/server'
-import { isoBase64URL, isoUint8Array } from '@simplewebauthn/server/helpers'
 import { ReturnModelType } from '@typegoose/typegoose'
+import { isoBase64URL, isoUint8Array } from '@simplewebauthn/server/helpers'
 
-import { RequestContext } from '~/common/contexts/request.context'
 import { RedisKeys } from '~/constants/cache.constant'
 import { CacheService } from '~/processors/redis/cache.service'
 import { InjectModel } from '~/transformers/model.transformer'
 import { getRedisKey } from '~/utils'
 
+import { RequestContext } from '~/common/contexts/request.context'
 import { ConfigsService } from '../configs/configs.service'
 import { AuthnModel } from './authn.model'
+import type { UserDocument } from '../user/user.model'
+import type {
+  AuthenticationResponseJSON,
+  CredentialDeviceType,
+  RegistrationResponseJSON,
+} from '@simplewebauthn/server/script/deps'
+import type {
+  VerifiedAuthenticationResponse,
+  VerifiedRegistrationResponse,
+} from '@simplewebauthn/server'
 
 // TODO Compatible with versions below node v20
 if (!globalThis.crypto) {

@@ -1,13 +1,10 @@
 import { omit } from 'lodash'
-import type { DocumentType } from '@typegoose/typegoose'
-import type { FilterQuery } from 'mongoose'
-import type { PostModel } from '../post/post.model'
 
 import {
   BadRequestException,
-  forwardRef,
   Inject,
   Injectable,
+  forwardRef,
 } from '@nestjs/common'
 import { ReturnModelType } from '@typegoose/typegoose'
 
@@ -23,6 +20,9 @@ import { scheduleManager } from '~/utils'
 import { PostService } from '../post/post.service'
 import { SlugTrackerService } from '../slug-tracker/slug-tracker.service'
 import { CategoryModel, CategoryType } from './category.model'
+import type { PostModel } from '../post/post.model'
+import type { FilterQuery } from 'mongoose'
+import type { DocumentType } from '@typegoose/typegoose'
 
 @Injectable()
 export class CategoryService {

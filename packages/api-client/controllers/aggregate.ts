@@ -1,3 +1,5 @@
+import { sortOrderToNumber } from '~/utils'
+import { autoBind } from '~/utils/auto-bind'
 import type { IRequestAdapter } from '~/interfaces/adapter'
 import type { IController } from '~/interfaces/controller'
 import type { SortOrder } from '~/interfaces/options'
@@ -9,10 +11,8 @@ import type {
   TimelineData,
   TimelineType,
 } from '~/models/aggregate'
-import type { HTTPClient } from '../core'
 
-import { sortOrderToNumber } from '~/utils'
-import { autoBind } from '~/utils/auto-bind'
+import type { HTTPClient } from '../core'
 
 declare module '../core/client' {
   interface HTTPClient<

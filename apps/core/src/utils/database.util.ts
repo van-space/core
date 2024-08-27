@@ -2,10 +2,10 @@
  * @see https://github.com/surmon-china/nodepress/blob/main/src/processors/database/database.provider.ts
  */
 import mongoose from 'mongoose'
-import type { CollectionRefTypes } from '~/constants/db.constant'
 
 import { MONGO_DB } from '~/app.config'
 import {
+  type CollectionRefTypes,
   NOTE_COLLECTION_NAME,
   PAGE_COLLECTION_NAME,
   POST_COLLECTION_NAME,

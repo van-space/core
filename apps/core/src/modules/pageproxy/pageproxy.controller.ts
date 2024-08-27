@@ -4,7 +4,6 @@ import { extname, join } from 'node:path'
 import { render } from 'ejs'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { lookup } from 'mime-types'
-import type { Observable } from 'rxjs'
 
 import { Controller, Get, Query, Req, Res } from '@nestjs/common'
 import { SkipThrottle } from '@nestjs/throttler'
@@ -15,6 +14,7 @@ import { AssetService } from '~/processors/helper/helper.asset.service'
 
 import { UpdateService } from '../update/update.service'
 import { PageProxyService } from './pageproxy.service'
+import type { Observable } from 'rxjs'
 
 @Controller('/')
 @SkipThrottle()

@@ -1,5 +1,3 @@
-import type { Readable } from 'form-data'
-
 import {
   BadRequestException,
   Delete,
@@ -19,6 +17,7 @@ import { formatByteSize } from '~/utils'
 import { getTodayLogFilePath } from '~/utils/path.util'
 
 import { LogQueryDto, LogTypeDto } from '../health.dto'
+import type { Readable } from 'form-data'
 
 @ApiController('health/log')
 @Auth()

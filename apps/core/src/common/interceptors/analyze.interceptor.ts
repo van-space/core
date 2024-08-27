@@ -7,12 +7,6 @@
 import { URL } from 'node:url'
 import { isbot } from 'isbot'
 import UAParser from 'ua-parser-js'
-import type {
-  CallHandler,
-  ExecutionContext,
-  NestInterceptor,
-} from '@nestjs/common'
-import type { Observable } from 'rxjs'
 
 import { Inject, Injectable } from '@nestjs/common'
 import { Reflector } from '@nestjs/core'
@@ -29,6 +23,12 @@ import { InjectModel } from '~/transformers/model.transformer'
 import { scheduleManager } from '~/utils'
 import { getIp } from '~/utils/ip.util'
 import { getRedisKey } from '~/utils/redis.util'
+import type { Observable } from 'rxjs'
+import type {
+  CallHandler,
+  ExecutionContext,
+  NestInterceptor,
+} from '@nestjs/common'
 
 @Injectable()
 export class AnalyzeInterceptor implements NestInterceptor {

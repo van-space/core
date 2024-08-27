@@ -1,17 +1,13 @@
 import algoliasearch from 'algoliasearch'
 import { omit } from 'lodash'
 import removeMdCodeblock from 'remove-md-codeblock'
-import type { SearchResponse } from '@algolia/client-search'
-import type { SearchDto } from '~/modules/search/search.dto'
-import type { Pagination } from '~/shared/interface/paginator.interface'
-import type { SearchIndex } from 'algoliasearch'
 
 import {
   BadRequestException,
-  forwardRef,
   Inject,
   Injectable,
   Logger,
+  forwardRef,
 } from '@nestjs/common'
 import { OnEvent } from '@nestjs/event-emitter'
 import { CronExpression } from '@nestjs/schedule'
@@ -29,6 +25,10 @@ import { NoteService } from '../note/note.service'
 import { PageService } from '../page/page.service'
 import { PostModel } from '../post/post.model'
 import { PostService } from '../post/post.service'
+import type { SearchIndex } from 'algoliasearch'
+import type { Pagination } from '~/shared/interface/paginator.interface'
+import type { SearchDto } from '~/modules/search/search.dto'
+import type { SearchResponse } from '@algolia/client-search'
 
 @Injectable()
 export class SearchService {

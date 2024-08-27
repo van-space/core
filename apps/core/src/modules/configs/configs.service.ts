@@ -2,7 +2,6 @@ import cluster from 'node:cluster'
 import { plainToInstance } from 'class-transformer'
 import { validateSync } from 'class-validator'
 import { cloneDeep, mergeWith } from 'lodash'
-import type { ClassConstructor } from 'class-transformer'
 
 import { createClerkClient } from '@clerk/clerk-sdk-node'
 import {
@@ -28,8 +27,9 @@ import { getRedisKey } from '~/utils/redis.util'
 
 import { generateDefaultConfig } from './configs.default'
 import { decryptObject, encryptObject } from './configs.encrypt.util'
-import { configDtoMapping, IConfig } from './configs.interface'
+import { IConfig, configDtoMapping } from './configs.interface'
 import { OptionModel } from './configs.model'
+import type { ClassConstructor } from 'class-transformer'
 
 const configsKeySet = new Set(Object.keys(configDtoMapping))
 

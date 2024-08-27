@@ -2,9 +2,8 @@ import { readdir, rm } from 'node:fs/promises'
 import { join } from 'node:path'
 import dayjs from 'dayjs'
 import { mkdirp } from 'mkdirp'
-import type { StoreJWTPayload } from './helper.jwt.service'
 
-import { forwardRef, Inject, Injectable, Logger } from '@nestjs/common'
+import { Inject, Injectable, Logger, forwardRef } from '@nestjs/common'
 import { CronExpression } from '@nestjs/schedule'
 
 import { CronDescription } from '~/common/decorators/cron-description.decorator'
@@ -24,6 +23,7 @@ import { getRedisKey } from '~/utils/redis.util'
 import { CacheService } from '../redis/cache.service'
 import { HttpService } from './helper.http.service'
 import { JWTService } from './helper.jwt.service'
+import type { StoreJWTPayload } from './helper.jwt.service'
 
 @Injectable()
 export class CronService {

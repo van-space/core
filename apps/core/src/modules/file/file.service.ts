@@ -1,7 +1,5 @@
 import { createWriteStream } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Readable } from 'node:stream'
-import type { FileType } from './file.type'
 
 import {
   BadRequestException,
@@ -17,6 +15,8 @@ import {
 } from '~/constants/path.constant'
 
 import { ConfigsService } from '../configs/configs.service'
+import type { FileType } from './file.type'
+import type { Readable } from 'node:stream'
 
 @Injectable()
 export class FileService {
