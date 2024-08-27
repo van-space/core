@@ -1,5 +1,5 @@
-import { dirname, parse, resolve } from 'node:path'
 import { readdirSync } from 'node:fs'
+import { dirname, parse, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'tsup'
 

@@ -3,8 +3,8 @@ import {
   ArrayUnique,
   IsBoolean,
   IsEmail,
-  IsIP,
   IsInt,
+  IsIP,
   IsNotEmpty,
   IsOptional,
   IsString,
@@ -12,12 +12,14 @@ import {
   ValidateNested,
 } from 'class-validator'
 import { JSONSchema } from 'class-validator-jsonschema'
+import type { ChatModel } from 'openai/resources'
 
 import { IsAllowedUrl } from '~/decorators/dto/isAllowedUrl'
 
 import { OpenAiSupportedModels } from '../ai/ai.constants'
 import { Encrypt } from './configs.encrypt.util'
 import {
+  halfFieldOption,
   JSONSchemaArrayField,
   JSONSchemaHalfGirdPlainField,
   JSONSchemaNumberField,
@@ -25,9 +27,7 @@ import {
   JSONSchemaPlainField,
   JSONSchemaTextAreaField,
   JSONSchemaToggleField,
-  halfFieldOption,
 } from './configs.jsonschema.decorator'
-import type { ChatModel } from 'openai/resources'
 
 const SecretField = (target: object, propertyKey: string | symbol) => {
   Encrypt(target, propertyKey)

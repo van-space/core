@@ -1,5 +1,8 @@
 import { Readable } from 'node:stream'
 import { Types } from 'mongoose'
+import type { Collection, Document } from 'mongodb'
+import type { SyncableDataInteraction } from '../sync-update/sync-update.type'
+import type { SyncableCollectionName } from './sync.constant'
 
 import { Inject, Injectable } from '@nestjs/common'
 import { ReturnModelType } from '@typegoose/typegoose'
@@ -23,9 +26,6 @@ import { PostService } from '../post/post.service'
 import { SyncUpdateModel } from '../sync-update/sync-update.model'
 import { TopicService } from '../topic/topic.service'
 import { SyncableCollectionNames } from './sync.constant'
-import type { SyncableCollectionName } from './sync.constant'
-import type { SyncableDataInteraction } from '../sync-update/sync-update.type'
-import type { Collection, Document } from 'mongodb'
 
 @Injectable()
 export class SyncService {
