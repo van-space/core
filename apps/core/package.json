@@ -1,24 +1,25 @@
 {
   "name": "@mx-space/core",
-  "version": "6.1.5",
-  "author": "Innei <https://innei.in>",
+  "version": "7.0.6",
   "private": true,
   "license": "AGPLv3",
-  "dashboard": {
-    "repo": "mx-space/mx-admin",
-    "version": "4.6.2"
-  },
+  "homepage": "https://github.com/mx-space/core/tree/master/apps/core#readme",
   "repository": {
     "directory": "mx-space/core",
     "url": "https://github.com/mx-space/core"
   },
-  "homepage": "https://github.com/mx-space/core/tree/master/apps/core#readme",
+  "author": "Innei <https://innei.in>",
+  "dashboard": {
+    "repo": "mx-space/mx-admin",
+    "version": "4.7.3"
+  },
   "issues": "https://github.com/mx-space/core/issues",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
     "build:webpack": "nest build --webpack --webpackPath ./configs/webpack.config.js -c ./configs/nest-cli.webpack.json",
     "dev": "npm run start",
+    "dev:encrypt": "npm run start -- --encrypt_enable --encrypt_key=33b9405ac49f63ef4ccbf6b338aeeff8152e844d942ef22278abbec2b1f93b5e",
     "repl": "npm run start -- --entryFile repl",
     "bundle": "rimraf out && npm run build && cd dist/src && npx ncc build main.js -o ../../out --minify -s && cd ../.. && chmod +x out/index.js && node scripts/after-bundle.js",
     "start": "cross-env NODE_ENV=development nest start -w --path tsconfig.json -- ",
@@ -44,7 +45,11 @@
     "after": [
       "sh assets-push.sh"
     ],
-    "changelog": false
+    "changelog": true
+  },
+  "optionalDependencies": {
+    "mongodb-memory-server": "^10.0.0",
+    "redis-memory-server": "^0.11.0"
   },
   "dependencies": {
     "@algolia/client-search": "^4.22.1",
@@ -54,14 +59,13 @@
     "@babel/plugin-transform-modules-commonjs": "7.24.8",
     "@babel/plugin-transform-typescript": "7.25.2",
     "@babel/types": "^7.25.4",
-    "@clerk/clerk-sdk-node": "5.0.35",
     "@fastify/cookie": "9.4.0",
     "@fastify/multipart": "8.3.0",
     "@fastify/static": "7.0.4",
     "@innei/next-async": "0.3.0",
     "@innei/pretty-logger-nestjs": "0.3.3",
     "@langchain/openai": "0.2.8",
-    "@mx-space/external": "workspace:*",
+    "@mx-space/complied": "workspace:*",
     "@nestjs/cache-manager": "2.2.2",
     "@nestjs/common": "10.4.1",
     "@nestjs/core": "10.4.1",
@@ -75,8 +79,8 @@
     "@simplewebauthn/server": "10.0.1",
     "@socket.io/redis-adapter": "8.3.0",
     "@socket.io/redis-emitter": "5.1.0",
-    "@typegoose/auto-increment": "4.5.0",
-    "@typegoose/typegoose": "12.6.0",
+    "@typegoose/auto-increment": "4.6.0",
+    "@typegoose/typegoose": "12.7.0",
     "@types/jsonwebtoken": "9.0.6",
     "algoliasearch": "4.24.0",
     "axios": "^1.7.0",
@@ -103,18 +107,18 @@
     "linkedom": "0.18.4",
     "lodash": "^4.17.21",
     "lru-cache": "11.0.0",
-    "marked": "14.0.0",
+    "marked": "14.1.1",
     "mime-types": "^2.1.35",
     "mkdirp": "^3.0.1",
-    "mongoose": "8.5.5",
+    "mongoose": "8.6.1",
     "mongoose-aggregate-paginate-v2": "1.1.2",
     "mongoose-autopopulate": "1.1.0",
     "mongoose-lean-getters": "2.1.1",
-    "mongoose-lean-virtuals": "0.9.1",
+    "mongoose-lean-virtuals": "1.0.0",
     "mongoose-paginate-v2": "1.8.3",
     "node-machine-id": "1.1.12",
     "nodemailer": "6.9.15",
-    "openai": "4.56.2",
+    "openai": "4.57.2",
     "pluralize": "^8.0.0",
     "qs": "6.13.0",
     "reflect-metadata": "0.2.2",
@@ -147,7 +151,7 @@
     "@types/lodash": "4.17.7",
     "@types/mime-types": "2.1.4",
     "@types/mongoose-aggregate-paginate-v2": "1.0.12",
-    "@types/node": "22.5.2",
+    "@types/node": "22.5.4",
     "@types/nodemailer": "6.4.15",
     "@types/qs": "6.9.15",
     "@types/remove-markdown": "0.3.4",
@@ -165,9 +169,5 @@
     "vite-tsconfig-paths": "4.3.2",
     "vitest": "1.5.2",
     "zx": "7.2.3"
-  },
-  "optionalDependencies": {
-    "mongodb-memory-server": "^10.0.0",
-    "redis-memory-server": "^0.11.0"
   }
 }

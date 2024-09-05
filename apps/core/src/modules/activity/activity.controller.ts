@@ -10,6 +10,7 @@ import { IpLocation, IpRecord } from '~/common/decorators/ip.decorator'
 import { CollectionRefTypes } from '~/constants/db.constant'
 import { PagerDto } from '~/shared/dto/pager.dto'
 
+import { ReaderService } from '../reader/reader.service'
 import { Activity } from './activity.constant'
 import { ActivityService } from './activity.service'
 import {
@@ -24,7 +25,10 @@ import { GetPresenceQueryDto, UpdatePresenceDto } from './dtos/presence.dto'
 
 @ApiController('/activity')
 export class ActivityController {
-  constructor(private readonly service: ActivityService) {}
+  constructor(
+    private readonly service: ActivityService,
+    private readonly readerService: ReaderService,
+  ) {}
 
   @Post('/like')
   async thumbsUpArticle(
@@ -73,16 +77,35 @@ export class ActivityController {
   @HTTPDecorators.SkipLogging
   @HTTPDecorators.Bypass
   async getPresence(@Query() query: GetPresenceQueryDto) {
-    return this.service
-      .getRoomPresence(query.room_name)
-      .then((list) => {
-        return list.map(({ ip, ...item }) => {
-          return snakecaseKeys(item)
+    const roomPresence = await this.service.getRoomPresence(query.room_name)
+
+    const readerIds = [] as string[]
+    for (const item of roomPresence) {
+      if (item.readerId) {
+        readerIds.push(item.readerId)
+      }
+    }
+    const readers = await this.readerService
+      .findReaderInIds(readerIds)
+      .then((arr) => {
+        return arr.map((item) => {
+          return snakecaseKeys({
+            ...item,
+            id: item._id.toHexString(),
+          })
         })
       })
-      .then((list) => {
-        return keyBy(list, 'identity')
-      })
+
+    return {
+      data: keyBy(
+        roomPresence.map(({ ip, ...item }) => {
+          return snakecaseKeys(item)
+        }),
+        'identity',
+      ),
+
+      readers: keyBy(readers, 'id'),
+    }
   }
 
   @Delete('/:type')

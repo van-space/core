@@ -1,5 +1,5 @@
-import { cpSync, existsSync } from 'fs'
-import path, { resolve } from 'path'
+import { cpSync, existsSync } from 'node:fs'
+import path, { resolve } from 'node:path'
 import swc from 'unplugin-swc'
 import tsconfigPath from 'vite-tsconfig-paths'
 import { defineConfig } from 'vitest/config'
@@ -21,7 +21,6 @@ export default defineConfig({
   test: {
     include: ['**/*.spec.ts', '**/*.e2e-spec.ts'],
 
-    threads: false,
     globals: true,
     globalSetup: [resolve(__dirname, './test/setup.ts')],
     setupFiles: [resolve(__dirname, './test/setup-global.ts')],
@@ -39,9 +38,13 @@ export default defineConfig({
         __dirname,
         './test/mock/decorators/auth.decorator.ts',
       ),
-      '@mx-space/external': resolve(
+      '@mx-space/complied/auth': resolve(
         __dirname,
-        '../../packages/external/index.ts',
+        '../../packages/complied/auth.ts',
+      ),
+      '@mx-space/complied': resolve(
+        __dirname,
+        '../../packages/complied/index.ts',
       ),
     },
   },

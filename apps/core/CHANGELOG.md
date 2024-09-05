@@ -1,5 +1,157 @@
 # CHANGELOG
 
+## [7.0.6](https://github.com/mx-space/core/compare/v7.0.5...v7.0.6) (2024-09-05)
+
+
+### Bug Fixes
+
+* bark service push ([daa499e](https://github.com/mx-space/core/commit/daa499e6920d22ed008457f97e1ec36bc5896135))
+* **deps:** update dependency openai to v4.57.2 ([ebeed58](https://github.com/mx-space/core/commit/ebeed58cb55b3e78c81476740d71feecbf06b9df))
+* ip query function ([06a1963](https://github.com/mx-space/core/commit/06a196360f61aba89e02c6f2e93b62cf5bd2c9b4))
+
+
+
+## [7.0.5](https://github.com/mx-space/core/compare/v7.0.4...v7.0.5) (2024-09-04)
+
+
+### Bug Fixes
+
+* **auth:** append user id for session ([b41a35f](https://github.com/mx-space/core/commit/b41a35f67542d700d384460f1e5ab23acca76296))
+
+
+
+## [7.0.4](https://github.com/mx-space/core/compare/v7.0.3...v7.0.4) (2024-09-04)
+
+
+### Bug Fixes
+
+* auth jwt ([bba36c2](https://github.com/mx-space/core/commit/bba36c2d1aa532a5f4ccc8401f565fb89f8691c6))
+
+
+
+## [7.0.3](https://github.com/mx-space/core/compare/v7.0.2...v7.0.3) (2024-09-04)
+
+
+### Bug Fixes
+
+* auth ([311f2de](https://github.com/mx-space/core/commit/311f2de80cc56aa7a55963a86217fb65bf405528))
+
+
+
+## [7.0.2](https://github.com/mx-space/core/compare/v7.0.2-alpha.0...v7.0.2) (2024-09-04)
+
+
+### Bug Fixes
+
+* 0day auth ([3451d2f](https://github.com/mx-space/core/commit/3451d2f0652e24e0d58f1ff2742be35985fcbc7f))
+* **deps:** update dependency marked to v14.1.1 ([54307a0](https://github.com/mx-space/core/commit/54307a0897e0238d0dffd91a1fa27fe49094135f))
+* **deps:** update dependency mongoose to v8.6.1 ([cd391a4](https://github.com/mx-space/core/commit/cd391a4195b38173818a092a07d7c9a0bcab118a))
+* **deps:** update dependency nodemailer to v6.9.15 ([2a7fa37](https://github.com/mx-space/core/commit/2a7fa3726175eace801d58de85c730fac41dc2ad))
+* **deps:** update dependency openai to v4.57.1 ([74d2cd8](https://github.com/mx-space/core/commit/74d2cd8fb6b95517282b5689bd585dea871d25b7))
+
+
+
+## [7.0.2-alpha.0](https://github.com/mx-space/core/compare/v7.0.1...v7.0.2-alpha.0) (2024-09-03)
+
+
+### Bug Fixes
+
+* try debug fn error ([df9a164](https://github.com/mx-space/core/commit/df9a1646e6e02bedd4d9deb9dc1a7d8ea9c41602))
+
+
+
+## [7.0.1](https://github.com/mx-space/core/compare/v7.0.0...v7.0.1) (2024-09-03)
+
+
+### Bug Fixes
+
+* merge oauth and google support ([23f6acb](https://github.com/mx-space/core/commit/23f6acb1f01122264f18b049faca86903615b444))
+* server time cors ([ca63592](https://github.com/mx-space/core/commit/ca63592bd81c65e9d775e861dabaf1ceb7b8ab06))
+
+
+
+# [7.0.0](https://github.com/mx-space/core/compare/v7.0.0-alpha.3...v7.0.0) (2024-09-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @typegoose/auto-increment to v4.6.0 ([#2073](https://github.com/mx-space/core/issues/2073)) ([504f9eb](https://github.com/mx-space/core/commit/504f9ebfce9e890780e6e92046d3d7a1abcd2f27))
+* **deps:** update dependency @typegoose/typegoose to v12.7.0 ([#2074](https://github.com/mx-space/core/issues/2074)) ([d900c52](https://github.com/mx-space/core/commit/d900c52e54b0b794d1f0ee42c353f8b641ca0a5b))
+* **deps:** update dependency marked to v14.1.0 ([#2048](https://github.com/mx-space/core/issues/2048)) ([159ee56](https://github.com/mx-space/core/commit/159ee56b59a3f94626d9bbb81900023fa0f1cc73))
+* **deps:** update dependency mongoose to v8.6.0 ([#2064](https://github.com/mx-space/core/issues/2064)) ([778b706](https://github.com/mx-space/core/commit/778b70677490f9d92072f169344409f4319f8a8b))
+* **deps:** update dependency openai to v4.57.0 ([#2067](https://github.com/mx-space/core/issues/2067)) ([b4930db](https://github.com/mx-space/core/commit/b4930db778769ac742995710bbc2675d8bb76c9c))
+* **deps:** update dependency remove-markdown to v0.5.5 ([#2079](https://github.com/mx-space/core/issues/2079)) ([7726449](https://github.com/mx-space/core/commit/77264496e887375876619e0f8440229cb041f54e))
+
+
+
+# [7.0.0-alpha.3](https://github.com/mx-space/core/compare/v7.0.0-alpha.2...v7.0.0-alpha.3) (2024-09-02)
+
+
+### Bug Fixes
+
+* server time cors ([34613e5](https://github.com/mx-space/core/commit/34613e5dff745e6f59674e72dfc308d2ad5a3a6b))
+
+
+
+# [7.0.0-alpha.2](https://github.com/mx-space/core/compare/v7.0.0-alpha.1...v7.0.0-alpha.2) (2024-09-02)
+
+
+### Bug Fixes
+
+* trust host for auth ([d4c4337](https://github.com/mx-space/core/commit/d4c43375d9a0d3676d1ff6a87b402f39c0695d5e))
+
+
+
+# [7.0.0-alpha.1](https://github.com/mx-space/core/compare/v7.0.0-alpha.0...v7.0.0-alpha.1) (2024-09-02)
+
+
+
+# [7.0.0-alpha.0](https://github.com/mx-space/core/compare/v6.1.5...v7.0.0-alpha.0) (2024-09-02)
+
+
+### Bug Fixes
+
+* `localhost` for dev ([4b756f2](https://github.com/mx-space/core/commit/4b756f2b1ad27de102bf906699e1df6d2232ef86))
+* add handle for reader query ([02c213a](https://github.com/mx-space/core/commit/02c213a1761c48d309073774deb8e017b22aef70))
+* add missing field ([58917f6](https://github.com/mx-space/core/commit/58917f673e9feb2c8347e433483bc4c0e742feb6))
+* **auth:** add account for session ([29661e7](https://github.com/mx-space/core/commit/29661e75e64fa1e6ff6e1720e4991e780f08e2fa))
+* camcasekey ([5038c4d](https://github.com/mx-space/core/commit/5038c4d0423839b8a918dc61d1d2bbb01716eade))
+* **deps:** update dependency @babel/types to v7.25.6 ([519f573](https://github.com/mx-space/core/commit/519f573b1166c478fbcd36edda7abf7d3311696c))
+* **deps:** update dependency @clerk/clerk-sdk-node to v5.0.32 ([9dd3999](https://github.com/mx-space/core/commit/9dd3999ca9feead34601f60108819b4ea68a4675))
+* **deps:** update dependency mongoose to v8.5.5 ([46c04e8](https://github.com/mx-space/core/commit/46c04e841da7755c0c84c10e78ae6b8e75955bc6))
+* **deps:** update dependency openai to v4.56.2 ([c4df9c5](https://github.com/mx-space/core/commit/c4df9c59978e68371215566df7d94a8072d2b56b))
+* **deps:** update dependency remove-markdown to v0.5.3 ([e27e27b](https://github.com/mx-space/core/commit/e27e27b3b5a34209085895ea45cd500b0148c77d))
+* mongo agg query ([da283b4](https://github.com/mx-space/core/commit/da283b4730bf067b0ec2ede615e0197f844cca7a))
+* oauth profile for github ([19d1030](https://github.com/mx-space/core/commit/19d10300d11e6926e7d7279db0d8a29a2f1e4907))
+* transform case and export client type ([f7bce02](https://github.com/mx-space/core/commit/f7bce0279a01f5173f2c09c2624d883124db4b76))
+
+
+### Features
+
+* add reader id for presence ([33c48f7](https://github.com/mx-space/core/commit/33c48f743f8c0ddb2ddfa249d39c08eec3e3416c))
+* Auth.js integration ([#2054](https://github.com/mx-space/core/issues/2054)) ([6e50bee](https://github.com/mx-space/core/commit/6e50bee8dafbd7e56742b711d01a167c70f96f9a))
+
+
+
+## [6.1.5](https://github.com/mx-space/core/compare/v6.1.4...v6.1.5) (2024-08-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @antfu/install-pkg to v0.4.1 ([fc9eef9](https://github.com/mx-space/core/commit/fc9eef989e26d6f7574fafbbfc5054beb024a0eb))
+* **deps:** update dependency @clerk/clerk-sdk-node to v5.0.30 ([79b9c84](https://github.com/mx-space/core/commit/79b9c84797f23635e9fca26f46f3b96fea00a99b))
+* **deps:** update dependency @clerk/clerk-sdk-node to v5.0.31 ([0f8ae33](https://github.com/mx-space/core/commit/0f8ae3341baf39d319a92acfcec79278aa3426f7))
+* **deps:** update dependency @langchain/openai to v0.2.8 ([f2d247b](https://github.com/mx-space/core/commit/f2d247ba8c8d7118b1d23b52697963dcb41c0269))
+* **deps:** update dependency mongoose to v8.5.4 ([3b19040](https://github.com/mx-space/core/commit/3b190405652741d35c4b741a1df21eac08ef3cf0))
+* **deps:** update dependency openai to v4.56.1 ([b935ee5](https://github.com/mx-space/core/commit/b935ee5fe5211d36eb48db0d5e5008818acfb0cc))
+
+
+### Features
+
+* add ai target language ([638deb3](https://github.com/mx-space/core/commit/638deb30100c79ecb023a5e586f2960ed620e51c))
+
+
+
 ## [6.1.4](https://github.com/mx-space/core/compare/v6.1.3...v6.1.4) (2024-08-23)
 
 

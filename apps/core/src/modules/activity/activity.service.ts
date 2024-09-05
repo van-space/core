@@ -37,12 +37,14 @@ import { EventManagerService } from '~/processors/helper/helper.event.service'
 import { InjectModel } from '~/transformers/model.transformer'
 import { transformDataToPaginate } from '~/transformers/paginate.transformer'
 import { checkRefModelCollectionType } from '~/utils/biz.util'
+import { camelcaseKeys } from '~/utils/tool.util'
 
 import { CommentState } from '../comment/comment.model'
 import { CommentService } from '../comment/comment.service'
 import { ConfigsService } from '../configs/configs.service'
 import { NoteService } from '../note/note.service'
 import { PostService } from '../post/post.service'
+import { ReaderService } from '../reader/reader.service'
 import { Activity } from './activity.constant'
 import { ActivityModel } from './activity.model'
 import {
@@ -79,6 +81,7 @@ export class ActivityService implements OnModuleInit, OnModuleDestroy {
     private readonly postService: PostService,
     @Inject(forwardRef(() => NoteService))
     private readonly noteService: NoteService,
+    private readonly readerService: ReaderService,
   ) {
     this.logger = new Logger(ActivityService.name)
   }
@@ -354,12 +357,24 @@ export class ActivityService implements OnModuleInit, OnModuleDestroy {
       operationTime: data.ts,
       updatedAt: Date.now(),
       connectedAt: +new Date(socket.handshake.time),
-
+      readerId: data.readerId,
       ip,
     }
 
     Reflect.deleteProperty(presenceData, 'ts')
     const serializedPresenceData = omit(presenceData, 'ip')
+    if (data.readerId) {
+      const reader = await this.readerService.findReaderInIds([data.readerId])
+      if (reader.length) {
+        Object.assign(serializedPresenceData, {
+          reader: camelcaseKeys({
+            ...reader[0],
+            _id: undefined,
+            id: reader[0]._id.toHexString(),
+          }),
+        })
+      }
+    }
 
     const roomJoinedAtMap =
       await this.webGateway.getSocketRoomJoinedAtMap(socket)

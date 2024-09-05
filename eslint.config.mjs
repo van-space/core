@@ -28,7 +28,6 @@ export default sxzz(
         },
       },
       rules: {
-        'prettier/prettier': ['error', { endOfLine: 'auto' }],
         eqeqeq: 'off',
 
         'no-void': 0,

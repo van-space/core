@@ -1,35 +1,44 @@
+import { IncomingMessage } from 'node:http'
 import dayjs from 'dayjs'
-import jwt from 'jsonwebtoken'
 import { isDate, omit } from 'lodash'
-import { LRUCache } from 'lru-cache'
-import type { ClerkClient } from '@clerk/clerk-sdk-node'
+import { Types } from 'mongoose'
 import type { TokenModel, UserModel } from '~/modules/user/user.model'
 import type { TokenDto } from './auth.controller'
 
-import { createClerkClient } from '@clerk/clerk-sdk-node'
-import { nanoid } from '@mx-space/external'
-import { forwardRef, Inject, Injectable, Logger } from '@nestjs/common'
+import { nanoid } from '@mx-space/complied'
+import {
+  Auth,
+  createActionURL,
+  Session,
+  setEnvDefaults,
+} from '@mx-space/complied/auth'
+import { BadRequestException, Inject, Injectable } from '@nestjs/common'
 import { ReturnModelType } from '@typegoose/typegoose'
 
+import { RequestContext } from '~/common/contexts/request.context'
 import { alphabet } from '~/constants/other.constant'
 import { UserModel as User } from '~/modules/user/user.model'
+import { DatabaseService } from '~/processors/database/database.service'
 import { JWTService } from '~/processors/helper/helper.jwt.service'
 import { InjectModel } from '~/transformers/model.transformer'
 
-import { ConfigsService } from '../configs/configs.service'
+import {
+  AUTH_JS_ACCOUNT_COLLECTION,
+  AUTH_JS_USER_COLLECTION,
+  AuthConfigInjectKey,
+} from './auth.constant'
+import { ServerAuthConfig } from './auth.implement'
+import { SessionUser } from './auth.interface'
 
 const { customAlphabet } = nanoid
 
 @Injectable()
 export class AuthService {
-  private readonly logger = new Logger(AuthService.name)
   constructor(
+    @Inject(AuthConfigInjectKey) private readonly authConfig: ServerAuthConfig,
     @InjectModel(User) private readonly userModel: ReturnModelType<typeof User>,
-
+    private readonly databaseService: DatabaseService,
     private readonly jwtService: JWTService,
-
-    @Inject(forwardRef(() => ConfigsService))
-    private readonly configs: ConfigsService,
   ) {}
 
   get jwtServicePublic() {
@@ -125,44 +134,145 @@ export class AuthService {
     )
   }
 
-  private clerkClientLRU = new LRUCache<string, ClerkClient>({
-    maxSize: 2,
-    ttl: 1000 * 60 * 5,
-  })
+  private async getSessionBase(req: IncomingMessage, config: ServerAuthConfig) {
+    setEnvDefaults(process.env, config)
 
-  async verifyClerkJWT(jwtToken: string) {
-    const clerkOptions = await this.configs.get('clerkOptions')
-    const { enable, pemKey, secretKey, adminUserId } = clerkOptions
+    const protocol = (req.headers['x-forwarded-proto'] || 'http') as string
+    const url = createActionURL(
+      'session',
+      protocol,
+      // @ts-expect-error
 
-    if (!enable) return false
+      new Headers(req.headers),
+      process.env,
+      config.basePath,
+    )
 
-    if (jwtToken === undefined || !jwtToken) {
-      return false
+    const response = await Auth(
+      new Request(url, { headers: { cookie: req.headers.cookie ?? '' } }),
+      config,
+    )
+
+    const { status = 200 } = response
+
+    const data = await response.json()
+
+    if (!data || !Object.keys(data).length) return null
+    if (status === 200) return data
+  }
+
+  getSessionUser(req: IncomingMessage) {
+    const { authConfig } = this
+    return new Promise<SessionUser | null>((resolve) => {
+      this.getSessionBase(req, {
+        ...authConfig,
+        callbacks: {
+          ...authConfig.callbacks,
+          session: async (params) => {
+            const token = params.token
+
+            let user = params.user ?? params.token
+            if (typeof token?.providerAccountId === 'string') {
+              const existUser = (await this.getOauthUserAccount(
+                token.providerAccountId,
+              )) as any
+
+              if (existUser) {
+                user = existUser
+              }
+            }
+
+            resolve({
+              ...params.session,
+              ...params.user,
+              user,
+              provider: token.provider,
+              providerAccountId: token.providerAccountId,
+            } as SessionUser)
+
+            const session =
+              (await authConfig.callbacks?.session?.(params)) ?? params.session
+
+            return {
+              user,
+              ...session,
+            } satisfies Session
+          },
+        },
+      }).then((session) => {
+        if (!session) {
+          resolve(null)
+        }
+      })
+    })
+  }
+
+  async setCurrentOauthAsOwner() {
+    const req = RequestContext.currentRequest()
+    if (!req) {
+      throw new BadRequestException()
+    }
+    const session = await this.getSessionUser(req)
+    if (!session) {
+      throw new BadRequestException('session not found')
+    }
+    const userId = session.userId
+    await this.databaseService.db.collection(AUTH_JS_USER_COLLECTION).updateOne(
+      {
+        _id: new Types.ObjectId(userId),
+      },
+      {
+        $set: {
+          isOwner: true,
+        },
+      },
+    )
+    return 'OK'
+  }
+
+  async getOauthUserAccount(providerAccountId: string) {
+    const account = await this.databaseService.db
+      .collection(AUTH_JS_ACCOUNT_COLLECTION)
+      .findOne(
+        {
+          providerAccountId,
+        },
+        {
+          projection: {
+            providerAccountId: 1,
+            provider: 1,
+            type: 1,
+            userId: 1,
+          },
+        },
+      )
+
+    if (account?.userId) {
+      const user = await this.databaseService.db
+        .collection(AUTH_JS_USER_COLLECTION)
+        .findOne(
+          {
+            _id: account.userId,
+          },
+          {
+            projection: {
+              email: 1,
+              name: 1,
+              image: 1,
+              isOwner: 1,
+            },
+          },
+        )
+
+      if (user) Object.assign(account, user)
     }
 
-    try {
-      const { sub: userId } = jwt.verify(jwtToken, pemKey) as {
-        sub: string
-      }
-
-      let clerkClient: ClerkClient
-      if (this.clerkClientLRU.has(secretKey)) {
-        clerkClient = this.clerkClientLRU.get(secretKey)!
-      } else {
-        clerkClient = createClerkClient({
-          secretKey,
-        })
-
-        this.clerkClientLRU.set(secretKey, clerkClient, { size: 1 })
-      }
-
-      // 1. promise user is exist
-      const user = await clerkClient.users.getUser(userId)
-
-      return user.id === adminUserId
-    } catch (error) {
-      this.logger.debug(`clerk jwt valid error: ${error.message}`)
-      return false
+    return {
+      ...account,
+      id: account?.userId.toString(),
     }
+  }
+  getOauthProviders() {
+    return this.authConfig.providers.map((p) => p.name)
   }
 }
