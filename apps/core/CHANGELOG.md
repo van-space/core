@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [7.1.9](https://github.com/mx-space/core/compare/v7.1.8...v7.1.9) (2024-09-21)
+
+
+### Bug Fixes
+
+* docker ([cd3e6b6](https://github.com/mx-space/core/commit/cd3e6b64f92470f784d63c201cae215fc888f328))
+
+
+
 ## [7.1.8](https://github.com/mx-space/core/compare/v7.0.7...v7.1.8) (2024-09-21)
 
 
