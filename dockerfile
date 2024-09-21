@@ -11,7 +11,6 @@ RUN node apps/core/download-latest-admin-assets.js
 FROM node:20-alpine
 
 RUN apk add zip unzip mongodb-tools bash fish rsync jq curl --no-cache
-
 WORKDIR /app
 COPY --from=builder /app/out .
 COPY --from=builder /app/assets ./assets
