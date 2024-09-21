@@ -260,6 +260,7 @@ export class AuthService {
               name: 1,
               image: 1,
               isOwner: 1,
+              handle: 1,
             },
           },
         )

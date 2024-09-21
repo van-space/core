@@ -7,6 +7,7 @@ import type { PostModel } from '@core/modules/post/post.model'
 import type { NormalizedPost } from '@core/modules/post/post.type'
 import type { RecentlyModel } from '@core/modules/recently/recently.model'
 import type { SayModel } from '@core/modules/say/say.model'
+import type { ReaderModel } from '~/modules/reader/reader.model'
 import type { EventEmitter } from 'node:events'
 import type { BusinessEvents } from './event.enum'
 
@@ -47,6 +48,12 @@ export interface EventPayloadMapping {
   [BusinessEvents.COMMENT_CREATE]: Omit<CommentModel, 'ref'> & {
     ref: Id | PostModel | PageModel | NoteModel | RecentlyModel
   }
+
+  [BusinessEvents.COMMENT_UPDATE]: {
+    id: string
+    text: string
+  }
+
   [BusinessEvents.ARTICLE_READ_COUNT_UPDATE]: {
     count: number
     type: 'post' | 'note'
@@ -62,7 +69,9 @@ export interface IActivityLike {
   ref: {
     id: string
     title: string
+    readerId?: string
   }
+  reader?: ReaderModel
 }
 
 // Auto Generaged type.
@@ -86,6 +95,13 @@ export type GenericEvent =
       type: BusinessEvents.COMMENT_CREATE
       payload: Omit<CommentModel, 'ref'> & {
         ref: Id | PostModel | PageModel | NoteModel | RecentlyModel
+      }
+    }
+  | {
+      type: BusinessEvents.COMMENT_UPDATE
+      payload: {
+        id: string
+        text: string
       }
     }
   | {

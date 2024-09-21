@@ -20,6 +20,7 @@ import {
 } from '@nestjs/common'
 import { OnEvent } from '@nestjs/event-emitter'
 
+import { RequestContext } from '~/common/contexts/request.context'
 import { CannotFindException } from '~/common/exceptions/cant-find.exception'
 import { NoContentCanBeModifiedException } from '~/common/exceptions/no-content-canbe-modified.exception'
 import { BusinessEvents, EventScope } from '~/constants/business-event.constant'
@@ -33,6 +34,8 @@ import { scheduleManager } from '~/utils/schedule.util'
 import { getAvatar, hasChinese } from '~/utils/tool.util'
 
 import { ConfigsService } from '../configs/configs.service'
+import { ReaderModel } from '../reader/reader.model'
+import { ReaderService } from '../reader/reader.service'
 import { createMockedContextResponse } from '../serverless/mock-response.util'
 import { ServerlessService } from '../serverless/serverless.service'
 import { SnippetType } from '../snippet/snippet.model'
@@ -63,6 +66,8 @@ export class CommentService implements OnModuleInit {
     private readonly serverlessService: ServerlessService,
     private readonly eventManager: EventManagerService,
     private readonly barkService: BarkPushService,
+    @Inject(forwardRef(() => ReaderService))
+    private readonly readerService: ReaderService,
   ) {}
 
   private async getMailOwnerProps() {
@@ -152,11 +157,34 @@ export class CommentService implements OnModuleInit {
     return res
   }
 
+  async assignReaderToComment(
+    doc: Partial<CommentModel>,
+  ): Promise<(ReaderModel & { id: string }) | null> {
+    const readerId = RequestContext.currentRequest()?.readerId
+
+    let reader: ReaderModel | null = null
+    if (readerId) {
+      reader = await this.readerService
+        .findReaderInIds([readerId])
+        .then((readers) => readers[0] ?? null)
+    }
+
+    if (!reader) {
+      return null
+    }
+    doc.author = reader.name
+    doc.mail = reader.email
+    doc.avatar = reader.image
+
+    return { ...reader, id: readerId! }
+  }
   async createComment(
     id: string,
     doc: Partial<CommentModel>,
     type?: CollectionRefTypes,
   ) {
+    const reader = await this.assignReaderToComment(doc)
+
     let ref: (WriteBaseModel & { _id: any }) | null = null
     let refType = type
     if (type) {
@@ -181,6 +209,7 @@ export class CommentService implements OnModuleInit {
       ...doc,
       state: CommentState.Unread,
       ref: new Types.ObjectId(id),
+      readerId: reader ? reader.id : undefined,
       refType,
     })
 
@@ -208,6 +237,7 @@ export class CommentService implements OnModuleInit {
       })
       .select('+ip +agent')
 
+    const readerId = RequestContext.currentRequest()?.readerId
     if (!comment) return
     scheduleManager.schedule(async () => {
       if (isAuthenticated) {
@@ -219,7 +249,7 @@ export class CommentService implements OnModuleInit {
     scheduleManager.batch(async () => {
       const configs = await this.configsService.get('commentOptions')
       const { commentShouldAudit } = configs
-      if (await this.checkSpam(comment)) {
+      if ((await this.checkSpam(comment)) && !readerId) {
         await this.commentModel.updateOne(
           { _id: commentId },
           {
@@ -612,5 +642,23 @@ export class CommentService implements OnModuleInit {
       icon: comment.avatar,
       url: `${adminUrl}#/comments`,
     })
+  }
+
+  async editComment(id: string, text: string) {
+    const comment = await this.commentModel.findById(id).lean()
+    if (!comment) {
+      throw new CannotFindException()
+    }
+    await this.commentModel.updateOne(
+      { _id: id },
+      { text, editedAt: new Date() },
+    )
+    await this.eventManager.broadcast(
+      BusinessEvents.COMMENT_UPDATE,
+      { id, text },
+      {
+        scope: comment.isWhispers ? EventScope.TO_SYSTEM_ADMIN : EventScope.ALL,
+      },
+    )
   }
 }

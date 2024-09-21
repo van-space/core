@@ -55,6 +55,24 @@ export class CommentDto {
   avatar?: string
 }
 
+export class EditCommentDto {
+  @IsString()
+  @IsNotEmpty()
+  text: string
+}
+
+export class RequiredGuestReaderCommentDto extends CommentDto {
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(20, { message: '昵称不得大于 20 个字符' })
+  author: string
+
+  @IsString()
+  @IsEmail(undefined, { message: '请更正为正确的邮箱' })
+  @MaxLength(50, { message: '邮箱地址不得大于 50 个字符' })
+  mail: string
+}
+
 export class TextOnlyDto {
   @IsString()
   @IsNotEmpty()

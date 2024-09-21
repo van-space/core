@@ -23,10 +23,10 @@ import { TopicController } from './topic'
 import { UserController } from './user'
 
 export const allControllers = [
-  AIController,
   AckController,
   ActivityController,
   AggregateController,
+  AIController,
   CategoryController,
   CommentController,
   LinkController,
@@ -35,12 +35,12 @@ export const allControllers = [
   PostController,
   ProjectController,
   RecentlyController,
-  TopicController,
   SayController,
   SearchController,
-  SnippetController,
   ServerlessController,
+  SnippetController,
   SubscribeController,
+  TopicController,
   UserController,
 ]
 
@@ -72,10 +72,10 @@ export const allControllerNames = [
 ] as const
 
 export {
-  AIController,
   AckController,
   ActivityController,
   AggregateController,
+  AIController,
   CategoryController,
   CommentController,
   LinkController,
@@ -83,16 +83,15 @@ export {
   PageController,
   PostController,
   ProjectController,
-  RecentlyController,
-  SayController,
-  SearchController,
-  SnippetController,
-  ServerlessController,
-  SubscribeController,
-  UserController,
-  TopicController,
-
   // Enum
   RecentlyAttitudeEnum,
   RecentlyAttitudeResultEnum,
+  RecentlyController,
+  SayController,
+  SearchController,
+  ServerlessController,
+  SnippetController,
+  SubscribeController,
+  TopicController,
+  UserController,
 }
