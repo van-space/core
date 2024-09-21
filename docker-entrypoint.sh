@@ -172,6 +172,9 @@ declare -A valueMap=(
 
   # Color
   [COLOR]="switch,--color,true"
+
+  # PushPlus token
+  [PUSH_PLUS_TOKEN]="value,--push_plus_token=,@@NULL@@"
 )
 
 for key in "${!valueMap[@]}"; do
@@ -201,6 +204,7 @@ echo "Allowed Origins: $(get_cmd_value "--allowed_origins=" $command_args)"
 echo "Config Path: $(if [ -z "$(get_cmd_value "--config_path=" $command_args)" ]; then echo "NULL"; else echo "$(get_cmd_value "--config_path=" $command_args)"; fi)"
 echo "Encryption: $(get_boolean_str $(is_in_cmd "--encrypt_enable" $command_args))"
 echo "Cluster: $(get_boolean_str $(is_in_cmd "--cluster" $command_args))"
+echo "PushPlus Token: $(if [ -z "$(get_cmd_value "--push_plus_token=" $command_args)" ]; then echo "NULL"; else echo "$(get_cmd_value "--push_plus_token=" $command_args)"; fi)"
 echo "============================================"
 
 command="node index.js $command_args"

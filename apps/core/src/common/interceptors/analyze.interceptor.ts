@@ -18,13 +18,18 @@ import { Inject, Injectable } from '@nestjs/common'
 import { Reflector } from '@nestjs/core'
 import { ReturnModelType } from '@typegoose/typegoose'
 
+import { PUSH_PLUS_TOKEN } from '~/app.config'
 import { RedisKeys } from '~/constants/cache.constant'
 import * as SYSTEM from '~/constants/system.constant'
 import { REFLECTOR } from '~/constants/system.constant'
 import { AnalyzeModel } from '~/modules/analyze/analyze.model'
 import { OptionModel } from '~/modules/configs/configs.model'
+import { HttpService } from '~/processors/helper/helper.http.service'
 import { CacheService } from '~/processors/redis/cache.service'
-import { getNestExecutionContextRequest } from '~/transformers/get-req.transformer'
+import {
+  FastifyBizRequest,
+  getNestExecutionContextRequest,
+} from '~/transformers/get-req.transformer'
 import { InjectModel } from '~/transformers/model.transformer'
 import { getIp } from '~/utils/ip.util'
 import { getRedisKey } from '~/utils/redis.util'
@@ -41,6 +46,7 @@ export class AnalyzeInterceptor implements NestInterceptor {
     @InjectModel(OptionModel)
     private readonly options: ReturnModelType<typeof OptionModel>,
     private readonly cacheService: CacheService,
+    private readonly http: HttpService,
     @Inject(REFLECTOR) private readonly reflector: Reflector,
   ) {
     this.init()
@@ -60,7 +66,40 @@ export class AnalyzeInterceptor implements NestInterceptor {
   async init() {
     this.parser = new UAParser()
   }
+  async notify(request: FastifyBizRequest) {
+    const ip = getIp(request)
+    const url = request.url.replace(/^\/api(\/v\d)?/, '')
 
+    const ua = request.headers['user-agent']
+
+    const path = new URL(`http://a.com${url}`).pathname
+
+    const country =
+      request.headers['cf-ipcountry'] || request.headers['CF-IPCountry']
+
+    console.log('准备通知')
+    console.log('ip', ip)
+    console.log('path', path)
+    console.log('path', ua)
+    console.log('country', country)
+    console.log('token', PUSH_PLUS_TOKEN)
+
+    if (path.includes('/notes/nid') && PUSH_PLUS_TOKEN) {
+      this.http.axiosRef.post('https://www.pushplus.plus/send', {
+        token: PUSH_PLUS_TOKEN,
+        title: '网站访问提醒',
+        content: `
+      <p>访问路径： ${path}</p>
+  <p>访问IP：${ip}</p>
+  <p>浏览器UA：${ua}</p>
+  <p>地区：${country}</p>
+      `,
+        template: 'html',
+        channel: 'wechat',
+        pre: '',
+      })
+    }
+  }
   async intercept(
     context: ExecutionContext,
     next: CallHandler<any>,
@@ -104,7 +143,7 @@ export class AnalyzeInterceptor implements NestInterceptor {
     if (url.startsWith('/proxy')) {
       return call$
     }
-
+    this.notify(request)
     scheduleManager.schedule(async () => {
       try {
         request.headers['user-agent'] &&
