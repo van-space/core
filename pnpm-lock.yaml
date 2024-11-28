@@ -178,8 +178,8 @@ importers:
         specifier: ^2.4.3
         version: 2.4.3
       better-auth:
-        specifier: 1.0.6
-        version: 1.0.6(encoding@0.1.13)
+        specifier: 1.0.7
+        version: 1.0.7(encoding@0.1.13)
       blurhash:
         specifier: 2.0.5
         version: 2.0.5
@@ -480,8 +480,8 @@ importers:
   packages/complied:
     devDependencies:
       better-auth:
-        specifier: 1.0.6
-        version: 1.0.6(encoding@0.1.13)
+        specifier: 1.0.7
+        version: 1.0.7(encoding@0.1.13)
       nanoid:
         specifier: 5.0.9
         version: 5.0.9
@@ -3037,8 +3037,8 @@ packages:
   bcryptjs@2.4.3:
     resolution: {integrity: sha512-V/Hy/X9Vt7f3BbPJEi8BdVFMByHi+jNXrYkW3huaybV/kQ0KJg0Y6PkEMbn+zeT+i+SiKZ/HMqJGIIt4LZDqNQ==}
 
-  better-auth@1.0.6:
-    resolution: {integrity: sha512-t+sGl/DuwoM1pVt6xbohokovGbysq/cabqmNxAfFHST5wKqp3rBoSSxiHX33ogiWnJ0iFRxgpJ9+BUCh03C0Kw==}
+  better-auth@1.0.7:
+    resolution: {integrity: sha512-BTVgD4tBxlUlT47MRrzk8UE1wKDH4J4cebcNJ5lL7c3BxrNZNfhGjKGpUKTqvtZ1aXU5kKeoJwTFOVr0DXgg2Q==}
 
   better-call@0.3.3-beta.2:
     resolution: {integrity: sha512-pk+dXQGICPphvMKxl1VOWUUDXF4AYC4DQhLFLSBwS/pfgryhfnx1yJhGqApJzy8eJi5aN5+uLSWDGzKJaMuCGQ==}
@@ -9677,7 +9677,7 @@ snapshots:
 
   bcryptjs@2.4.3: {}
 
-  better-auth@1.0.6(encoding@0.1.13):
+  better-auth@1.0.7(encoding@0.1.13):
     dependencies:
       '@better-fetch/fetch': 1.1.12
       '@noble/ciphers': 0.6.0
