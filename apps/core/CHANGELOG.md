@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [7.2.5](https://github.com/mx-space/core/compare/v7.2.4...v7.2.5) (2024-11-29)
+
+
+### Bug Fixes
+
+* format ([bc38471](https://github.com/mx-space/core/commit/bc384714d1ccf017f49c2aa30b715ebaef01c7d4))
+
+
+
 ## [7.2.4](https://github.com/mx-space/core/compare/v7.2.3...v7.2.4) (2024-11-29)
 
 
