@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [7.2.3](https://github.com/mx-space/core/compare/v7.2.2...v7.2.3) (2024-11-29)
+
+
+### Bug Fixes
+
+* **deps:** update nest monorepo to v10.4.11 ([#87](https://github.com/mx-space/core/issues/87)) ([d3ceb08](https://github.com/mx-space/core/commit/d3ceb087478187a9356ec2476f222a4d493aa86e))
+
+
+
 ## [7.2.2](https://github.com/mx-space/core/compare/v7.1.10...v7.2.2) (2024-11-27)
 
 
