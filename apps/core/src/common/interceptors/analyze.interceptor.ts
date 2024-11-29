@@ -130,14 +130,12 @@ export class AnalyzeInterceptor implements NestInterceptor {
 
     const ip = getIp(request)
 
-    const ua = request.headers['user-agent']
-
+    request.headers['user-agent'] &&
+      this.parser.setUA(request.headers['user-agent'])
     const location = await this.getLocation(ip)
-    this.barkService.push({
+    this.barkService.throttlePush({
       title: '网站访问提醒',
-      body: `来自 ${location}, IP为 ${ip} 的用户访问了 ${path}
-      浏览器UA：${ua}
-      `,
+      body: `来自 ${location}, IP为 ${ip} 的用户访问了 ${path};\n浏览器：${this.parser.getBrowser()} OS: ${this.parser.getOS()};`,
       url: `${adminUrl}#/analyze`,
     })
     // if (path.includes('/notes/nid') && PUSH_PLUS_TOKEN) {
