@@ -135,7 +135,7 @@ export class AnalyzeInterceptor implements NestInterceptor {
     const location = await this.getLocation(ip)
     this.barkService.throttlePush({
       title: '网站访问提醒',
-      body: `来自 ${location}, IP为 ${ip} 的用户访问了 ${path};\n浏览器：${this.parser.getBrowser()} OS: ${this.parser.getOS()};`,
+      body: `来自 ${location}, IP为 ${ip} 的用户访问了 ${path};\n浏览器：${this.parser.getBrowser().name} ${this.parser.getBrowser().version}\nOS: ${this.parser.getOS().name} ${this.parser.getOS().version};`,
       url: `${adminUrl}#/analyze`,
     })
     // if (path.includes('/notes/nid') && PUSH_PLUS_TOKEN) {
