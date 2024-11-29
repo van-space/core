@@ -7,23 +7,33 @@
 import { URL } from 'node:url'
 import { isbot } from 'isbot'
 import UAParser from 'ua-parser-js'
-import type {
-  CallHandler,
-  ExecutionContext,
-  NestInterceptor,
-} from '@nestjs/common'
+import type { SnippetModel } from '~/modules/snippet/snippet.model'
 import type { Observable } from 'rxjs'
 
-import { Inject, Injectable } from '@nestjs/common'
+import {
+  CallHandler,
+  ExecutionContext,
+  forwardRef,
+  Inject,
+  Injectable,
+  Logger,
+  NestInterceptor,
+} from '@nestjs/common'
 import { Reflector } from '@nestjs/core'
 import { ReturnModelType } from '@typegoose/typegoose'
 
-import { PUSH_PLUS_TOKEN } from '~/app.config'
+// import { PUSH_PLUS_TOKEN } from '~/app.config'
 import { RedisKeys } from '~/constants/cache.constant'
 import * as SYSTEM from '~/constants/system.constant'
 import { REFLECTOR } from '~/constants/system.constant'
 import { AnalyzeModel } from '~/modules/analyze/analyze.model'
+import { CommentService } from '~/modules/comment/comment.service'
 import { OptionModel } from '~/modules/configs/configs.model'
+import { ConfigsService } from '~/modules/configs/configs.service'
+import { createMockedContextResponse } from '~/modules/serverless/mock-response.util'
+import { ServerlessService } from '~/modules/serverless/serverless.service'
+import { SnippetType } from '~/modules/snippet/snippet.model'
+import { BarkPushService } from '~/processors/helper/helper.bark.service'
 import { HttpService } from '~/processors/helper/helper.http.service'
 import { CacheService } from '~/processors/redis/cache.service'
 import {
@@ -39,6 +49,7 @@ import { scheduleManager } from '~/utils/schedule.util'
 export class AnalyzeInterceptor implements NestInterceptor {
   private parser: UAParser
   private queue: TaskQueuePool<any>
+  private readonly logger: Logger = new Logger(CommentService.name)
 
   constructor(
     @InjectModel(AnalyzeModel)
@@ -46,7 +57,11 @@ export class AnalyzeInterceptor implements NestInterceptor {
     @InjectModel(OptionModel)
     private readonly options: ReturnModelType<typeof OptionModel>,
     private readonly cacheService: CacheService,
-    private readonly http: HttpService,
+    // private readonly http: HttpService,
+    private readonly configsService: ConfigsService,
+    private readonly barkService: BarkPushService,
+    @Inject(forwardRef(() => ServerlessService))
+    private readonly serverlessService: ServerlessService,
     @Inject(REFLECTOR) private readonly reflector: Reflector,
   ) {
     this.init()
@@ -66,39 +81,79 @@ export class AnalyzeInterceptor implements NestInterceptor {
   async init() {
     this.parser = new UAParser()
   }
+  async getLocation(ip: string) {
+    const fnModel = (await this.serverlessService.model
+      .findOne({
+        name: 'ip',
+        reference: 'built-in',
+        type: SnippetType.Function,
+      })
+      .select('+secret')
+      .lean({
+        getters: true,
+      })) as SnippetModel
+
+    if (!fnModel) {
+      this.logger.error('[Serverless Fn] ip query function is missing.')
+      return ''
+    }
+
+    const result =
+      await this.serverlessService.injectContextIntoServerlessFunctionAndCall(
+        fnModel,
+        {
+          req: {
+            query: { ip },
+          },
+          res: createMockedContextResponse({} as any),
+        } as any,
+      )
+    const location =
+      `${result.countryName || ''}${
+        result.regionName && result.regionName !== result.cityName
+          ? `${result.regionName}`
+          : ''
+      }${result.cityName ? `${result.cityName}` : ''}` || undefined
+
+    return location
+  }
+  shouldNotify(path: string) {
+    return path.includes('/notes/nid')
+  }
   async notify(request: FastifyBizRequest) {
-    const ip = getIp(request)
     const url = request.url.replace(/^\/api(\/v\d)?/, '')
+    const path = new URL(`http://a.com${url}`).pathname
+
+    if (!this.shouldNotify(path)) return
+
+    const { adminUrl } = await this.configsService.get('url')
+
+    const ip = getIp(request)
 
     const ua = request.headers['user-agent']
 
-    const path = new URL(`http://a.com${url}`).pathname
-
-    const country =
-      request.headers['cf-ipcountry'] || request.headers['CF-IPCountry']
-
-    console.log('准备通知')
-    console.log('ip', ip)
-    console.log('path', path)
-    console.log('path', ua)
-    console.log('country', country)
-    console.log('token', PUSH_PLUS_TOKEN)
-
-    if (path.includes('/notes/nid') && PUSH_PLUS_TOKEN) {
-      this.http.axiosRef.post('https://www.pushplus.plus/send', {
-        token: PUSH_PLUS_TOKEN,
-        title: '网站访问提醒',
-        content: `
-      <p>访问路径： ${path}</p>
-  <p>访问IP：${ip}</p>
-  <p>浏览器UA：${ua}</p>
-  <p>地区：${country}</p>
+    const location = await this.getLocation(ip)
+    this.barkService.push({
+      title: '网站访问提醒',
+      body: `来自 ${location}, IP为 ${ip} 的用户访问了 ${path}
+      浏览器UA：${ua}
       `,
-        template: 'html',
-        channel: 'wechat',
-        pre: '',
-      })
-    }
+      url: `${adminUrl}#/analyze`,
+    })
+    // if (path.includes('/notes/nid') && PUSH_PLUS_TOKEN) {
+    //   this.http.axiosRef.post('https://www.pushplus.plus/send', {
+    //     token: PUSH_PLUS_TOKEN,
+    //     title: '网站访问提醒',
+    //     content: `
+    //   <p>访问路径： ${path}</p>
+    //   <p>访问IP：${ip}</p>
+    //   <p>浏览器UA：${ua}</p>
+    //   `,
+    //     template: 'html',
+    //     channel: 'wechat',
+    //     pre: '',
+    //   })
+    // }
   }
   async intercept(
     context: ExecutionContext,
