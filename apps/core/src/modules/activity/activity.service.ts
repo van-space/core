@@ -582,16 +582,23 @@ export class ActivityService implements OnModuleInit, OnModuleDestroy {
             },
       })
 
-      .populate('ref', 'title nid slug subtitle content categoryId')
+      .populate(
+        'ref',
+        'title nid slug subtitle content categoryId hide password',
+      )
 
       .lean({ getters: true })
       .sort({
         created: -1,
       })
       .limit(3)
-
+    // 过滤掉隐藏和有密码的Note的评论
+    const filteredDocs = docs.filter((doc) => {
+      const ref = doc.ref as NoteModel
+      return !(ref.hide || ref.password)
+    })
     await this.commentService.fillAndReplaceAvatarUrl(docs)
-    return docs.map((doc) => {
+    return filteredDocs.map((doc) => {
       return Object.assign(
         {},
         pick(doc, 'created', 'author', 'text', 'avatar'),
