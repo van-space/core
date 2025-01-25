@@ -1,6 +1,6 @@
 {
   "private": true,
-  "packageManager": "pnpm@9.12.3",
+  "packageManager": "pnpm@9.15.3",
   "license": "AGPLv3",
   "homepage": "https://github.com/mx-space/core#readme",
   "repository": {
@@ -10,8 +10,8 @@
   "author": "Innei <https://innei.in>",
   "scripts": {
     "format": "prettier --write \"apps/**/*.ts\" \"test/**/*.ts\" \"packages/**/*.ts\"",
-    "prepare": "husky && node scripts/init-project.mjs && corepack enable",
-    "build:external": "pnpm -C \"packages/complied\" run build",
+    "prepare": "simple-git-hooks && node scripts/init-project.mjs && corepack enable",
+    "build:external": "pnpm -C \"packages/compiled\" run build",
     "build": "pnpm run build:external && pnpm -C \"apps/core\" run build",
     "dev": "pnpm run build:external && pnpm -C \"apps/core\" run start",
     "bundle": "pnpm run build:external && pnpm -C \"apps/core\" run bundle",
@@ -20,7 +20,7 @@
     "publish:core": "cd apps/core && npm run publish"
   },
   "optionalDependencies": {
-    "mongodb-memory-server": "10.1.2",
+    "mongodb-memory-server": "10.1.3",
     "redis-memory-server": "0.11.0"
   },
   "dependencies": {
@@ -28,25 +28,23 @@
   },
   "devDependencies": {
     "@innei/prettier": "0.15.0",
-    "@sxzz/eslint-config": "4.4.1",
-    "@types/node": "22.7.9",
+    "@sxzz/eslint-config": "4.6.0",
+    "@types/node": "22.10.5",
     "cross-env": "7.0.3",
-    "eslint": "^9.11.0",
+    "eslint": "^9.17.0",
     "eslint-plugin-unused-imports": "4.1.4",
-    "husky": "9.1.7",
-    "lint-staged": "15.2.10",
-    "prettier": "3.4.1",
+    "lint-staged": "15.3.0",
+    "prettier": "3.4.2",
     "rimraf": "6.0.1",
+    "simple-git-hooks": "2.11.1",
     "ts-node": "10.9.2",
     "tsconfig-paths": "4.2.0",
     "tsup": "8.3.5",
-    "typescript": "5.6.3",
-    "vite-tsconfig-paths": "5.0.1"
+    "typescript": "5.7.3",
+    "vite-tsconfig-paths": "5.1.4"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -57,10 +55,10 @@
   "issues": "https://github.com/mx-space/core/issues",
   "resolutions": {
     "get-pixels@^3>request": "./external/request",
-    "mongodb": "6.11.0",
+    "mongodb": "6.12.0",
     "pino": "./external/pino",
     "semver": "7.6.3",
-    "typescript": "5.6.3",
-    "whatwg-url": "14.0.0"
+    "typescript": "5.7.3",
+    "whatwg-url": "14.1.0"
   }
 }

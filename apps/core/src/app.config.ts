@@ -85,8 +85,6 @@ const commander = program
     'enable memory dump for debug, send SIGUSR2 to dump memory',
   )
 
-  .option('--push_plus_token <string>', 'push plus token')
-
 commander.parse()
 
 const argv = commander.opts()
