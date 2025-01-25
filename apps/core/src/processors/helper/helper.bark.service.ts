@@ -22,9 +22,22 @@ export type BarkPushOptions = {
   sound?: string
   level?: 'active' | 'timeSensitive' | 'passive'
 }
+type BarkReturnType = BarkPushOptions | Promise<BarkPushOptions>
 
 @Injectable()
 export class BarkPushService {
+  throttlePush = throttle(
+    async (options: BarkReturnType | (() => BarkReturnType)) => {
+      const _options = typeof options === 'function' ? await options() : options
+      this.push(await Promise.resolve(_options))
+    },
+    1000 * 600,
+    {
+      leading: true,
+      trailing: false,
+    },
+  )
+
   constructor(
     private readonly httpService: HttpService,
     private readonly config: ConfigsService,
@@ -49,8 +62,4 @@ export class BarkPushService {
     })
     return response.data
   }
-
-  throttlePush = throttle((options: BarkPushOptions) => {
-    this.push(options)
-  }, 1000 * 600)
 }

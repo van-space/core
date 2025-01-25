@@ -128,30 +128,17 @@ export class AnalyzeInterceptor implements NestInterceptor {
 
     const { adminUrl } = await this.configsService.get('url')
 
-    const ip = getIp(request)
-
     request.headers['user-agent'] &&
       this.parser.setUA(request.headers['user-agent'])
-    const location = await this.getLocation(ip)
-    this.barkService.throttlePush({
-      title: '网站访问提醒',
-      body: `来自 ${location}, IP为 ${ip} 的用户访问了 ${path};\n浏览器：${this.parser.getBrowser().name} ${this.parser.getBrowser().version}\nOS: ${this.parser.getOS().name} ${this.parser.getOS().version};`,
-      url: `${adminUrl}#/analyze`,
+    this.barkService.throttlePush(async () => {
+      const ip = getIp(request)
+      const location = await this.getLocation(ip)
+      return {
+        title: '网站访问提醒',
+        body: `来自 ${location}, IP为 ${ip} 的用户访问了 ${path};\n浏览器：${this.parser.getBrowser().name} ${this.parser.getBrowser().version};\nOS: ${this.parser.getOS().name} ${this.parser.getOS().version};`,
+        url: `${adminUrl}#/analyze`,
+      }
     })
-    // if (path.includes('/notes/nid') && PUSH_PLUS_TOKEN) {
-    //   this.http.axiosRef.post('https://www.pushplus.plus/send', {
-    //     token: PUSH_PLUS_TOKEN,
-    //     title: '网站访问提醒',
-    //     content: `
-    //   <p>访问路径： ${path}</p>
-    //   <p>访问IP：${ip}</p>
-    //   <p>浏览器UA：${ua}</p>
-    //   `,
-    //     template: 'html',
-    //     channel: 'wechat',
-    //     pre: '',
-    //   })
-    // }
   }
   async intercept(
     context: ExecutionContext,
