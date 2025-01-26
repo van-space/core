@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [7.2.10](https://github.com/mx-space/core/compare/v7.2.9...v7.2.10) (2025-01-26)
+
+
+
 ## [7.2.9](https://github.com/mx-space/core/compare/v7.2.6...v7.2.9) (2025-01-25)
 
 
