@@ -229,8 +229,8 @@ importers:
         specifier: 3.10.1
         version: 3.10.1
       langchain:
-        specifier: 0.3.13
-        version: 0.3.13(@langchain/core@0.3.36(openai@4.79.4(encoding@0.1.13)(zod@3.24.1)))(axios@1.7.9)(encoding@0.1.13)(openai@4.79.4(encoding@0.1.13)(zod@3.24.1))
+        specifier: 0.3.14
+        version: 0.3.14(@langchain/core@0.3.36(openai@4.79.4(encoding@0.1.13)(zod@3.24.1)))(axios@1.7.9)(encoding@0.1.13)(openai@4.79.4(encoding@0.1.13)(zod@3.24.1))
       linkedom:
         specifier: 0.18.7
         version: 0.18.7
@@ -4396,8 +4396,8 @@ packages:
     resolution: {integrity: sha512-dyNKv2KRvYOQPLCAOCjjQuCk4YFd33BvGdf/o5bC7FiW+BB6snA81Zt+2wT9QDFzKqxKa5rrOmvlK/anehCcgA==}
     engines: {node: '>=14.0.0'}
 
-  langchain@0.3.13:
-    resolution: {integrity: sha512-QIQocx2goCBMgCw+hXjDiCW/5P/Q4HbNjaGEbG2FPHzFl48aw36GJvcyEbg91GqjhyH+lsIlYIWMcdDqn5Z5Lw==}
+  langchain@0.3.14:
+    resolution: {integrity: sha512-U6NpGSQP/R/RfZFin6OOxFYgLNAwtfgKEWKxT3whw2LIDUnjXrgbulkS5R5iXIU8V10kAXhDvj+FyEUI8C4U6Q==}
     engines: {node: '>=18'}
     peerDependencies:
       '@langchain/anthropic': '*'
@@ -4405,6 +4405,7 @@ packages:
       '@langchain/cerebras': '*'
       '@langchain/cohere': '*'
       '@langchain/core': '>=0.2.21 <0.4.0'
+      '@langchain/deepseek': '*'
       '@langchain/google-genai': '*'
       '@langchain/google-vertexai': '*'
       '@langchain/google-vertexai-web': '*'
@@ -4424,6 +4425,8 @@ packages:
       '@langchain/cerebras':
         optional: true
       '@langchain/cohere':
+        optional: true
+      '@langchain/deepseek':
         optional: true
       '@langchain/google-genai':
         optional: true
@@ -11344,7 +11347,7 @@ snapshots:
 
   kysely@0.27.4: {}
 
-  langchain@0.3.13(@langchain/core@0.3.36(openai@4.79.4(encoding@0.1.13)(zod@3.24.1)))(axios@1.7.9)(encoding@0.1.13)(openai@4.79.4(encoding@0.1.13)(zod@3.24.1)):
+  langchain@0.3.14(@langchain/core@0.3.36(openai@4.79.4(encoding@0.1.13)(zod@3.24.1)))(axios@1.7.9)(encoding@0.1.13)(openai@4.79.4(encoding@0.1.13)(zod@3.24.1)):
     dependencies:
       '@langchain/core': 0.3.36(openai@4.79.4(encoding@0.1.13)(zod@3.24.1))
       '@langchain/openai': 0.3.17(@langchain/core@0.3.36(openai@4.79.4(encoding@0.1.13)(zod@3.24.1)))(encoding@0.1.13)
