@@ -218,7 +218,7 @@ importers:
         version: 5.1.22
       js-yaml:
         specifier: ^4.1.0
-        version: 4.1.0
+        version: 4.1.1
       json5:
         specifier: 2.2.3
         version: 2.2.3
@@ -794,8 +794,16 @@ packages:
     resolution: {integrity: sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA==}
     engines: {node: '>=6.9.0'}
 
+  '@babel/helper-string-parser@7.27.1':
+    resolution: {integrity: sha512-qMlSxKbpRlAridDExk92nSobyDdpPijUq2DW6oDnUqd0iOGxmQjyqhMIihI9+zv4LPyZdRje2cavWPbCbWm3eA==}
+    engines: {node: '>=6.9.0'}
+
   '@babel/helper-validator-identifier@7.25.9':
     resolution: {integrity: sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/helper-validator-identifier@7.28.5':
+    resolution: {integrity: sha512-qSs4ifwzKJSV39ucNjsvc6WVHs6b7S03sOh2OcHF9UHfVPqWWALUsNUVzhSBiItjRZoLHx7nIarVjqKVusUZ1Q==}
     engines: {node: '>=6.9.0'}
 
   '@babel/helper-validator-option@7.25.9':
@@ -813,6 +821,11 @@ packages:
 
   '@babel/parser@7.26.7':
     resolution: {integrity: sha512-kEvgGGgEjRUutvdVvZhbn/BxVt+5VSpwXz1j3WYXQbXDo8KzFOPNG2GQbdAiNq8g6wn1yKk7C/qrke03a84V+w==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
+  '@babel/parser@7.28.5':
+    resolution: {integrity: sha512-KKBU1VGYR7ORr3At5HAtUQ+TV3SzRCXmA/8OdDZiLDBIZxVyzXuztPjfLd3BV1PRAQGCMWWSHYhL0F8d5uHBDQ==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -848,6 +861,10 @@ packages:
 
   '@babel/types@7.26.7':
     resolution: {integrity: sha512-t8kDRGrKXyp6+tjUh7hw2RLyclsW4TRoRvRHtSyAX9Bb5ldlFh+90YAYY6awRXrlB4G5G2izNeGySpATlFzmOg==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/types@7.28.5':
+    resolution: {integrity: sha512-qQ5m48eI/MFLQ5PxQj4PFaprjyCTLI37ElWMmNs0K8Lk3dVeOdNpB3ks8jc7yM5CDmVC73eMVk/trk3fgmrUpA==}
     engines: {node: '>=6.9.0'}
 
   '@better-auth/utils@0.2.3':
@@ -1663,6 +1680,9 @@ packages:
   '@jridgewell/sourcemap-codec@1.5.0':
     resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
 
+  '@jridgewell/sourcemap-codec@1.5.5':
+    resolution: {integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==}
+
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
@@ -1998,6 +2018,7 @@ packages:
 
   '@simplewebauthn/types@10.0.0':
     resolution: {integrity: sha512-SFXke7xkgPRowY2E+8djKbdEznTVnD5R6GO7GPTthpHrokLvNKw8C3lFZypTxLI7KkCfGPfhtqB3d7OVGGa9jQ==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
@@ -4361,8 +4382,8 @@ packages:
   js-tokens@9.0.0:
     resolution: {integrity: sha512-WriZw1luRMlmV3LGJaR6QOJjWwgLUTf89OwT2lUOyjX2dJGBwgmIkbcz+7WFZjrZM635JOIR517++e/67CP9dQ==}
 
-  js-yaml@4.1.0:
-    resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
+  js-yaml@4.1.1:
+    resolution: {integrity: sha512-qQKT4zQxXl8lLwBtHMWwaTcGfFOZviOJet3Oy/xmGk2gZH677CJM9EvtfdSkgWcATZhj/55JZ0rmy3myCT5lsA==}
     hasBin: true
 
   jsdoc-type-pratt-parser@4.1.0:
@@ -4659,6 +4680,9 @@ packages:
 
   magic-string@0.30.17:
     resolution: {integrity: sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==}
+
+  magic-string@0.30.21:
+    resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
 
   magic-string@0.30.8:
     resolution: {integrity: sha512-ISQTe55T2ao7XtlAStud6qwYPZjE4GK1S/BeVPus4jrq6JuOnQ00YKQC581RWhR122W7msZV263KzVeLoqidyQ==}
@@ -5853,6 +5877,7 @@ packages:
   source-map@0.8.0-beta.0:
     resolution: {integrity: sha512-2ymg6oRBpebeZi9UUNsgQ89bhx01TcTkmNTGnNO88imTmbSgy4nfujrgVEFKWpMTEGA11EDkTt7mqObTPdigIA==}
     engines: {node: '>= 8'}
+    deprecated: The work that was done in this beta branch won't be included in future versions
 
   sparse-bitfield@3.0.3:
     resolution: {integrity: sha512-kvzhi7vqKTfkh0PZU+2D2PIllw2ymqJKujUcyPMd9Y75Nv4nPbGJZXNhxsgdQab2BmlDct1YnfQCguEvHr7VsQ==}
@@ -7364,7 +7389,13 @@ snapshots:
 
   '@babel/helper-string-parser@7.25.9': {}
 
+  '@babel/helper-string-parser@7.27.1':
+    optional: true
+
   '@babel/helper-validator-identifier@7.25.9': {}
+
+  '@babel/helper-validator-identifier@7.28.5':
+    optional: true
 
   '@babel/helper-validator-option@7.25.9': {}
 
@@ -7380,6 +7411,11 @@ snapshots:
   '@babel/parser@7.26.7':
     dependencies:
       '@babel/types': 7.26.7
+
+  '@babel/parser@7.28.5':
+    dependencies:
+      '@babel/types': 7.28.5
+    optional: true
 
   '@babel/plugin-syntax-typescript@7.25.9(@babel/core@7.26.7)':
     dependencies:
@@ -7439,6 +7475,12 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
+
+  '@babel/types@7.28.5':
+    dependencies:
+      '@babel/helper-string-parser': 7.27.1
+      '@babel/helper-validator-identifier': 7.28.5
+    optional: true
 
   '@better-auth/utils@0.2.3':
     dependencies:
@@ -7728,7 +7770,7 @@ snapshots:
       globals: 14.0.0
       ignore: 5.3.2
       import-fresh: 3.3.0
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
       minimatch: 3.1.2
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
@@ -8121,6 +8163,9 @@ snapshots:
       '@jridgewell/trace-mapping': 0.3.25
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
+
+  '@jridgewell/sourcemap-codec@1.5.5':
+    optional: true
 
   '@jridgewell/trace-mapping@0.3.25':
     dependencies:
@@ -9365,7 +9410,7 @@ snapshots:
 
   '@vue/compiler-core@3.5.12':
     dependencies:
-      '@babel/parser': 7.26.7
+      '@babel/parser': 7.28.5
       '@vue/shared': 3.5.12
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -9380,13 +9425,13 @@ snapshots:
 
   '@vue/compiler-sfc@3.5.12':
     dependencies:
-      '@babel/parser': 7.26.7
+      '@babel/parser': 7.28.5
       '@vue/compiler-core': 3.5.12
       '@vue/compiler-dom': 3.5.12
       '@vue/compiler-ssr': 3.5.12
       '@vue/shared': 3.5.12
       estree-walker: 2.0.2
-      magic-string: 0.30.17
+      magic-string: 0.30.21
       postcss: 8.5.1
       source-map-js: 1.2.1
     optional: true
@@ -10031,7 +10076,7 @@ snapshots:
   cosmiconfig@8.3.6(typescript@5.7.3):
     dependencies:
       import-fresh: 3.3.0
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
       parse-json: 5.2.0
       path-type: 4.0.0
     optionalDependencies:
@@ -11367,7 +11412,7 @@ snapshots:
 
   js-tokens@9.0.0: {}
 
-  js-yaml@4.1.0:
+  js-yaml@4.1.1:
     dependencies:
       argparse: 2.0.1
 
@@ -11457,7 +11502,7 @@ snapshots:
       '@langchain/openai': 0.3.17(@langchain/core@0.3.36(openai@4.79.4(encoding@0.1.13)(zod@3.24.1)))(encoding@0.1.13)
       '@langchain/textsplitters': 0.1.0(@langchain/core@0.3.36(openai@4.79.4(encoding@0.1.13)(zod@3.24.1)))
       js-tiktoken: 1.0.15
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
       jsonpointer: 5.0.1
       langsmith: 0.2.8(openai@4.79.4(encoding@0.1.13)(zod@3.24.1))
       openapi-types: 12.1.3
@@ -11649,6 +11694,11 @@ snapshots:
   magic-string@0.30.17:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
+
+  magic-string@0.30.21:
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.5.5
+    optional: true
 
   magic-string@0.30.8:
     dependencies:
