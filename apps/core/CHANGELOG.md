@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## [7.2.11](https://github.com/mx-space/core/compare/v7.2.10...v7.2.11) (2025-11-15)
+
+
+### Bug Fixes
+
+* **deps:** update babel monorepo to v7.26.7 ([#110](https://github.com/mx-space/core/issues/110)) ([f589c29](https://github.com/mx-space/core/commit/f589c29fabaeb0891bab0fea16ceb6b19b0c4cce))
+* **deps:** update dependency @fastify/static to v8.0.4 ([#111](https://github.com/mx-space/core/issues/111)) ([d1abd91](https://github.com/mx-space/core/commit/d1abd91f55848999c25e58f3578a916bdb5a2194))
+* **deps:** update dependency @langchain/openai to v0.3.17 ([#112](https://github.com/mx-space/core/issues/112)) ([7648e54](https://github.com/mx-space/core/commit/7648e5491639a489a59d1312d2cfb0dc355f130c))
+* **deps:** update dependency @nestjs/common to v10.4.16 [security] ([#133](https://github.com/mx-space/core/issues/133)) ([7ff441f](https://github.com/mx-space/core/commit/7ff441fcd0fb917a93c7e832b573ddeb8e733a15))
+* **deps:** update dependency @types/jsonwebtoken to v9.0.8 ([#113](https://github.com/mx-space/core/issues/113)) ([f31c201](https://github.com/mx-space/core/commit/f31c201ae4ff4f6a3bfe60f8974c2d9310e42ba6))
+* **deps:** update dependency form-data to v4.0.4 [security] ([#132](https://github.com/mx-space/core/issues/132)) ([bafe199](https://github.com/mx-space/core/commit/bafe1995bdb0e1b44ee3e286e6ada9af5ff20f54))
+* **deps:** update dependency isbot to v5.1.22 ([#128](https://github.com/mx-space/core/issues/128)) ([a401f62](https://github.com/mx-space/core/commit/a401f626da3688c41a0f643d39fa8408d39c0c76))
+* **deps:** update dependency langchain to v0.3.13 ([#114](https://github.com/mx-space/core/issues/114)) ([62374a1](https://github.com/mx-space/core/commit/62374a15ce82e191e752d1fc117ef5106475a896))
+* **deps:** update dependency langchain to v0.3.14 ([#126](https://github.com/mx-space/core/issues/126)) ([fd854f9](https://github.com/mx-space/core/commit/fd854f9eac569689a13c74c5e9b3ed7969078b27))
+* **deps:** update dependency linkedom to v0.18.7 ([#115](https://github.com/mx-space/core/issues/115)) ([bfabef3](https://github.com/mx-space/core/commit/bfabef3b05e219759cb973cd703e20b1780d451f))
+* **deps:** update dependency mongoose-aggregate-paginate-v2 to v1.1.3 ([#116](https://github.com/mx-space/core/issues/116)) ([4acf3a0](https://github.com/mx-space/core/commit/4acf3a03272ead919c5ed881fe0fa0877a31a595))
+* **deps:** update dependency openai to v4.79.4 ([#117](https://github.com/mx-space/core/issues/117)) ([5aedb2b](https://github.com/mx-space/core/commit/5aedb2bd1a0b9b1def008730a8926565e4162b7d))
+* increase max file size limit for upload and restore endpoint ([2672e35](https://github.com/mx-space/core/commit/2672e35a604e6c92f9378c13fb7d413fbe043f1c))
+
+
+
 ## [7.2.10](https://github.com/mx-space/core/compare/v7.2.9...v7.2.10) (2025-01-26)
 
 
