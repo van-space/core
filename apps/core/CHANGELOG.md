@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [7.2.12](https://github.com/mx-space/core/compare/v7.2.11...v7.2.12) (2025-11-15)
+
+
+### Bug Fixes
+
+* add missing volume mapping for admin data ([8b82979](https://github.com/mx-space/core/commit/8b829797ad5a82bff72295f23928ec8f169aa301))
+
+
+
 ## [7.2.11](https://github.com/mx-space/core/compare/v7.2.10...v7.2.11) (2025-11-15)
 
 
