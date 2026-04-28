@@ -170,10 +170,10 @@ importers:
         version: 4.24.0
       axios:
         specifier: ^1.7.8
-        version: 1.7.9
+        version: 1.13.5
       axios-retry:
         specifier: 4.5.0
-        version: 4.5.0(axios@1.7.9)
+        version: 4.5.0(axios@1.13.5)
       bcryptjs:
         specifier: ^2.4.3
         version: 2.4.3
@@ -230,7 +230,7 @@ importers:
         version: 3.10.1
       langchain:
         specifier: 0.3.37
-        version: 0.3.37(@langchain/core@0.3.80(openai@4.79.4(encoding@0.1.13)(zod@3.24.1)))(axios@1.7.9)(encoding@0.1.13)(openai@4.79.4(encoding@0.1.13)(zod@3.24.1))
+        version: 0.3.37(@langchain/core@0.3.80(openai@4.79.4(encoding@0.1.13)(zod@3.24.1)))(axios@1.13.5)(encoding@0.1.13)(openai@4.79.4(encoding@0.1.13)(zod@3.24.1))
       linkedom:
         specifier: 0.18.7
         version: 0.18.7
@@ -442,7 +442,7 @@ importers:
         version: 3.0.0
       axios:
         specifier: ^1.7.9
-        version: 1.7.9
+        version: 1.13.5
       camelcase-keys:
         specifier: ^9.1.3
         version: 9.1.3
@@ -824,8 +824,8 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
-  '@babel/parser@7.28.6':
-    resolution: {integrity: sha512-TeR9zWR18BvbfPmGbLampPMW+uW1NZnJlRuuHso8i87QZNq2JRF9i6RgxRqtEq+wQGsS19NNTWr2duhnE49mfQ==}
+  '@babel/parser@7.29.2':
+    resolution: {integrity: sha512-4GgRzy/+fsBa72/RZVJmGKPmZu9Byn8o4MoLpmNe1m8ZfYnz5emHLQz3U4gLud6Zwl0RZIcgiLD7Uq7ySFuDLA==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -863,8 +863,8 @@ packages:
     resolution: {integrity: sha512-t8kDRGrKXyp6+tjUh7hw2RLyclsW4TRoRvRHtSyAX9Bb5ldlFh+90YAYY6awRXrlB4G5G2izNeGySpATlFzmOg==}
     engines: {node: '>=6.9.0'}
 
-  '@babel/types@7.28.6':
-    resolution: {integrity: sha512-0ZrskXVEHSWIqZM/sQZ4EV3jZJXRkio/WCxaqKZP1g//CEWEPSfeZFcms4XeKBCHU0ZKnIkdJeU/kF+eRp5lBg==}
+  '@babel/types@7.29.0':
+    resolution: {integrity: sha512-LwdZHpScM4Qz8Xw2iKSzS+cfglZzJGvofQICy7W7v4caru4EaAmyUuO6BGrbyQ2mYV11W0U8j5mBhd14dd3B0A==}
     engines: {node: '>=6.9.0'}
 
   '@better-auth/utils@0.2.3':
@@ -2934,8 +2934,8 @@ packages:
     peerDependencies:
       axios: 0.x || 1.x
 
-  axios@1.7.9:
-    resolution: {integrity: sha512-LhLcE7Hbiryz8oMDdDptSrWowmB4Bl6RCt6sIJKpRB4XtVf0iEgewX3au/pJqm+Py1kCASkb/FFKjxQaLtxJvw==}
+  axios@1.13.5:
+    resolution: {integrity: sha512-cz4ur7Vb0xS4/KUN0tPWe44eqxrIu31me+fbang3ijiNscE129POzipJJA6zniq2C/Z6sJCjMimjS8Lc/GAs8Q==}
 
   b4a@1.6.7:
     resolution: {integrity: sha512-OnAYlL5b7LEkALw87fUVafQw5rVR9RjwGd4KUwNQ6DrrNmaVaUCgLipfVlzrPQ4tWOR9P0IXGNOx50jYCCdSJg==}
@@ -3969,8 +3969,8 @@ packages:
   flatted@3.3.2:
     resolution: {integrity: sha512-AiwGJM8YcNOaobumgtng+6NHuOqC3A7MixFeDafM3X9cIUM+xUXoS5Vfgf+OihAYe20fxqNM9yPBXJzRtZ/4eA==}
 
-  follow-redirects@1.15.9:
-    resolution: {integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==}
+  follow-redirects@1.16.0:
+    resolution: {integrity: sha512-y5rN/uOsadFT/JfYwhxRS5R7Qce+g3zG97+JrtFZlC9klX/W5hD7iiLzScI4nZqUS7DNUdhPgw4xI8W2LuXlUw==}
     engines: {node: '>=4.0'}
     peerDependencies:
       debug: '*'
@@ -3994,6 +3994,10 @@ packages:
 
   form-data@4.0.4:
     resolution: {integrity: sha512-KrGhL9Q4zjj0kiUt5OO4Mr/A/jlI2jDYs5eHBpYHPcBEVSiipAvn2Ko2HnPe20rmcuuvMHNdZFp+4IlGTMF0Ow==}
+    engines: {node: '>= 6'}
+
+  form-data@4.0.5:
+    resolution: {integrity: sha512-8RipRLol37bNs2bhoV67fiTEvdTrbMUYcFTiy3+wuuOnUog2QBHCZWXDRijWQfAkhBj2Uf5UnVaiWwA5vdd82w==}
     engines: {node: '>= 6'}
 
   formdata-node@4.4.1:
@@ -4174,6 +4178,10 @@ packages:
 
   hasown@2.0.2:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
+    engines: {node: '>= 0.4'}
+
+  hasown@2.0.3:
+    resolution: {integrity: sha512-ej4AhfhfL2Q2zpMmLo7U1Uv9+PyhIZpgQLGT1F9miIGmiCJIoCgSmczFdrc97mWT4kVY72KA+WnnhJ5pghSvSg==}
     engines: {node: '>= 0.4'}
 
   hosted-git-info@2.8.9:
@@ -7432,9 +7440,9 @@ snapshots:
     dependencies:
       '@babel/types': 7.26.7
 
-  '@babel/parser@7.28.6':
+  '@babel/parser@7.29.2':
     dependencies:
-      '@babel/types': 7.28.6
+      '@babel/types': 7.29.0
     optional: true
 
   '@babel/plugin-syntax-typescript@7.25.9(@babel/core@7.26.7)':
@@ -7496,7 +7504,7 @@ snapshots:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
 
-  '@babel/types@7.28.6':
+  '@babel/types@7.29.0':
     dependencies:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
@@ -9431,7 +9439,7 @@ snapshots:
 
   '@vue/compiler-core@3.5.12':
     dependencies:
-      '@babel/parser': 7.28.6
+      '@babel/parser': 7.29.2
       '@vue/shared': 3.5.12
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -9446,7 +9454,7 @@ snapshots:
 
   '@vue/compiler-sfc@3.5.12':
     dependencies:
-      '@babel/parser': 7.28.6
+      '@babel/parser': 7.29.2
       '@vue/compiler-core': 3.5.12
       '@vue/compiler-dom': 3.5.12
       '@vue/compiler-ssr': 3.5.12
@@ -9728,15 +9736,15 @@ snapshots:
       '@fastify/error': 3.4.1
       fastq: 1.17.1
 
-  axios-retry@4.5.0(axios@1.7.9):
+  axios-retry@4.5.0(axios@1.13.5):
     dependencies:
-      axios: 1.7.9
+      axios: 1.13.5
       is-retry-allowed: 2.2.0
 
-  axios@1.7.9:
+  axios@1.13.5:
     dependencies:
-      follow-redirects: 1.15.9(debug@4.4.0)
-      form-data: 4.0.4
+      follow-redirects: 1.16.0(debug@4.4.0)
+      form-data: 4.0.5
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
@@ -10982,7 +10990,7 @@ snapshots:
 
   flatted@3.3.2: {}
 
-  follow-redirects@1.15.9(debug@4.4.0):
+  follow-redirects@1.16.0(debug@4.4.0):
     optionalDependencies:
       debug: 4.4.0
 
@@ -11016,6 +11024,14 @@ snapshots:
       combined-stream: 1.0.8
       es-set-tostringtag: 2.1.0
       hasown: 2.0.2
+      mime-types: 2.1.35
+
+  form-data@4.0.5:
+    dependencies:
+      asynckit: 0.4.0
+      combined-stream: 1.0.8
+      es-set-tostringtag: 2.1.0
+      hasown: 2.0.3
       mime-types: 2.1.35
 
   formdata-node@4.4.1:
@@ -11073,7 +11089,7 @@ snapshots:
       function-bind: 1.1.2
       has-proto: 1.0.3
       has-symbols: 1.0.3
-      hasown: 2.0.2
+      hasown: 2.0.3
 
   get-intrinsic@1.3.0:
     dependencies:
@@ -11193,6 +11209,10 @@ snapshots:
       has-symbols: 1.0.3
 
   hasown@2.0.2:
+    dependencies:
+      function-bind: 1.1.2
+
+  hasown@2.0.3:
     dependencies:
       function-bind: 1.1.2
 
@@ -11357,7 +11377,7 @@ snapshots:
 
   is-core-module@2.15.1:
     dependencies:
-      hasown: 2.0.2
+      hasown: 2.0.3
 
   is-extglob@2.1.1: {}
 
@@ -11519,7 +11539,7 @@ snapshots:
 
   kysely@0.27.4: {}
 
-  langchain@0.3.37(@langchain/core@0.3.80(openai@4.79.4(encoding@0.1.13)(zod@3.24.1)))(axios@1.7.9)(encoding@0.1.13)(openai@4.79.4(encoding@0.1.13)(zod@3.24.1)):
+  langchain@0.3.37(@langchain/core@0.3.80(openai@4.79.4(encoding@0.1.13)(zod@3.24.1)))(axios@1.13.5)(encoding@0.1.13)(openai@4.79.4(encoding@0.1.13)(zod@3.24.1)):
     dependencies:
       '@langchain/core': 0.3.80(openai@4.79.4(encoding@0.1.13)(zod@3.24.1))
       '@langchain/openai': 0.3.17(@langchain/core@0.3.80(openai@4.79.4(encoding@0.1.13)(zod@3.24.1)))(encoding@0.1.13)
@@ -11534,7 +11554,7 @@ snapshots:
       yaml: 2.6.1
       zod: 3.25.76
     optionalDependencies:
-      axios: 1.7.9
+      axios: 1.13.5
     transitivePeerDependencies:
       - '@opentelemetry/api'
       - '@opentelemetry/exporter-trace-otlp-proto'
@@ -12154,7 +12174,7 @@ snapshots:
       camelcase: 6.3.0
       debug: 4.4.0
       find-cache-dir: 3.3.2
-      follow-redirects: 1.15.9(debug@4.4.0)
+      follow-redirects: 1.16.0(debug@4.4.0)
       https-proxy-agent: 7.0.6
       mongodb: 6.12.0
       new-find-package-json: 2.0.0
