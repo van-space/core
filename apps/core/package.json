@@ -74,7 +74,7 @@
     "@nestjs/platform-fastify": "10.4.15",
     "@nestjs/platform-socket.io": "10.4.15",
     "@nestjs/schedule": "4.1.2",
-    "@nestjs/throttler": "6.3.0",
+    "@nestjs/throttler": "6.5.0",
     "@nestjs/websockets": "10.4.15",
     "@simplewebauthn/server": "10.0.1",
     "@socket.io/redis-adapter": "8.3.0",
