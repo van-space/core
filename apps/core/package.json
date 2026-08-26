@@ -161,7 +161,7 @@
     "@vercel/ncc": "0.38.3",
     "cron": "^3.3.1",
     "ioredis": "5.4.2",
-    "sharp": "0.33.5",
+    "sharp": "0.35.0",
     "socket.io": "^4.8.1",
     "unplugin-swc": "1.5.1",
     "vite": "5.4.10",
