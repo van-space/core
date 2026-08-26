@@ -262,8 +262,8 @@ importers:
         specifier: 2.1.1
         version: 2.1.1(mongoose@8.7.0)
       mongoose-lean-virtuals:
-        specifier: 1.0.0
-        version: 1.0.0(mongoose@8.7.0)
+        specifier: 1.1.1
+        version: 1.1.1(mongoose@8.7.0)
       mongoose-paginate-v2:
         specifier: 1.9.0
         version: 1.9.0(mongoose@8.7.0)
@@ -3758,6 +3758,7 @@ packages:
   eslint@9.19.0:
     resolution: {integrity: sha512-ug92j0LepKlbbEv6hD911THhoRHmbdXt2gX+VDABAW/Ir7D3nqKdv5Pf5vtlyY6HQMTEP2skXY43ueqTCWssEA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -5023,14 +5024,8 @@ packages:
     peerDependencies:
       mongoose: '>= 7.5.0'
 
-  mongoose-lean-virtuals@1.0.0:
-    resolution: {integrity: sha512-ZwfhiDv8LGHvjubLGT9RzsbHFgBnpmrRHTQo0gXaLbRMxZy1HFZ/mBbmKNWTSu3q3GMGB4kIXXCZTDAb2nwf7g==}
-    engines: {node: '>=16.20.1'}
-    peerDependencies:
-      mongoose: '>=5.11.10'
-
-  mongoose-lean-virtuals@1.1.0:
-    resolution: {integrity: sha512-QCuAvPUTGzUMjbvWqhA+3hXX7hP0PPJOW+hm50KN3gTPM89Uan/wrFyCfvsqW9giAGemtIFsBrZwiogmu2gxmA==}
+  mongoose-lean-virtuals@1.1.1:
+    resolution: {integrity: sha512-8chOqpVE3bcoWT2pIgcJeIZlXaOfQCavZgQZF4qytUtjRBqsNMyzUoR16qdw9XL2kC478N8iA8z0AA+NSS0d1A==}
     engines: {node: '>=16.20.1'}
     peerDependencies:
       mongoose: '>=5.11.10'
@@ -6168,6 +6163,7 @@ packages:
   tsconfck@3.1.4:
     resolution: {integrity: sha512-kdqWFGVJqe+KGYvlSO9NIaWn9jT1Ny4oKVzAJsKii5eoE9snzTJzL4+MMVOMn+fikWGFmKEylcXL710V/kIPJQ==}
     engines: {node: ^18 || >=20}
+    deprecated: unmaintained
     hasBin: true
     peerDependencies:
       typescript: 5.7.3
@@ -6343,6 +6339,7 @@ packages:
 
   uuid@10.0.0:
     resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   uuid@11.0.3:
@@ -6351,10 +6348,12 @@ packages:
 
   uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   v8-compile-cache-lib@3.0.1:
@@ -12205,19 +12204,14 @@ snapshots:
       mongoose: 8.7.0
       mpath: 0.9.0
 
-  mongoose-lean-virtuals@1.0.0(mongoose@8.7.0):
-    dependencies:
-      mongoose: 8.7.0
-      mpath: 0.8.4
-
-  mongoose-lean-virtuals@1.1.0(mongoose@8.7.0):
+  mongoose-lean-virtuals@1.1.1(mongoose@8.7.0):
     dependencies:
       mongoose: 8.7.0
       mpath: 0.8.4
 
   mongoose-paginate-v2@1.9.0(mongoose@8.7.0):
     dependencies:
-      mongoose-lean-virtuals: 1.1.0(mongoose@8.7.0)
+      mongoose-lean-virtuals: 1.1.1(mongoose@8.7.0)
     transitivePeerDependencies:
       - mongoose
 
